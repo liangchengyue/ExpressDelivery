@@ -7,32 +7,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <title>登录</title>
     <base href="<%=basePath%>">
-    <title>登录</title>
-    <title>登录</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->          
-	<link href="ui/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-	<!-- END GLOBAL MANDATORY STYLES -->
-	<!-- BEGIN PAGE LEVEL STYLES --> 
-	<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2_metro.css" />
-	<!-- END PAGE LEVEL SCRIPTS -->
-	<!-- BEGIN THEME STYLES --> 
-	<link href="ui/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-	<link href="ui/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="ui/assets/css/pages/login.css" rel="stylesheet" type="text/css"/>
-	<link href="ul/assets/css/custom.css" rel="stylesheet" type="text/css"/>
-	<!-- END THEME STYLES -->
-	<link rel="shortcut icon" href="favicon.ico" />
+    <jsp:include page="ui/jsp/commont/head-script.jsp"/>
+	</head>
   
   <body class="login">
    <div class="logo">
@@ -72,9 +50,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="form-actions">
-                <label class="checkbox">
-                    <input type="checkbox" name="remember" value="1" />记住我
-                </label>
                 <button type="submit" class="btn green pull-right">
                     登录<i class="m-icon-swapright m-icon-white"></i>
                 </button>
@@ -97,29 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="copyright">
         2013 &copy; Metronic. Admin Dashboard Template.
     </div>
-     <script src="ui/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-    <script src="ui/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="ui/assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="ui/assets/plugins/select2/select2.min.js"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="ui/assets/scripts/app.js" type="text/javascript"></script>
-    <script src="ui/assets/scripts/login.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL SCRIPTS -->
-    <script>
-		jQuery(document).ready(function() {
-		  App.init();
-		  Login.init();
-		});
-    </script>
-    <!-- END JAVASCRIPTS -->
+     <jsp:include page="ui/jsp/commont/foot-script.jsp"/>
   </body>
 </html>
