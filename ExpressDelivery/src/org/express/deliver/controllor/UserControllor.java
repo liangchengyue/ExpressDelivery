@@ -23,6 +23,10 @@ public class UserControllor {
 	private IUserManager userManager;
 	@RequestMapping("/login")
 	@ResponseBody
+	/**
+	 * 登录方法
+	 * @param user
+	 */
 	public void login(User user){
 		userManager.login(user.getUserName(), user.getPassword()) ;
 	}
