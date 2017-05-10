@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -22,13 +23,18 @@ public class UserControllor {
 	@Resource(name="userManager")
 	private IUserManager userManager;
 	@RequestMapping("/login")
-	@ResponseBody
 	/**
 	 * 登录方法
 	 * @param user
 	 */
-	public void login(User user){
-		userManager.login(user.getUserName(), user.getPassword()) ;
+	public String login(User user,HttpServletRequest request){
+	User user2=	userManager.login(user.getUserName(), user.getPassword());
+	if (user2!=null) {
+		HttpSession  session=request.getSession();
+		session.setAttribute("user", user2);
+		return "ui/jsp/main/frame";
+	}
+		return "";
 	}
 	@RequestMapping(value="/UserList",produces="text/html;charset=UTF-8")
 	@ResponseBody
