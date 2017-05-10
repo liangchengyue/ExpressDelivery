@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	 <bean id="baseDAO" class="org.express.deliver.dao.impl.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--user-->
+	<bean id="userDAOImpl" class="org.express.deliver.dao.impl.UserDAOImpl"></bean>
+	<bean id="userManagerBase" class="org.express.deliver.manager.impl.UserManagerImpl">
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+
+	<!--  此处为代理-->
+	<bean name="userManager" parent="transactionProxy">
+		<property name="target" ref="userManagerBase"></property>
+	</bean> 
+	
+</beans>
