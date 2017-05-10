@@ -45,7 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
                 <span>请输入用户名或密码</span>
-                <span>请输入用户名或密码</span>
             </div>
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
