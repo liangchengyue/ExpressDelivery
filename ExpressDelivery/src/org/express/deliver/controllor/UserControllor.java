@@ -16,7 +16,11 @@ import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+/**
+ * 用户Controllor类
+ * @author 吴文鑫
+ *
+ */
 @Controller
 @RequestMapping("/user")
 public class UserControllor {
@@ -45,8 +49,23 @@ public class UserControllor {
 		String json=mapper.writeValueAsString(list);
 		return json;
 	}
+	/**
+	 * 注册账户
+	 * @return
+	 */
 	@RequestMapping("/regster")
-	public String regster() {
+	public String regster(User user,HttpServletRequest request) {
 		return "";
+	}
+	/**
+	 * 退出登录，返回登录页
+	 * @param request 获取网页参数
+	 * @return
+	 */
+	@RequestMapping("/exitLogin")
+	public String exitLogin(HttpServletRequest request){
+		HttpSession  session=request.getSession();
+		session.removeAttribute("user");
+		return "index";
 	}
 }

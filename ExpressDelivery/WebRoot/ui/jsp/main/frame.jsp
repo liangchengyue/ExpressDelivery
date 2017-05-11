@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="dropdown-menu">
                     <li><a href="extra_profile.html"><i class="fa fa-user"></i> 我的资料</a></li>
                     <li><a href="inbox.html"><i class="fa fa-envelope"></i> 我的消息 <span class="badge badge-danger">3</span></a></li>
-                    <li><a href="login.html"><i class="fa fa-key"></i> 退出登录</a></li>
+                    <li><a href="user/exitLogin"><i class="fa fa-key"></i> 退出登录</a></li>
                 </ul>
             </li>
         </ul>

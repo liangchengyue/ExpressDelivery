@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
     </div>
     <div class="copyright">
-        2013 &copy; Metronic. Admin Dashboard Template.
+        2017 &copy; 黑化肥挥发会发黑.
     </div>
      <jsp:include page="ui/jsp/commont/foot-script.jsp"/>
   </body>
