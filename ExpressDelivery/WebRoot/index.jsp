@@ -10,6 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>登录</title>
     <base href="<%=basePath%>">
     <jsp:include page="ui/jsp/commont/head-script.jsp"/>
+    <link href="ui/assets/css/pages/login.css" rel="stylesheet"
+	type="text/css" />
 	</head>
   
   <body class="login">
@@ -68,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </p>
             </div>
         </form>
-  		<form class="register-form" action="index.html" method="post">
+  		<form class="register-form" action="user/regster" method="post">
             <h3 class="center-block">注册</h3>
 
             <div class="form-group">
@@ -136,8 +138,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
     </div>
     <div class="copyright">
-        2017 &copy;
+        2017 &copy;老司机
     </div>
      <jsp:include page="ui/jsp/commont/foot-script.jsp"/>
+     <script src="ui/assets/scripts/login.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+		jQuery(document).ready(function() {
+		  App.init();
+		  Login.init();
+		});
+    </script>
   </body>
 </html>

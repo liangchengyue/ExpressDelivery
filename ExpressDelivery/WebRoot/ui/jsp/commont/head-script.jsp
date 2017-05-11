@@ -24,8 +24,6 @@
 <link href="ui/assets/css/plugins.css" rel="stylesheet" type="text/css" />
 <link href="ui/assets/css/themes/default.css" rel="stylesheet"
 	type="text/css" id="style_color" />
-<link href="ui/assets/css/pages/login.css" rel="stylesheet"
-	type="text/css" />
 <link href="ui/assets/css/custom.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />

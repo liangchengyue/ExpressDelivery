@@ -1,6 +1,7 @@
 package org.express.deliver.controllor;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,10 @@ public class UserControllor {
 		session.setAttribute("user", user2);
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
-		return "";
+	else {
+		return "redirect:/ui/jsp/commont/loginError.jsp";
+	}
+		
 	}
 	@RequestMapping(value="/UserList",produces="text/html;charset=UTF-8")
 	@ResponseBody
@@ -55,7 +59,12 @@ public class UserControllor {
 	 */
 	@RequestMapping("/regster")
 	public String regster(User user,HttpServletRequest request) {
-		return "";
+		//将当前时间设置为注册时间
+		user.setRegDate(new Date());
+		userManager.addUser(user);
+		HttpSession  session=request.getSession();
+		session.setAttribute("user", user);
+		return "redirect:/ui/jsp/main/frame.jsp";
 	}
 	/**
 	 * 退出登录，返回登录页
