@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
+	<jsp:include page="/ui/jsp/commont/foot-script.jsp"/>
 	<script>
 		jQuery(document).ready(function() {
 			App.init();

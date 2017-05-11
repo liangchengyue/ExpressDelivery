@@ -16,7 +16,6 @@
 	type="text/css" />
 
 </head>
-
 <body class="login">
 	<div class="logo">
 		<img src="ui/assets/img/logo-big.png" alt="" />
@@ -157,7 +156,7 @@
 		});
 		/* 登录页点击注册时，查询数据库的所有用户名 
 		        使用ajax异步加载 调用controllor里面的方法
-		*/
+		 */
 		function queryAllUser() {
 			$.ajax({
 				url : "user/preRegister"
@@ -174,11 +173,11 @@
 						"userName" : userName
 					},
 					success : function(data) {
-						if (data=="true") {
+						if (data == "true") {
 							$(".userNameIsEmptyPrompt").html("用户名已经存在！");
-						}  else {
-							$(".userNameIsEmptyPrompt").html("用户名可用！");
-						} 
+						} else {
+							$(".userNameIsEmptyPrompt").html("");
+						}
 					}
 				});
 			});
