@@ -42,4 +42,11 @@ public interface IUserManager {
 	 * @return List 用户信息的集合
 	 */
 	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword);
+
+	/**
+	 * 查询所有用户名
+	 * 
+	 * @return 所有用户名集合
+	 */
+	public List<String> queryAllUserName();
 }

@@ -20,69 +20,123 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 /**
  * 用户Controllor类
+ * 
  * @author 吴文鑫
- *
+ * 
  */
 @Controller
 @RequestMapping("/user")
 public class UserControllor {
-	@Resource(name="userManager")
+	@Resource(name = "userManager")
 	private IUserManager userManager;
+
 	@RequestMapping("/login")
 	/**
 	 * 登录方法
 	 * @param user
 	 */
-	public ModelAndView login(User user,HttpServletRequest request){
-	User user2=	userManager.login(user);
-	ModelAndView modelAndView = null;
-	if (user2!=null) {
-		HttpSession  session=request.getSession();
-		session.setAttribute("user", user2);
-		modelAndView=new ModelAndView("redirect:/ui/jsp/main/frame.jsp");
-		return modelAndView;
+	public ModelAndView login(User user, HttpServletRequest request) {
+		User user2 = userManager.login(user);
+		ModelAndView modelAndView = null;
+		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
+
+		if (user2 != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user2);
+			modelAndView = new ModelAndView("redirect:/ui/jsp/main/frame.jsp");
+			return modelAndView;
+		} else {
+			Map<String, Object> model = new HashMap<String, Object>();
+			// 视图解析器将model中的每个元素都通过model.put(name, value);
+			//这样就可以在JSP页面中通过EL表达式来获取对应的值
+			model.put("url", "index.jsp");
+			model.put("message", "用户名或密码错误!");
+			modelAndView = new ModelAndView("ui/jsp/commont/error", model);
+			return modelAndView;
+		}
+
 	}
-	else {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("url", "index.jsp");
-		model.put("message", "用户名或密码错误!");
-		modelAndView=new ModelAndView("ui/jsp/commont/error", model);
-		return modelAndView;
-	}
-		
-	}
-	@RequestMapping(value="/UserList",produces="text/html;charset=UTF-8")
+
+	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserList() throws JsonGenerationException, JsonMappingException, IOException {
-		List<User> list=userManager.queryUserByPaging(1, 2, "");
+	public String getUserList() throws JsonGenerationException,
+			JsonMappingException, IOException {
+		List<User> list = userManager.queryUserByPaging(1, 2, "");
 		System.out.println(list.get(0).getAddress());
-		ObjectMapper mapper=new ObjectMapper();
-		String json=mapper.writeValueAsString(list);
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(list);
 		return json;
 	}
+
+	/**
+	 * 注册账户之前查询所有用户名，以便判断注册时输入的用户名是否已存在
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/preRegister")
+	public void preRegster(HttpServletRequest request) {
+		final HttpSession session = request.getSession();// 取得sesion
+		// 开启线程查询数据库的所有用户名
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				List<String> userNameList = userManager.queryAllUserName();
+				session.setAttribute("allUserList", userNameList);
+			}
+		};
+		thread.start();
+	}
+
+	/**
+	 * 验证用户名是否重复
+	 * 
+	 * @return 是否重复
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/userNameIsExist")
+	@ResponseBody
+	public String userNameIsExist(HttpServletRequest request, String userName) {
+		List<String> userNameList = (List<String>) request.getSession()
+				.getAttribute("allUserList");
+		boolean flag = false;
+		/**
+		 * contains判断userNameList集合里面是否包含了userName
+		 */
+		if (userNameList.contains(userName)) {
+			flag = true;
+		}
+		return flag + "";
+	}
+
 	/**
 	 * 注册账户
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/regster")
-	public String regster(User user,HttpServletRequest request) {
-		//将当前时间设置为注册时间
+	public String regster(User user, HttpServletRequest request) {
+		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
 		userManager.addUser(user);
-		HttpSession  session=request.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
+
 	/**
 	 * 退出登录，返回登录页
-	 * @param request 获取网页参数
+	 * 
+	 * @param request
+	 *            获取网页参数
 	 * @return
 	 */
 	@RequestMapping("/exitLogin")
-	public String exitLogin(HttpServletRequest request){
-		HttpSession  session=request.getSession();
+	public String exitLogin(HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		return "redirect:/index.jsp";
 	}
