@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <label class="control-label visible-ie8 visible-ie9">用户名</label>
                 <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="userName" />
+                    <input class="form-control placeholder-no-fix required" type="text" autocomplete="off" placeholder="用户名" name="userName" />
                 </div>
             </div>
             <div class="form-group">
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <label class="control-label visible-ie8 visible-ie9">用户名</label>
                 <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="userName" />
+                    <input class="form-control placeholder-no-fix required" type="text" autocomplete="off" placeholder="用户名" name="userName" />
                 </div>
             </div>
             <div class="form-group">
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <label class="control-label visible-ie8 visible-ie9">联系电话</label>
                 <div class="input-icon">
                     <i class="fa fa-check-circle"></i>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="联系电话" name="telephone" />
+                    <input class="form-control placeholder-no-fix required" type="text" placeholder="联系电话" name="telephone" />
                 </div>
             </div>
             <div class="form-group row">
