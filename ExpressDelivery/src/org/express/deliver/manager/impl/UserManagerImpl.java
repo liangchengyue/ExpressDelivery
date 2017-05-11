@@ -18,8 +18,8 @@ public class UserManagerImpl implements IUserManager {
 	}
 
 	@Override
-	public User login(String userName, String password) {
-		return userDAO.login(userName, password);
+	public User login(User user) {
+		return userDAO.login(user);
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user,HttpServletRequest request){
-	User user2=	userManager.login(user.getUserName(), user.getPassword());
+	User user2=	userManager.login(user);
 	ModelAndView modelAndView = null;
 	if (user2!=null) {
 		HttpSession  session=request.getSession();

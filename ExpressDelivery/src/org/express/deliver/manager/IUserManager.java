@@ -20,7 +20,7 @@ public interface IUserManager {
 	 *            密码
 	 * @return 用户信息
 	 */
-	public User login(String userName, String password);
+	public User login(User user);
 
 	/**
 	 * 添加用户

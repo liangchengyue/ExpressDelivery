@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>登录</title>
     <base href="<%=basePath%>">
     <jsp:include page="ui/jsp/commont/head-script.jsp"/>
-    <link href="ui/assets/css/pages/login.css" rel="stylesheet"
-	type="text/css" />
+     <link href="ui/assets/css/pages/login.css" rel="stylesheet"
+	type="text/css" /> 
+	
 	</head>
   
   <body class="login">
@@ -44,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="form-group">
                 <div class="radio-inline row" >
                     <label>
-                        <input class="col-md-3" type="radio" name="optionsRadios" id="optionsRadios1" value="普通用户" checked>普通用户
+                        <input class="col-md-3" type="radio" name="userType" id="optionsRadios1" value="商家" checked>商家
                     </label>
                     <label>
-                        <input class="col-md-3" type="radio" name="optionsRadios" id="optionsRadios2" value="管理员"> 管理员
+                        <input class="col-md-3" type="radio" name="userType" id="optionsRadios2" value="管理员"> 管理员
                     </label>
                 </div>
             </div>
