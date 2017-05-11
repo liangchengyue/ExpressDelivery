@@ -82,10 +82,7 @@
 			Tasks.initDashboardWidget();
 		});
 		$(function() {
-			$(".clic").click(function() {
-				var a = $(this).find("span").html();
-				console.log(a);
-			});
+			
 		});
 	</script>
 
