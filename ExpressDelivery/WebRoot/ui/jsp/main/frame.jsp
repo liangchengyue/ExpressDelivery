@@ -50,9 +50,6 @@
 				<li class="start active "><a> <i class="fa fa-home"></i> <span
 						class="title">首页</span> <span class="" lang="index.jsp"></span>
 				</a></li>
-				<li class="start"><a> <i class="fa fa-home"></i> <span
-						class="title">尾页</span> <span class="" lang="index.jsp"></span>
-				</a></li>
 			</ul>
 		</div>
 		<div class="page-content"></div>
