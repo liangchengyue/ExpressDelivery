@@ -13,7 +13,7 @@
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link rel="stylesheet" type="text/css"
-	href="assets/plugins/select2/select2_metro.css" />
+	href="ui/assets/plugins/select2/select2_metro.css" />
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME STYLES -->
 <link href="ui/assets/css/style-metronic.css" rel="stylesheet"
@@ -26,6 +26,6 @@
 	type="text/css" id="style_color" />
 <link href="ui/assets/css/pages/login.css" rel="stylesheet"
 	type="text/css" />
-<link href="ul/assets/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="ui/assets/css/custom.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
