@@ -47,20 +47,12 @@
 				<li>
 					<div class="sidebar-toggler hidden-phone"></div>
 				</li>
-				<li class="start active ">
-					<a> 
-						<i class="fa fa-home"></i>
-						 <span class="title">首页</span>
-						  <span class="" lang="index.jsp"></span>
-					</a>
-				</li>
-					<li class="start">
-					<a> 
-						<i class="fa fa-home"></i>
-						 <span class="title">尾页</span>
-						  <span class="" lang="index.jsp"></span>
-					</a>
-				</li>
+				<li class="start active "><a> <i class="fa fa-home"></i> <span
+						class="title">首页</span> <span class="" lang="index.jsp"></span>
+				</a></li>
+				<li class="start"><a> <i class="fa fa-home"></i> <span
+						class="title">尾页</span> <span class="" lang="index.jsp"></span>
+				</a></li>
 			</ul>
 		</div>
 		<div class="page-content"></div>
@@ -91,7 +83,7 @@
 		});
 		$(function() {
 			$(".clic").click(function() {
-				var a= $(this).find("span").html();
+				var a = $(this).find("span").html();
 				console.log(a);
 			});
 		});
