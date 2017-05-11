@@ -47,19 +47,6 @@ public class UserControllor {
 	}
 	@RequestMapping("/regster")
 	public String regster() {
-		User user=new User();
-		user.setUserName("梁城月");
-		user.setPassword("123456");
-		user.setNickName("憧憬未来");
-		user.setAddress("贵州贵阳");
-		user.setCredit(0);
-		user.setGender("男");
-		user.setIdCard("520122199508310031");
-		user.setIntegral(0);
-		user.setRegDate(new Date());
-		user.setTelephone("13078507782");
-		user.setUserType("用户");
-		userManager.addUser(user);
 		return "";
 	}
 }

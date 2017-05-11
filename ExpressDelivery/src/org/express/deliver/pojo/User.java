@@ -49,7 +49,7 @@ public class User {
 	/**
 	 * 地址ַ
 	 */
-	@Column(length = 200, nullable = false)
+	@Column(length = 200)
 	private String address;
 	/**
 	 * 用户类型
@@ -75,12 +75,12 @@ public class User {
 	 * 信誉度
 	 */
 	@Column(nullable = false)
-	private Integer credit;
+	private Integer credit=0;
 	/**
 	 * 积分
 	 */
 	@Column(nullable = false)
-	private Integer integral;
+	private Integer integral=0;
 	/**
 	 * 身份证号码
 	 */
