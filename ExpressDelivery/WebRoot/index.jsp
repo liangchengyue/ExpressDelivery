@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="copyright">
         2017 &copy;老司机
     </div>
-     <jsp:include page="ui/jsp/commont/foot-script.jsp"/>
+    <jsp:include page="/ui/jsp/commont/foot-script.jsp"/>
      <script src="ui/assets/scripts/login.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
