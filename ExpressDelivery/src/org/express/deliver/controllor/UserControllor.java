@@ -36,7 +36,7 @@ public class UserControllor {
 	if (user2!=null) {
 		HttpSession  session=request.getSession();
 		session.setAttribute("user", user2);
-		return "ui/jsp/main/frame";
+		return "redirect:/ui/jsp/main/frame.jsp";
 	}
 		return "";
 	}
@@ -66,6 +66,6 @@ public class UserControllor {
 	public String exitLogin(HttpServletRequest request){
 		HttpSession  session=request.getSession();
 		session.removeAttribute("user");
-		return "index";
+		return "redirect:/index.jsp";
 	}
 }
