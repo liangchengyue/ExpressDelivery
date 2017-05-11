@@ -11,7 +11,6 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
@@ -19,7 +18,7 @@
 <base href="<%=basePath%>">
 
 <title>登录失败提示</title>
-<jsp:include page="/ui/jsp/commont/head-script.jsp"/>
+<jsp:include page="/ui/jsp/commont/head-script.jsp" />
 <link href="ui/assets/css/pages/error.css" rel="stylesheet"
 	type="text/css" />
 </head>
@@ -40,21 +39,23 @@
 <body class="page-500-full-page" onload="countDown();">
 	<div class="row">
 		<div class="col-md-12 page-500">
-			<div class=" number"></div>
+			<div class=" number">${message}</div>
 			<div class=" details">
-				<h3>用户名或密码错误,请重新输入!</h3>
+				<h3>
+					<span id="time_span">5</span>秒后
+				</h3>
 				<p>
 					<%
+					
 						// 设置定时跳转
-						response.setHeader("refresh", "5;" + basePath + "index.jsp");
+						response.setHeader("refresh", "5;" + basePath + request.getAttribute("url"));
 					%>
-					<span id="time_span">5</span>秒后自动跳转到登录页！<br /> 如果没有跳转，请点<a
-						href="index.jsp">这里</a>！<br /> <br />
+					自动跳转到登录页！<br /> 如果没有跳转，请点<a href="${url}">这里</a>！<br /> <br />
 				</p>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/ui/jsp/commont/foot-script.jsp"/>
+	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
 	<script>
 		jQuery(document).ready(function() {
 			App.init();
