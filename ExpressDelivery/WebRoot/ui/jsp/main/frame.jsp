@@ -47,13 +47,13 @@
 				<li>
 					<div class="sidebar-toggler hidden-phone"></div>
 				</li>
-				<li class="start active "><a> <i class="fa fa-home"></i> <span
-						class="title " lang="123">首页</span>
-						<b class="selected"></b>
-				</a></li>
 				<li class="start"><a> <i class="fa fa-home"></i> <span
-						class="title " lang="323">首页</span>
-						<b class=""></b>
+						class="title ">用户列表</span> <b class=""></b>
+						<ul class="sub-menu">
+							<li class="start active "><a> <i class="fa fa-home"></i>
+									<span class="title " lang="ui/jsp/user/userlistplugs.jsp">用户列表</span> <b class="selected"></b>
+							</a></li>
+						</ul>
 				</a></li>
 			</ul>
 		</div>
@@ -71,14 +71,24 @@
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-	$(function () {
-	    $(".page-sidebar-menu").find("li").click(function(){
-	    	$(".page-sidebar-menu").find("li").attr("class", "start");
-	        $(".page-sidebar-menu").find("li").find("b").attr("class", "");
-	        $(this).attr("class", "start active");
-	        $(this).find("b").attr("class", "selected");
-	    });
-	});
+		$(function() {
+			$(".page-sidebar-menu").find("li").click(function() {
+				$(".page-sidebar-menu").find("li").attr("class", "start");
+				$(".page-sidebar-menu").find("li").find("b").attr("class", "");
+				$(this).attr("class", "start active");
+				$(this).find("b").attr("class", "selected");
+				$(this).find("b").attr("class", "selected");
+				var url = $(this).find("span").attr("lang");
+				if (url != undefined) {
+					$.ajax({
+		                url: url,
+		                success: function (data) {
+		                    $(".page-content").html(data);
+		                }
+		            });
+		        }
+			});
+		});
 	</script>
 
 </body>
