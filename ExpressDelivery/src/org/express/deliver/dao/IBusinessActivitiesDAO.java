@@ -67,4 +67,9 @@ public interface IBusinessActivitiesDAO {
 	 */
 	public List<BusinessActivities> queryBusinessActivitiesByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception;
+	/**
+	 * 查询商家活动总数
+	 * @return 商家活动总数
+	 */
+	public int queryAllBusinessActivitiesAcount();
 }

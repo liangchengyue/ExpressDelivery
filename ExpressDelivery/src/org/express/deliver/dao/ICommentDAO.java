@@ -59,4 +59,9 @@ public interface ICommentDAO {
  */
 	public List<Comment> queryCommentByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception;
+	/**
+	 * 查询评论总数
+	 * @return 评论总数
+	 */
+	public int queryAllCommentAcount();
 }

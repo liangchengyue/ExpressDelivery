@@ -60,4 +60,11 @@ public class CommentDAOImpl extends BaseDAO implements ICommentDAO {
 		return query.list();
 	}
 
+	@Override
+	public int queryAllCommentAcount() {
+		String hql = "SELECT COUNT(c) FROM Comment AS c";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 }

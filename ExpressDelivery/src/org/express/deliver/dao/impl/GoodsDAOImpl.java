@@ -58,4 +58,11 @@ public class GoodsDAOImpl extends BaseDAO implements IGoodsDAO {
 		return query.list();
 	}
 
+	@Override
+	public int queryAllGoodsAcount() {
+		String hql = "SELECT COUNT(g) FROM Goods AS g";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 }

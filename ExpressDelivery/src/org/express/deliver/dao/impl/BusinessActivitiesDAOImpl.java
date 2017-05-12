@@ -101,4 +101,11 @@ public class BusinessActivitiesDAOImpl extends BaseDAO implements
 		return query.list();
 	}
 
+	@Override
+	public int queryAllBusinessActivitiesAcount() {
+		String hql = "SELECT COUNT(b) FROM BusinessActivities AS b";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 }

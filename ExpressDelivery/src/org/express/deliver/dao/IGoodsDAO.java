@@ -65,4 +65,9 @@ public interface IGoodsDAO {
 	 */
 	public List<Goods> queryGoodsByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception;
+	/**
+	 * 查询货物总数
+	 * @return 货物 总数
+	 */
+	public int queryAllGoodsAcount();
 }

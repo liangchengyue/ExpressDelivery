@@ -43,4 +43,9 @@ public interface IOrderDAO {
 	 */
 	public List<Order> queryOrderByPaging(int pageNo, int pageSize,
 			String keyword);
+	/**
+	 * 查询订单总数
+	 * @return 订单总数
+	 */
+	public int queryAllOrderAcount();
 }

@@ -33,9 +33,8 @@ public interface IReplyDAO {
 	 */
 	public List<Reply> queryReplyByPaging(int pageNo,int pageSize,String keyword);
 	/**
-	 * 查询用户总数
-	 * @return 用户总数
+	 * 查询回复总数
+	 * @return 回复总数
 	 */
-	public int ();
+	public int queryAllReplyAcount();
 }
-queryAllUserAcount

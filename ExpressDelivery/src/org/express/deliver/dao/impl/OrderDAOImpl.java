@@ -41,4 +41,11 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 		return query.list();
 	}
 
+	@Override
+	public int queryAllOrderAcount() {
+		String hql = "SELECT COUNT(o) FROM Order AS o";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 }

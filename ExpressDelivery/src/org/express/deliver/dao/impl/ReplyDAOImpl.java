@@ -10,7 +10,7 @@ import org.hibernate.Query;
  * @author 吴文鑫
  *
  */
-public class ReplyImpl extends BaseDAO implements IReplyDAO {
+public class ReplyDAOImpl extends BaseDAO implements IReplyDAO {
 
 	@Override
 	public void addReply(Reply reply) {
@@ -39,6 +39,13 @@ public class ReplyImpl extends BaseDAO implements IReplyDAO {
 		query.setFirstResult((pageNo-1)*pageSize);
 		query.setMaxResults(pageSize);
 		return query.list();
+	}
+
+	@Override
+	public int queryAllReplyAcount() {
+		String hql = "SELECT COUNT(r) FROM Reply AS r";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
 	}
 
 }
