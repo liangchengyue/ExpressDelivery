@@ -19,8 +19,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/user/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/user/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {

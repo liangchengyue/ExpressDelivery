@@ -32,4 +32,10 @@ public interface IReplyDAO {
 	 * @return List 回复信息的集合
 	 */
 	public List<Reply> queryReplyByPaging(int pageNo,int pageSize,String keyword);
+	/**
+	 * 查询用户总数
+	 * @return 用户总数
+	 */
+	public int ();
 }
+queryAllUserAcount

@@ -48,10 +48,10 @@
 					<div class="sidebar-toggler hidden-phone"></div>
 				</li>
 				<li class="start"><a> <i class="fa fa-home"></i> <span
-						class="title ">用户列表</span> <b class=""></b>
+						class="title ">表单管理</span> <b class=""></b>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/user/userlistplugs.jsp">用户列表</span> <b class="selected"></b>
+									<span class="title " lang="ui/jsp/tablelist_manger/user/userlistplugs.jsp">用户列表</span> <b class="selected"></b>
 							</a></li>
 						</ul>
 				</a></li>
