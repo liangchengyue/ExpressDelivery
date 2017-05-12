@@ -62,9 +62,9 @@ public class UserControllor {
 
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserList() throws JsonGenerationException,
+	public String getUserList(String keyword,int pageNo,int pageSize) throws JsonGenerationException,
 			JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(1, 10, "");
+		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, keyword);
 		int total=userManager.queryAllUserAcount();
 		System.out.println(list.get(0).getAddress());
 		ObjectMapper mapper = new ObjectMapper();
