@@ -18,11 +18,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 订单实体类
  * @author 梁城月
  *
  */
+@JsonIgnoreProperties(value={"preOrderuUser","takeOrderUser"}) 
 @Entity
 @Table(name="preOrder")
 public class Order {

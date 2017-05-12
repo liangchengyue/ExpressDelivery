@@ -59,14 +59,22 @@ public class UserControllor {
 		}
 
 	}
-
+/**
+ * 分页查询所有用户信息，显示在后台管理页面中
+ * @param keyword
+ * @param pageNo
+ * @param pageSize
+ * @return
+ * @throws JsonGenerationException
+ * @throws JsonMappingException
+ * @throws IOException
+ */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String getUserList(String keyword,int pageNo,int pageSize) throws JsonGenerationException,
 			JsonMappingException, IOException {
 		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, keyword);
 		int total=userManager.queryAllUserAcount();
-		System.out.println(list.get(0).getAddress());
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(list);
 		StringBuffer sBuffer=new StringBuffer();

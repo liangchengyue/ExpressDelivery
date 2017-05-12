@@ -8,7 +8,7 @@
 	 <bean id="baseDAO" class="org.express.deliver.dao.impl.BaseDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!--user-->
+	<!--user用户-->
 	<bean id="userDAOImpl" class="org.express.deliver.dao.impl.UserDAOImpl"></bean>
 	<bean id="userManagerBase" class="org.express.deliver.manager.impl.UserManagerImpl">
 		<property name="userDAO" ref="userDAOImpl"></property>
@@ -18,5 +18,14 @@
 	<bean name="userManager" parent="transactionProxy">
 		<property name="target" ref="userManagerBase"></property>
 	</bean> 
-	
+	<!-- order订单 -->
+	<bean id="orderDAOImpl" class="org.express.deliver.dao.impl.OrderDAOImpl"></bean>
+	<bean id="orderManagerBase" class="org.express.deliver.manager.impl.OrderManagerImpl">
+		<property name="orderDAO" ref="orderDAOImpl"></property>
+	</bean>
+
+	<!--  此处为代理-->
+	<bean name="orderManager" parent="transactionProxy">
+		<property name="target" ref="orderManagerBase"></property>
+	</bean> 
 </beans>

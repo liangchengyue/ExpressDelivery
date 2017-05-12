@@ -92,17 +92,9 @@ html,body {
 <body>
 	<div class="search-area">
 		<div class="sa-ele">
-			<label class="se-title">用户名:</label>
-			<input class="se-con" name="userName" />
+			<label class="se-title">关键字:</label>
+			<input class="se-con" name="keyword" />
 		</div>
-	  <div class="sa-ele">
-			<label class="se-title">地址:</label>
-			<input class="se-con" name="address" />
-		</div>
-		<div class="sa-ele">
-			<label class="se-title">用户类型</label>
-			<input class="se-con" name="userType" />
-		</div>  
 		<div class="sa-ele">
 			<button class="search-action">搜索</button>
 			<button class="reset-action">重置</button>
@@ -122,42 +114,65 @@ html,body {
 							supportAjaxPage : true,
 							supportSorting : true,
 							disableCache : false,
-							ajax_url : 'user/UserList',
+							ajax_url : 'order/OrderList',
 							ajax_type : 'POST',
 							query : {
-								pluginId : 1
+								pageNo : 1,
+								pageSize : 30,
+								pluginId : 1,
+								keyword : ""
 							}
 							//		,textAlign: 'center'
 							,
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'userName',
-										remind: '用户名',
+										key: 'goods',
+										remind: 'goods',
 										width: '100px',
-										text: '用户名',
+										text: '货物',
 										sorting: ''
 									},{
-										key: 'userType',
-										remind: '用户类型',
-										text: '用户类型'
+										key: 'preOrderuUser',
+										remind: 'preOrderuUser',
+										text: '下单用户'
 									},{
-										key: 'password',
-										remind: '密码',
-										text: '密码'
+										key: 'state',
+										remind: 'state',
+										text: '订单状态'
 									},{
-										key: 'nickName',
-										remind: '昵称',
+										key: 'remarks',
+										remind: 'remarks',
 										width: '100px',
-										text: '昵称'
+										text: '备注'
 									},{
-										key: 'regDate',
-										remind: 'the regDate',
+										key: 'orderEndDate',
+										remind: 'the orderEndDate',
 										width: '100px',
-										text: '注册时间',
+										text: '订单结束时间',
 										sorting: '',
-										template: function(regDate, rowObject){
-											return new Date(regDate).format('YYYY-MM-DD HH:mm:ss');
+										template: function(orderEndDate, rowObject){
+											return new Date(orderEndDate).format('YYYY-MM-DD HH:mm:ss');
+										}
+									},
+									{
+										key: 'preOrderDate',
+										remind: 'the preOrderDate',
+										width: '100px',
+										text: '下单时间',
+										sorting: '',
+										template: function(preOrderDate, rowObject){
+											return new Date(preOrderDate).format('YYYY-MM-DD HH:mm:ss');
+										}
+									},
+									{
+										key: 'takeOrderDate',
+										remind: 'the takeOrderDate',
+										width: '100px',
+										text: '接单时间',
+										sorting: '',
+										template: function(takeOrderDate, rowObject){
+											return new Date(takeOrderDate).format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{
@@ -245,24 +260,27 @@ html,body {
 		};
 
 		// 绑定搜索事件
-		document.querySelector('.search-action').addEventListener('click',
-				function() {
-					var _query = {
-						name : document.querySelector('[name="userName"]').value,
-						info : document.querySelector('[name="address"]').value,
-						url : document.querySelector('[name="userType"]').value
-					};
-					table.GM('setQuery', _query).GM('refreshGrid', function() {
-						console.log('搜索成功...');
-					});
-				});
+		document
+				.querySelector('.search-action')
+				.addEventListener(
+						'click',
+						function() {
+							var _query = {
+								pageNo : 1,
+								pageSize : 30,
+								keyword : document
+										.querySelector('[name="keyword"]').value
+							};
+							table.GM('setQuery', _query).GM('refreshGrid',
+									function() {
+										console.log('搜索成功...');
+									});
+						});
 
 		// 绑定重置
 		document.querySelector('.reset-action').addEventListener('click',
 				function() {
-					document.querySelector('[name="userName"]').value = '';
-					document.querySelector('[name="address"]').value = '';
-					document.querySelector('[name="userType"]').value = '';
+					document.querySelector('[name="keyword"]').value = '';
 				});
 	</script>
 

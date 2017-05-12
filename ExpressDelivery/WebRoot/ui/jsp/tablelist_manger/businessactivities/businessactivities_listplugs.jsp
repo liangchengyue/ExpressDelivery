@@ -19,8 +19,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript"
+	src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {
@@ -92,17 +94,9 @@ html,body {
 <body>
 	<div class="search-area">
 		<div class="sa-ele">
-			<label class="se-title">用户名:</label>
-			<input class="se-con" name="userName" />
+			<label class="se-title">关键字:</label>
+			<input class="se-con" name="keyword" />
 		</div>
-	  <div class="sa-ele">
-			<label class="se-title">地址:</label>
-			<input class="se-con" name="address" />
-		</div>
-		<div class="sa-ele">
-			<label class="se-title">用户类型</label>
-			<input class="se-con" name="userType" />
-		</div>  
 		<div class="sa-ele">
 			<button class="search-action">搜索</button>
 			<button class="reset-action">重置</button>
@@ -125,39 +119,54 @@ html,body {
 							ajax_url : 'user/UserList',
 							ajax_type : 'POST',
 							query : {
-								pluginId : 1
+								pageNo : 1,
+								pageSize : 30,
+								pluginId : 1,
+								keyword : ""
 							}
 							//		,textAlign: 'center'
 							,
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'userName',
-										remind: '用户名',
-										width: '100px',
-										text: '用户名',
-										sorting: ''
-									},{
-										key: 'userType',
-										remind: '用户类型',
-										text: '用户类型'
-									},{
-										key: 'password',
-										remind: '密码',
-										text: '密码'
-									},{
-										key: 'nickName',
-										remind: '昵称',
-										width: '100px',
-										text: '昵称'
-									},{
-										key: 'regDate',
-										remind: 'the regDate',
-										width: '100px',
-										text: '注册时间',
-										sorting: '',
-										template: function(regDate, rowObject){
-											return new Date(regDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'businessName',
+										remind : 'businessName',
+										width : '100px',
+										text : '商家名',
+										sorting : ''
+									},
+									{
+										key : 'businessAddress',
+										remind : 'businessAddress',
+										text : '商家地址'
+									},
+									{
+										key : 'activeContent',
+										remind : 'activeContent',
+										text : '活动内容'
+									},
+									{
+										key : 'activeStartDate',
+										remind : 'the activeStartDate',
+										width : '100px',
+										text : '活动开始时间',
+										sorting : '',
+										template : function(activeStartDate,
+												rowObject) {
+											return new Date(activeStartDate)
+													.format('YYYY-MM-DD HH:mm:ss');
+										}
+									},
+									{
+										key : 'activeEndDate',
+										remind : 'the activeEndDate',
+										width : '100px',
+										text : '活动结束时间',
+										sorting : '',
+										template : function(activeEndDate,
+												rowObject) {
+											return new Date(activeEndDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{
@@ -245,24 +254,27 @@ html,body {
 		};
 
 		// 绑定搜索事件
-		document.querySelector('.search-action').addEventListener('click',
-				function() {
-					var _query = {
-						name : document.querySelector('[name="userName"]').value,
-						info : document.querySelector('[name="address"]').value,
-						url : document.querySelector('[name="userType"]').value
-					};
-					table.GM('setQuery', _query).GM('refreshGrid', function() {
-						console.log('搜索成功...');
-					});
-				});
+		document
+				.querySelector('.search-action')
+				.addEventListener(
+						'click',
+						function() {
+							var _query = {
+								pageNo : 1,
+								pageSize : 30,
+								keyword : document
+										.querySelector('[name="keyword"]').value
+							};
+							table.GM('setQuery', _query).GM('refreshGrid',
+									function() {
+										console.log('搜索成功...');
+									});
+						});
 
 		// 绑定重置
 		document.querySelector('.reset-action').addEventListener('click',
 				function() {
-					document.querySelector('[name="userName"]').value = '';
-					document.querySelector('[name="address"]').value = '';
-					document.querySelector('[name="userType"]').value = '';
+					document.querySelector('[name="keyword"]').value = '';
 				});
 	</script>
 
