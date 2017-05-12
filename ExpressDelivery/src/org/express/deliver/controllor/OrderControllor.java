@@ -43,9 +43,7 @@ public class OrderControllor {
 				JsonMappingException, IOException {
 			List<Order> list = orderManager.queryOrderByPaging(1, 10, "");
 			int total=orderManager.queryAllOrderAcount();
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(list);
-			System.out.println(json+"88888");
+			String json=Order.getOrderListJson(list);
 			StringBuffer sBuffer=new StringBuffer();
 			sBuffer.append("{");
 			sBuffer.append("\"status\":\"success\",");

@@ -2,6 +2,7 @@ package org.express.deliver.pojo;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 用户实体类
@@ -414,5 +417,55 @@ public class User {
 	public void setBusinessActivities(Set<BusinessActivities> businessActivities) {
 		this.businessActivities = businessActivities;
 	}
-
+	public static String getUserListJson(List<User> list) {
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("[");
+		for (User user : list) {
+			sBuffer.append("{");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\""+user.getId()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"address\":");
+			sBuffer.append("\""+user.getAddress()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"credit\":");
+			sBuffer.append(user.getCredit());
+			sBuffer.append(",");
+			sBuffer.append("\"gender\":");
+			sBuffer.append("\""+user.getGender()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"idCard\":");
+			sBuffer.append("\""+user.getIdCard()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"imagePath\":");
+			sBuffer.append("\""+user.getImagePath()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"integral\":");
+			sBuffer.append(user.getIntegral());
+			sBuffer.append(",");
+			sBuffer.append("\"nickName\":");
+			sBuffer.append("\""+user.getNickName()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"password\":");
+			sBuffer.append("\""+user.getPassword()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"regDate\":");
+			sBuffer.append("\""+user.getRegDate()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"telephone\":");
+			sBuffer.append("\""+user.getTelephone()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"userName\":");
+			sBuffer.append("\""+user.getUserName()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"userType\":");
+			sBuffer.append("\""+user.getUserType()+"\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+			
+		}
+		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
+	}
 }

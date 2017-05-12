@@ -73,10 +73,9 @@ public class UserControllor {
 	@ResponseBody
 	public String getUserList(String keyword,int pageNo,int pageSize) throws JsonGenerationException,
 			JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, keyword);
+		List<User> list = userManager.queryUserByPaging(pageNo, pageSize,"");
 		int total=userManager.queryAllUserAcount();
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(list);
+		String json=User.getUserListJson(list);
 		StringBuffer sBuffer=new StringBuffer();
 		sBuffer.append("{");
 		sBuffer.append("\"status\":\"success\",");

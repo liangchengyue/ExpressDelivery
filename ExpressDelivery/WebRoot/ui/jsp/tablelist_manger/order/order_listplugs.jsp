@@ -19,8 +19,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript"
+	src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {
@@ -127,52 +129,60 @@ html,body {
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'goods',
-										remind: 'goods',
-										width: '100px',
-										text: '货物',
-										sorting: ''
-									},{
-										key: 'preOrderuUser',
-										remind: 'preOrderuUser',
-										text: '下单用户'
-									},{
-										key: 'state',
-										remind: 'state',
-										text: '订单状态'
-									},{
-										key: 'remarks',
-										remind: 'remarks',
-										width: '100px',
-										text: '备注'
-									},{
-										key: 'orderEndDate',
-										remind: 'the orderEndDate',
-										width: '100px',
-										text: '订单结束时间',
-										sorting: '',
-										template: function(orderEndDate, rowObject){
-											return new Date(orderEndDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'preOrderUserName',
+										remind : 'preOrderuUser',
+										text : '下单用户'
+									},
+									{
+										key : 'takeOrderUserName',
+										remind : 'preOrderuUser',
+										text : '接单用户'
+									},
+									{
+										key : 'state',
+										remind : 'state',
+										text : '订单状态'
+									},
+									{
+										key : 'remarks',
+										remind : 'remarks',
+										width : '100px',
+										text : '备注'
+									},
+									{
+										key : 'orderEndDate',
+										remind : 'the orderEndDate',
+										width : '100px',
+										text : '订单结束时间',
+										sorting : '',
+										template : function(orderEndDate,
+												rowObject) {
+											return new Date(orderEndDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{
-										key: 'preOrderDate',
-										remind: 'the preOrderDate',
-										width: '100px',
-										text: '下单时间',
-										sorting: '',
-										template: function(preOrderDate, rowObject){
-											return new Date(preOrderDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'preOrderDate',
+										remind : 'the preOrderDate',
+										width : '100px',
+										text : '下单时间',
+										sorting : '',
+										template : function(preOrderDate,
+												rowObject) {
+											return new Date(preOrderDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{
-										key: 'takeOrderDate',
-										remind: 'the takeOrderDate',
-										width: '100px',
-										text: '接单时间',
-										sorting: '',
-										template: function(takeOrderDate, rowObject){
-											return new Date(takeOrderDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'takeOrderDate',
+										remind : 'the takeOrderDate',
+										width : '100px',
+										text : '接单时间',
+										sorting : '',
+										template : function(takeOrderDate,
+												rowObject) {
+											return new Date(takeOrderDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{

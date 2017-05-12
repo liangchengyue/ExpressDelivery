@@ -2,6 +2,7 @@ package org.express.deliver.pojo;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,14 +19,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 订单实体类
  * @author 梁城月
  *
  */
-@JsonIgnoreProperties(value={"preOrderuUser","takeOrderUser"}) 
 @Entity
 @Table(name="preOrder")
 public class Order {
@@ -82,7 +82,7 @@ public class Order {
 	/**
 	 * 货物列表
 	 */
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@OrderBy("id ASC")
 	private Set<Goods> goods = new HashSet<Goods>();
 
@@ -204,6 +204,7 @@ public class Order {
 	 * 
 	 * @return 下单用户
 	 */
+	@JsonIgnore
 	public User getPreOrderuUser() {
 		return preOrderuUser;
 	}
@@ -223,6 +224,7 @@ public class Order {
 	 * 
 	 * @return 接单用户
 	 */
+	@JsonIgnore
 	public User getTakeOrderUser() {
 		return takeOrderUser;
 	}
@@ -242,6 +244,7 @@ public class Order {
 	 * 
 	 * @return 评论列表
 	 */
+	@JsonIgnore
 	public Set<Comment> getComments() {
 		return comments;
 	}
@@ -261,6 +264,7 @@ public class Order {
 	 * 
 	 * @return 货物列表
 	 */
+	@JsonIgnore
 	public Set<Goods> getGoods() {
 		return goods;
 	}
@@ -273,6 +277,41 @@ public class Order {
 	 */
 	public void setGoods(Set<Goods> goods) {
 		this.goods = goods;
+	}
+	public static String getOrderListJson(List<Order> oList) {
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("[");
+		for (Order order : oList) {
+			sBuffer.append("{");
+			sBuffer.append("\"preOrderUserName\":");
+			sBuffer.append("\""+order.getPreOrderuUser().getUserName()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\""+order.getId()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"orderEndDate\":");
+			sBuffer.append("\""+order.getOrderEndDate()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"preOrderDate\":");
+			sBuffer.append("\""+order.getPreOrderDate()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"remarks\":");
+			sBuffer.append("\""+order.getRemarks()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"state\":");
+			sBuffer.append("\""+order.getState()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"takeOrderDate\":");
+			sBuffer.append("\""+order.getTakeOrderDate()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"takeOrderUserName\":");
+			sBuffer.append("\""+order.getTakeOrderUser().getUserName()+"\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+		}
+		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
 	}
 
 }
