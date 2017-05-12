@@ -45,6 +45,7 @@ public class OrderControllor {
 			int total=orderManager.queryAllOrderAcount();
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(list);
+			System.out.println(json+"88888");
 			StringBuffer sBuffer=new StringBuffer();
 			sBuffer.append("{");
 			sBuffer.append("\"status\":\"success\",");
