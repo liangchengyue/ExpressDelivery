@@ -39,4 +39,10 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.queryAllUserName();
 	}
 
+	@Override
+	public int queryAllUserAcount() {
+		
+		return userDAO.queryAllUserAcount();
+	}
+
 }

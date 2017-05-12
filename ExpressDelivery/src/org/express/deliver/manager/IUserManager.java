@@ -49,4 +49,9 @@ public interface IUserManager {
 	 * @return 所有用户名集合
 	 */
 	public List<String> queryAllUserName();
+	/**
+	 * 查询用户总数
+	 * @return 用户总数
+	 */
+	public int queryAllUserAcount();
 }

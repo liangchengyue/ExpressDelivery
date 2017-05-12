@@ -64,14 +64,15 @@ public class UserControllor {
 	@ResponseBody
 	public String getUserList() throws JsonGenerationException,
 			JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(1, 2, "");
+		List<User> list = userManager.queryUserByPaging(1, 10, "");
+		int total=userManager.queryAllUserAcount();
 		System.out.println(list.get(0).getAddress());
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(list);
 		StringBuffer sBuffer=new StringBuffer();
 		sBuffer.append("{");
 		sBuffer.append("\"status\":\"success\",");
-		sBuffer.append("\"totals\":2,");
+		sBuffer.append("\"totals\":"+total+",");
 		sBuffer.append("\"data\":");
 		sBuffer.append(json);
 		sBuffer.append("}");

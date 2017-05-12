@@ -65,4 +65,11 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 		return allUserNames;
 	}
 
+	@Override
+	public int queryAllUserAcount() {
+		String hql = "SELECT COUNT(u) FROM User AS u";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 }
