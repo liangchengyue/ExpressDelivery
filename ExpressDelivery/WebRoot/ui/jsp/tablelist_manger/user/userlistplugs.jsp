@@ -153,6 +153,42 @@ html,body {
 										text : '昵称'
 									},
 									{
+										key : 'gender',
+										remind : 'gender',
+										width : '100px',
+										text : '性别'
+									},
+									{
+										key : 'address',
+										remind : 'address',
+										width : '100px',
+										text : '地址'
+									},
+									{
+										key : 'integral',
+										remind : 'integral',
+										width : '100px',
+										text : '积分'
+									},
+									{
+										key : 'credit',
+										remind : 'credit',
+										width : '100px',
+										text : '信誉度'
+									},
+									{
+										key : 'telephone',
+										remind : 'telephone',
+										width : '100px',
+										text : '电话号码'
+									},
+									{
+										key : 'idCard',
+										remind : 'idCard',
+										width : '100px',
+										text : '身份证号码'
+									},
+									{
 										key : 'regDate',
 										remind : 'the regDate',
 										width : '100px',
