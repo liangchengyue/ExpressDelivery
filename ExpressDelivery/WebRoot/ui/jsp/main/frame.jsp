@@ -43,12 +43,17 @@
 	<div class="clearfix"></div>
 	<div class="page-container">
 		<div class="page-sidebar navbar-collapse collapse">
-			<ul class="page-sidebar-menu clic">
+			<ul class="page-sidebar-menu">
 				<li>
 					<div class="sidebar-toggler hidden-phone"></div>
 				</li>
 				<li class="start active "><a> <i class="fa fa-home"></i> <span
-						class="title">首页</span> <span class="" lang="index.jsp"></span>
+						class="title " lang="123">首页</span>
+						<b class="selected"></b>
+				</a></li>
+				<li class="start"><a> <i class="fa fa-home"></i> <span
+						class="title " lang="323">首页</span>
+						<b class=""></b>
 				</a></li>
 			</ul>
 		</div>
@@ -66,21 +71,14 @@
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-		jQuery(document).ready(function() {
-			App.init(); // initlayout and core plugins
-			Index.init();
-			Index.initJQVMAP(); // init index page's custom scripts
-			Index.initCalendar(); // init index page's custom scripts
-			Index.initCharts(); // init index page's custom scripts
-			Index.initChat();
-			Index.initMiniCharts();
-			Index.initDashboardDaterange();
-			Index.initIntro();
-			Tasks.initDashboardWidget();
-		});
-		$(function() {
-			
-		});
+	$(function () {
+	    $(".page-sidebar-menu").find("li").click(function(){
+	    	$(".page-sidebar-menu").find("li").attr("class", "start");
+	        $(".page-sidebar-menu").find("li").find("b").attr("class", "");
+	        $(this).attr("class", "start active");
+	        $(this).find("b").attr("class", "selected");
+	    });
+	});
 	</script>
 
 </body>

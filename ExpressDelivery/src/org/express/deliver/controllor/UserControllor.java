@@ -68,7 +68,14 @@ public class UserControllor {
 		System.out.println(list.get(0).getAddress());
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(list);
-		return json;
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("{");
+		sBuffer.append("\"status\":\"success\",");
+		sBuffer.append("\"totals\":2,");
+		sBuffer.append("\"data\":");
+		sBuffer.append(json);
+		sBuffer.append("}");
+		return sBuffer.toString();
 	}
 
 	/**
