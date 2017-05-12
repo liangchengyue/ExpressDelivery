@@ -144,12 +144,6 @@ html,body {
 										text : '订单状态'
 									},
 									{
-										key : 'remarks',
-										remind : 'remarks',
-										width : '100px',
-										text : '备注'
-									},
-									{
 										key : 'orderEndDate',
 										remind : 'the orderEndDate',
 										width : '100px',
@@ -184,6 +178,12 @@ html,body {
 											return new Date(takeOrderDate)
 													.format('YYYY-MM-DD HH:mm:ss');
 										}
+									},
+									{
+										key : 'remarks',
+										remind : 'remarks',
+										width : '100px',
+										text : '备注'
 									},
 									{
 										key : 'action',

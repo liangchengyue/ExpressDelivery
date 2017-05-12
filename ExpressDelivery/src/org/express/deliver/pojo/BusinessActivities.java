@@ -204,13 +204,13 @@ public class BusinessActivities {
 		sBuffer.append("[");
 		for (BusinessActivities businessActivities : bList) {
 			sBuffer.append("{");
-			sBuffer.append("\"activeContene\":");
+			sBuffer.append("\"activeContent\":");
 			sBuffer.append("\"" + businessActivities.getActiveContent() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"activeEndDate\":");
 			sBuffer.append("\"" + businessActivities.getActiveEndDate() + "\"");
 			sBuffer.append(",");
-			sBuffer.append("\"activeStateDate\":");
+			sBuffer.append("\"activeStartDate\":");
 			sBuffer.append("\"" + businessActivities.getActiveStartDate()
 					+ "\"");
 			sBuffer.append(",");

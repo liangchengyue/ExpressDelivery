@@ -2,10 +2,8 @@ package org.express.deliver.dao.impl;
 
 import java.util.List;
 
-import javax.xml.stream.events.Comment;
-
 import org.express.deliver.dao.ICommentDAO;
-import org.express.deliver.pojo.Goods;
+import org.express.deliver.pojo.Comment;
 import org.hibernate.Query;
 /**
  * 评论DAO操作接口实现类

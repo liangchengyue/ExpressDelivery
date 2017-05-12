@@ -19,8 +19,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript"
+	src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {
@@ -114,7 +116,7 @@ html,body {
 							supportAjaxPage : true,
 							supportSorting : true,
 							disableCache : false,
-							ajax_url : 'user/UserList',
+							ajax_url : 'comment/commentList',
 							ajax_type : 'POST',
 							query : {
 								pageNo : 1,
@@ -127,32 +129,27 @@ html,body {
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'content',
-										remind: 'content',
-										width: '100px',
-										text: '评论内容',
-										sorting: ''
-									},{
-										key: 'grade',
-										remind: 'grade',
-										text: '评论等级'
-									},{
-										key: 'order',
-										remind: 'order',
-										text: '所属订单'
-									},{
-										key: 'nickName',
-										remind: '昵称',
-										width: '100px',
-										text: '昵称'
-									},{
-										key: 'commentDate',
-										remind: 'the commentDate',
-										width: '100px',
-										text: '评论时间',
-										sorting: '',
-										template: function(commentDate, rowObject){
-											return new Date(commentDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'content',
+										remind : 'content',
+										width : '100px',
+										text : '评论内容',
+										sorting : ''
+									},
+									{
+										key : 'grade',
+										remind : 'grade',
+										text : '评论等级'
+									},
+									{
+										key : 'commentDate',
+										remind : 'the commentDate',
+										width : '100px',
+										text : '评论时间',
+										sorting : '',
+										template : function(commentDate,
+												rowObject) {
+											return new Date(commentDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{

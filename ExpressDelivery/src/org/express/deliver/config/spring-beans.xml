@@ -4,28 +4,69 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	 <bean id="baseDAO" class="org.express.deliver.dao.impl.BaseDAO">
+
+	<bean id="baseDAO" class="org.express.deliver.dao.impl.BaseDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!--user用户-->
+	<!--1、user用户 -->
 	<bean id="userDAOImpl" class="org.express.deliver.dao.impl.UserDAOImpl"></bean>
 	<bean id="userManagerBase" class="org.express.deliver.manager.impl.UserManagerImpl">
 		<property name="userDAO" ref="userDAOImpl"></property>
 	</bean>
 
-	<!--  此处为代理-->
+	<!-- 此处为代理 -->
 	<bean name="userManager" parent="transactionProxy">
 		<property name="target" ref="userManagerBase"></property>
-	</bean> 
-	<!-- order订单 -->
+	</bean>
+	<!-- 2、order订单 -->
 	<bean id="orderDAOImpl" class="org.express.deliver.dao.impl.OrderDAOImpl"></bean>
 	<bean id="orderManagerBase" class="org.express.deliver.manager.impl.OrderManagerImpl">
 		<property name="orderDAO" ref="orderDAOImpl"></property>
 	</bean>
 
-	<!--  此处为代理-->
+	<!-- 此处为代理 -->
 	<bean name="orderManager" parent="transactionProxy">
 		<property name="target" ref="orderManagerBase"></property>
-	</bean> 
+	</bean>
+	<!--3、 BusinessActivities 商家列表 -->
+	<bean id="businessactivitiesDAOImpl" class="org.express.deliver.dao.impl.BusinessActivitiesDAOImpl"></bean>
+	<bean id="businessactivitiesManagerBase"
+		class="org.express.deliver.manager.impl.BusinessActivitiesManagerImpl">
+		<property name="businessactivitiesDAO" ref="businessactivitiesDAOImpl"></property>
+	</bean>
+
+	<!-- 此处为代理 -->
+	<bean name="businessactivitiesManager" parent="transactionProxy">
+		<property name="target" ref="businessactivitiesManagerBase"></property>
+	</bean>
+	<!-- 4、Goods 货物 -->
+	<bean id="goodsDAOImpl" class="org.express.deliver.dao.impl.GoodsDAOImpl"></bean>
+	<bean id="goodsManagerBase" class="org.express.deliver.manager.impl.GoodsManagerImpl">
+		<property name="goodsDAO" ref="goodsDAOImpl"></property>
+	</bean>
+
+	<!-- 此处为代理 -->
+	<bean name="goodsManager" parent="transactionProxy">
+		<property name="target" ref="goodsManagerBase"></property>
+	</bean>
+	<!--5、 Comment 评论 -->
+	<bean id="commentDAOImpl" class="org.express.deliver.dao.impl.CommentDAOImpl"></bean>
+	<bean id="commentManagerBase" class="org.express.deliver.manager.impl.CommentManagerImpl">
+		<property name="commentDAO" ref="commentDAOImpl"></property>
+	</bean>
+
+	<!-- 此处为代理 -->
+	<bean name="commentManager" parent="transactionProxy">
+		<property name="target" ref="commentManagerBase"></property>
+	</bean>
+	<!--6、Reply 回复 -->
+	<bean id="replyDAOImpl" class="org.express.deliver.dao.impl.ReplyDAOImpl"></bean>
+	<bean id="replyManagerBase" class="org.express.deliver.manager.impl.ReplyManagerImpl">
+		<property name="replyDAO" ref="replyDAOImpl"></property>
+	</bean>
+
+	<!-- 此处为代理 -->
+	<bean name="replyManager" parent="transactionProxy">
+		<property name="target" ref="replyManagerBase"></property>
+	</bean>
 </beans>

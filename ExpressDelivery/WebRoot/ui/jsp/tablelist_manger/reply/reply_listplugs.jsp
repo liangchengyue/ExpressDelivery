@@ -19,8 +19,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript"
+	src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {
@@ -114,7 +116,7 @@ html,body {
 							supportAjaxPage : true,
 							supportSorting : true,
 							disableCache : false,
-							ajax_url : '',
+							ajax_url : 'reply/replyList',
 							ajax_type : 'POST',
 							query : {
 								pageNo : 1,
@@ -127,23 +129,23 @@ html,body {
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'content',
-										remind: 'content',
-										width: '100px',
-										text: '回复内容',
-										sorting: ''
-									},{
-										key: 'comment',
-										remind: '所属评论',
-										text: '所属评论'
-									},{
-										key: 'replyDate',
-										remind: 'the replyDate',
-										width: '100px',
-										text: '回复时间',
-										sorting: '',
-										template: function(replyDate, rowObject){
-											return new Date(replyDate).format('YYYY-MM-DD HH:mm:ss');
+										key : 'content',
+										remind : 'content',
+										width : '100px',
+										text : '回复内容',
+										sorting : ''
+
+									},
+									{
+										key : 'replyDate',
+										remind : 'the replyDate',
+										width : '100px',
+										text : '回复时间',
+										sorting : '',
+										template : function(replyDate,
+												rowObject) {
+											return new Date(replyDate)
+													.format('YYYY-MM-DD HH:mm:ss');
 										}
 									},
 									{

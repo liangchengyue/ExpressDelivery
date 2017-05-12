@@ -2,9 +2,7 @@ package org.express.deliver.dao;
 
 import java.util.List;
 
-import javax.xml.stream.events.Comment;
-
-import org.express.deliver.pojo.Goods;
+import org.express.deliver.pojo.Comment;
 
 /**
  * 评论DAO操作接口

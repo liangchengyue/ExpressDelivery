@@ -116,7 +116,7 @@ html,body {
 							supportAjaxPage : true,
 							supportSorting : true,
 							disableCache : false,
-							ajax_url : 'user/UserList',
+							ajax_url : 'businessActivities/BusinessActivitiesList',
 							ajax_type : 'POST',
 							query : {
 								pageNo : 1,

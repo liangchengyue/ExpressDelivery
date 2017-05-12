@@ -19,8 +19,10 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="ui/jsp/tablelist_manger/css/GridManager.css">
-<script type="text/javascript" src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="ui/jsp/tablelist_manger/css/GridManager.css">
+<script type="text/javascript"
+	src="ui/jsp/tablelist_manger/js/GridManager.js"></script>
 <title>用户信息列表</title>
 <style>
 html,body {
@@ -114,7 +116,7 @@ html,body {
 							supportAjaxPage : true,
 							supportSorting : true,
 							disableCache : false,
-							ajax_url : '',
+							ajax_url : 'goods/goodsList',
 							ajax_type : 'POST',
 							query : {
 								pageNo : 1,
@@ -127,29 +129,26 @@ html,body {
 							pageSize : 30,
 							columnData : [
 									{
-										key: 'order',
-										remind: 'order',
-										width: '100px',
-										text: '所属订单',
-										sorting: ''
-									},{
-										key: 'orderNumber',
-										remind: 'orderNumber',
-										text: '订单号'
-									},{
-										key: 'takeNo',
-										remind: 'takeNo',
-										text: '取货编号'
-									},{
-										key: 'reservedNumber',
-										remind: 'reservedNumber',
-										width: '100px',
-										text: '预留号码'
-									},{
-										key: 'pickupAddress',
-										remind: 'the pickupAddress',
-										width: '100px',
-										text: '取货地址'									
+										key : 'orderNumber',
+										remind : 'orderNumber',
+										text : '订单号'
+									},
+									{
+										key : 'takeNo',
+										remind : 'takeNo',
+										text : '取货编号'
+									},
+									{
+										key : 'reservedNumber',
+										remind : 'reservedNumber',
+										width : '100px',
+										text : '预留号码'
+									},
+									{
+										key : 'pickupAddress',
+										remind : 'the pickupAddress',
+										width : '100px',
+										text : '取货地址'
 									},
 									{
 										key : 'action',
