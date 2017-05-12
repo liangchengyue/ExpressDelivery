@@ -1,6 +1,7 @@
 package org.express.deliver.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -119,5 +120,29 @@ public class Reply {
 	public void setComment(Comment comment) {
 		this.comment = comment;
 	}
-
+	/**
+	 * 将List<Reply>集合转换为json数组
+	 * @param replies List<Reply>集合
+	 * @return json数组
+	 */
+	public static String getReplyListJson(List<Reply> replies) {
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("[");
+		for (Reply reply : replies) {
+			sBuffer.append("{");
+			sBuffer.append("\"content\":");
+			sBuffer.append("\""+reply.getContent()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\""+reply.getId()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"replyDate\":");
+			sBuffer.append("\""+reply.getReplyDate()+"\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+		}
+		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
+	}
 }

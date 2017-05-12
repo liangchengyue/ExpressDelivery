@@ -278,6 +278,11 @@ public class Order {
 	public void setGoods(Set<Goods> goods) {
 		this.goods = goods;
 	}
+	/**
+	 * 将 List<Order>集合转换为json数组
+	 * @param oList  List<Order>集合
+	 * @return  json数组
+	 */
 	public static String getOrderListJson(List<Order> oList) {
 		StringBuffer sBuffer=new StringBuffer();
 		sBuffer.append("[");

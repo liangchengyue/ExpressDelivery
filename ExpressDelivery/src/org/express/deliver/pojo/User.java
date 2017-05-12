@@ -417,6 +417,11 @@ public class User {
 	public void setBusinessActivities(Set<BusinessActivities> businessActivities) {
 		this.businessActivities = businessActivities;
 	}
+	/**
+	 * 将List<User>集合转换为json数组
+	 * @param list List<User>集合
+	 * @return json数组
+	 */
 	public static String getUserListJson(List<User> list) {
 		StringBuffer sBuffer=new StringBuffer();
 		sBuffer.append("[");

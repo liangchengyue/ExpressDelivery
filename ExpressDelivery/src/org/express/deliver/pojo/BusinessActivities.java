@@ -1,6 +1,7 @@
 package org.express.deliver.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,8 +16,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 /**
  * 商家活动实体类
+ * 
  * @author 梁城月
- *
+ * 
  */
 @Entity
 public class BusinessActivities {
@@ -43,7 +45,7 @@ public class BusinessActivities {
 	@Column(length = 500, nullable = false)
 	private String activeContent;
 	/**
-	 *活动开始时间
+	 * 活动开始时间
 	 */
 	@Column(nullable = false)
 	private Date activeStartDate;
@@ -189,4 +191,47 @@ public class BusinessActivities {
 		this.user = user;
 	}
 
+	/**
+	 * 将 List<BusinessActivities>集合转换为json数组
+	 * 
+	 * @param bListList
+	 *            <BusinessActivities>集合
+	 * @return json数组
+	 */
+	public static String getBusinessActivitiesListJson(
+			List<BusinessActivities> bList) {
+		StringBuffer sBuffer = new StringBuffer();
+		sBuffer.append("[");
+		for (BusinessActivities businessActivities : bList) {
+			sBuffer.append("{");
+			sBuffer.append("\"activeContene\":");
+			sBuffer.append("\"" + businessActivities.getActiveContent() + "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"activeEndDate\":");
+			sBuffer.append("\"" + businessActivities.getActiveEndDate() + "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"activeStateDate\":");
+			sBuffer.append("\"" + businessActivities.getActiveStartDate()
+					+ "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"businessAddress\":");
+			sBuffer.append("\"" + businessActivities.getBusinessAddress()
+					+ "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"businessName\":");
+			sBuffer.append("\"" + businessActivities.getBusinessName() + "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\"" + businessActivities.getId() + "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"userNamme\":");
+			sBuffer.append("\"" + businessActivities.getUser().getUserName()
+					+ "\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+		}
+		sBuffer.replace(sBuffer.length() - 1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
+	}
 }

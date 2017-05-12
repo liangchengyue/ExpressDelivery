@@ -2,6 +2,7 @@ package org.express.deliver.pojo;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -171,5 +172,32 @@ public class Comment {
 	public void setReplies(Set<Reply> replies) {
 		this.replies = replies;
 	}
-
+	/**
+	 * 将List<Comment>集合转换为json数组
+	 * @param cList List<Comment>集合
+	 * @return json数组
+	 */
+	public static String getCommentListJson(List<Comment> cList) {
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("[");
+		for (Comment comment : cList) {
+			sBuffer.append("{");
+			sBuffer.append("\"commentDate\":");
+			sBuffer.append("\""+comment.getCommentDate()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"content\":");
+			sBuffer.append("\""+comment.getContent()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"grade\":");
+			sBuffer.append("\""+comment.getGrade()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\""+comment.getId()+"\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+		}
+		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
+	}
 }

@@ -1,5 +1,7 @@
 package org.express.deliver.pojo;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -161,5 +163,35 @@ public class Goods {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-
+	/**
+	 * 将List<Goods>集合转换为json数组
+	 * @param gList List<Goods>集合
+	 * @return json数组
+	 */
+	public static String getGoodsListJson(List<Goods> gList) {
+		StringBuffer sBuffer=new StringBuffer();
+		sBuffer.append("[");
+		for (Goods goods : gList) {
+			sBuffer.append("{");
+			sBuffer.append("\"id\":");
+			sBuffer.append("\""+goods.getId()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"orderNumber\":");
+			sBuffer.append("\""+goods.getOrderNumber()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"pickupAddress\":");
+			sBuffer.append("\""+goods.getPickupAddress()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"reservedNumber\":");
+			sBuffer.append("\""+goods.getReservedNumber()+"\"");
+			sBuffer.append(",");
+			sBuffer.append("\"takeNo\":");
+			sBuffer.append("\""+goods.getTakeNo()+"\"");
+			sBuffer.append("}");
+			sBuffer.append(",");
+		}
+		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.append("]");
+		return sBuffer.toString();
+	}
 }
