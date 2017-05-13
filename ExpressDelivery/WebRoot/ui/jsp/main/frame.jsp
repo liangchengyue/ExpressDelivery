@@ -31,7 +31,7 @@
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
-					<li><a href="extra_profile.html"><i class="fa fa-user"></i>
+					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i class="fa fa-user"></i>
 							我的资料</a></li>
 					<li><a href="inbox.html"><i class="fa fa-envelope"></i>
 							我的消息 <span class="badge badge-danger">3</span></a></li>
@@ -95,6 +95,20 @@
 	<script src="ui/assets/scripts/index.js" type="text/javascript"></script>
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init(); // initlayout and core plugins
+		   Index.init();
+		   Index.initJQVMAP(); // init index page's custom scripts
+		   Index.initCalendar(); // init index page's custom scripts
+		   Index.initCharts(); // init index page's custom scripts
+		   Index.initChat();
+		   Index.initMiniCharts();
+		   Index.initDashboardDaterange();
+		   Index.initIntro();
+		   Tasks.initDashboardWidget();
+		});
+	</script>
 	<script>
 		$(function() {
 			$(".page-sidebar-menu").find("li").click(function() {
