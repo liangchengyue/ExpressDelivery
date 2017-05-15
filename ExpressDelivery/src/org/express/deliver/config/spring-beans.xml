@@ -69,6 +69,16 @@
 	<bean name="replyManager" parent="transactionProxy">
 		<property name="target" ref="replyManagerBase"></property>
 	</bean>
+	<!--8、City 地区-->
+	<bean id="cityDAOImpl" class="org.express.deliver.dao.impl.CityDAOImpl"></bean>
+	<bean id="cityManagerBase" class="org.express.deliver.manager.impl.CityManagerImpl">
+		<property name="cityDAO" ref="cityDAOImpl"></property>
+	</bean>
+
+	<!-- 此处为代理 -->
+	<bean name="cityManager" parent="transactionProxy">
+		<property name="target" ref="cityManagerBase"></property>
+	</bean>
 	<!-- 需要文件上传功能时，启用以下配置 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
