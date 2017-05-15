@@ -26,7 +26,7 @@
 			<li class="dropdown user"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" data-hover="dropdown"
 				data-close-others="true"> <img alt=""
-					src="ui/assets/img/avatar1_small.jpg" /> <span class="username">欢迎您：${user.userName}</span>
+					src="${user.imagePath }" /> <span class="username">欢迎您：${user.userName}</span>
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
@@ -102,7 +102,8 @@
 												<div class="form-group">
 													<label for="exampleInputFile"
 														class="col-md-3 control-label">头像</label>
-													<div class="col-md-9"></div>
+														
+													<div class="col-md-9">${user.imagePath }</div>
 												</div>
 											</div>
 											<div class="form-actions fluid"></div>
@@ -118,7 +119,8 @@
 										</div>
 									</div>
 									<div class="portlet-body form">
-										<form class="form-horizontal" role="form" action="user/updateUserInfo" method="post">
+										<form class="form-horizontal" role="form"
+											action="user/updateUserInfo" method="post" enctype="multipart/form-data">
 											<div class="form-body">
 												<div class="form-group">
 													<label class="col-md-3 control-label">昵称</label>
@@ -149,7 +151,7 @@
 													</div>
 												</div>
 												<%
-												String gender=((User)session.getAttribute("user")).getGender();
+													String gender = ((User) session.getAttribute("user")).getGender();
 												%>
 												<div class="form-group">
 													<label class="col-md-3 control-label">性别</label>
@@ -157,10 +159,12 @@
 														<div class="radio-list" name="gender">
 															<label class="radio-inline"> <input type="radio"
 																	name="gender" id="optionsRadios25" value="男"
-																	 <%=gender.equals("男")?"checked=\"checked\"":"" %> > 男
+																	<%=gender.equals("男") ? "checked=\"checked\"" : ""%>>
+																男
 															</label> <label class="radio-inline"> <input type="radio"
 																	name="gender" id="optionsRadios26" value="女"
-																	<%=gender.equals("女")?"checked=\"checked\"":"" %> > 女
+																	<%=gender.equals("女") ? "checked=\"checked\"" : ""%>>
+																女
 															</label>
 														</div>
 													</div>
@@ -169,9 +173,10 @@
 													<label for="exampleInputFile"
 														class="col-md-3 control-label">上传头像</label>
 													<div class="col-md-9">
-														<input type="file" id="exampleInputFile">
+														<input type="file" id="exampleInputFile" name="userImg">
 													</div>
 												</div>
+												
 											</div>
 											<div class="form-actions fluid">
 												<div class="col-md-offset-3 col-md-9">
@@ -180,6 +185,11 @@
 												</div>
 											</div>
 										</form>
+										<!-- <form action="user/uploadUserImg" method="post" enctype="multipart/form-data">
+													请选择头像:
+													<input type="file" name="userImg" >
+													<input type="submit" value="上传">
+												</form> -->
 									</div>
 								</div>
 							</div>
@@ -202,7 +212,7 @@
 
 	<div class="clearfix"></div>
 	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
-	<script src="assets/scripts/index.js" type="text/javascript"></script>
-	<script src="assets/scripts/tasks.js" type="text/javascript"></script>
+	<script src="ui/assets/scripts/index.js" type="text/javascript"></script>
+	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package org.express.deliver.controllor;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -19,6 +20,7 @@ import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -32,6 +34,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserControllor {
 	@Resource(name = "userManager")
 	private IUserManager userManager;
+
+	
 
 	@RequestMapping("/login")
 	/**
@@ -159,7 +163,8 @@ public class UserControllor {
 	}
 
 	@RequestMapping("/updateUserInfo")
-	public String updateUserInfo(User user, HttpServletRequest request) {
+	public String updateUserInfo(User user, HttpServletRequest request,MultipartFile userImg) {
+		user.setImagePath(uploadUserImg(userImg, request));
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
 		user.setId(user2.getId());
@@ -172,5 +177,39 @@ public class UserControllor {
 		userManager.modifyUserInfo(user);
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
+	}
+	/**
+	 * 上传头像
+	 * 
+	 * @param userImg
+	 * @param httpSession
+	 * @param request
+	 */
+	public String uploadUserImg(MultipartFile userImg,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		//通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
+		//图片保存路径
+		String filePath =request.getSession().getServletContext().getRealPath("\\")+"ui\\userimg\\";
+		// 获取图片原始名称
+		String originalFilename = userImg.getOriginalFilename();
+		// 图片扩展名
+		String types = originalFilename.substring(
+				originalFilename.lastIndexOf(".") + 1).toLowerCase();
+		// 以用户id加图片扩展名给图片命名
+		String newFileName = user.getId()
+				+ originalFilename.substring(originalFilename.lastIndexOf("."));
+		File file = new File(filePath + newFileName);
+		// 上传
+		try {
+			userImg.transferTo(file);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filePath + newFileName;
 	}
 }
