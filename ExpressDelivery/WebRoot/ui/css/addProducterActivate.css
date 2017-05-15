@@ -1,0 +1,44 @@
+h3{
+	padding-top: 30px;
+	margin-left: 130px;
+	color: #808080;	
+}
+.main{
+	margin: 0 auto;
+	width: 600px;
+	height: 600px;
+	background: #C0C0C0;
+	padding-left: 200px;
+	color: #808080;
+	font-size: 20px;
+}
+.input1{
+	width: 200px;
+	height: 20px;
+	margin-top: 20px;
+	outline: none;
+
+}
+.main textarea{
+	margin-top: 20px;
+	width: 300px;
+	height: 100px;
+	outline: none;
+}
+.span1{
+	margin-left: 60px;
+}
+.span2{
+	margin-left: 40px;
+}
+.butn{
+	width: 100px;
+	margin-left: 135px;
+	margin-top: 20px;
+	font-size: 15px;
+}
+.rest{
+	width: 100px;
+	margin-top: 20px;
+	font-size: 15px;
+}
