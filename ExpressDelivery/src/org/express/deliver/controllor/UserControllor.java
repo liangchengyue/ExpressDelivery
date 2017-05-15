@@ -2,7 +2,6 @@ package org.express.deliver.controllor;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
@@ -34,8 +32,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserControllor {
 	@Resource(name = "userManager")
 	private IUserManager userManager;
-
-	
 
 	@RequestMapping("/login")
 	/**
@@ -163,7 +159,8 @@ public class UserControllor {
 	}
 
 	@RequestMapping("/updateUserInfo")
-	public String updateUserInfo(User user, HttpServletRequest request,MultipartFile userImg) {
+	public String updateUserInfo(User user, HttpServletRequest request,
+			MultipartFile userImg) {
 		user.setImagePath(uploadUserImg(userImg, request));
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
@@ -178,6 +175,7 @@ public class UserControllor {
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
 	}
+
 	/**
 	 * 上传头像
 	 * 
@@ -185,22 +183,20 @@ public class UserControllor {
 	 * @param httpSession
 	 * @param request
 	 */
-	public String uploadUserImg(MultipartFile userImg,HttpServletRequest request) {
+	public String uploadUserImg(MultipartFile userImg,
+			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		//通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
-		//图片保存路径
-		String filePath =request.getSession().getServletContext().getRealPath("\\")+"ui\\userimg\\";
+		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
+		// 图片保存路径
+		String filePath =  request.getSession().getServletContext().getRealPath("/ui/userimg/1");
 		// 获取图片原始名称
 		String originalFilename = userImg.getOriginalFilename();
-		// 图片扩展名
-		String types = originalFilename.substring(
-				originalFilename.lastIndexOf(".") + 1).toLowerCase();
 		// 以用户id加图片扩展名给图片命名
-		String newFileName = user.getId()
+		String newFileName = user.getId() 
 				+ originalFilename.substring(originalFilename.lastIndexOf("."));
-		File file = new File(filePath + newFileName);
-		// 上传
+		String path = filePath + newFileName;
+		File file = new File(path);
 		try {
 			userImg.transferTo(file);
 		} catch (IllegalStateException e) {
@@ -210,6 +206,9 @@ public class UserControllor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return filePath + newFileName;
+		path = path.substring(path.indexOf("ui"), path.length());
+		path = path.replace("\\", "/");
+		System.out.println(path);
+		return path;
 	}
 }

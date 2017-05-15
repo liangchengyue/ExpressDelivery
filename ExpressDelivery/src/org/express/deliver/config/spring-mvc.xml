@@ -24,5 +24,11 @@
         <property name="prefix" value="/"></property>  
         <property name="suffix" value=".jsp"></property>  
     </bean>  
- 
+ <!-- 需要文件上传功能时，启用以下配置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxInMemorySize">
+			<value>1638400</value>
+		</property>
+	</bean>
 </beans>  
