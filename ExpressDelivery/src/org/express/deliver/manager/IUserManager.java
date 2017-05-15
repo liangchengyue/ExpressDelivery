@@ -31,6 +31,14 @@ public interface IUserManager {
 	public void addUser(User user);
 
 	/**
+	 * 修改用户信息
+	 * 
+	 * @param user
+	 *            用户信息
+	 */
+	public void modifyUserInfo(User user);
+
+	/**
 	 * 分页查询用户信息
 	 * 
 	 * @param pageNo
@@ -49,8 +57,10 @@ public interface IUserManager {
 	 * @return 所有用户名集合
 	 */
 	public List<String> queryAllUserName();
+
 	/**
 	 * 查询用户总数
+	 * 
 	 * @return 用户总数
 	 */
 	public int queryAllUserAcount();

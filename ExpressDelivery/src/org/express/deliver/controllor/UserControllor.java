@@ -51,7 +51,7 @@ public class UserControllor {
 		} else {
 			Map<String, Object> model = new HashMap<String, Object>();
 			// 视图解析器将model中的每个元素都通过model.put(name, value);
-			//这样就可以在JSP页面中通过EL表达式来获取对应的值
+			// 这样就可以在JSP页面中通过EL表达式来获取对应的值
 			model.put("url", "index.jsp");
 			model.put("message", "用户名或密码错误!");
 			modelAndView = new ModelAndView("ui/jsp/commont/error", model);
@@ -59,27 +59,29 @@ public class UserControllor {
 		}
 
 	}
-/**
- * 分页查询所有用户信息，显示在后台管理页面中
- * @param keyword
- * @param pageNo
- * @param pageSize
- * @return
- * @throws JsonGenerationException
- * @throws JsonMappingException
- * @throws IOException
- */
+
+	/**
+	 * 分页查询所有用户信息，显示在后台管理页面中
+	 * 
+	 * @param keyword
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserList(String keyword,int pageNo,int pageSize) throws JsonGenerationException,
-			JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(pageNo, pageSize,"");
-		int total=userManager.queryAllUserAcount();
-		String json=User.getUserListJson(list);
-		StringBuffer sBuffer=new StringBuffer();
+	public String getUserList(String keyword, int pageNo, int pageSize)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "");
+		int total = userManager.queryAllUserAcount();
+		String json = User.getUserListJson(list);
+		StringBuffer sBuffer = new StringBuffer();
 		sBuffer.append("{");
 		sBuffer.append("\"status\":\"success\",");
-		sBuffer.append("\"totals\":"+total+",");
+		sBuffer.append("\"totals\":" + total + ",");
 		sBuffer.append("\"data\":");
 		sBuffer.append(json);
 		sBuffer.append("}");
@@ -154,5 +156,21 @@ public class UserControllor {
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		return "redirect:/index.jsp";
+	}
+
+	@RequestMapping("/updateUserInfo")
+	public String updateUserInfo(User user, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user2 = (User) session.getAttribute("user");
+		user.setId(user2.getId());
+		user.setUserName(user2.getUserName());
+		user.setPassword(user2.getPassword());
+		user.setRegDate(user2.getRegDate());
+		user.setUserType(user2.getUserType());
+		user.setCredit(user2.getCredit());
+		user.setIntegral(user2.getIntegral());
+		userManager.modifyUserInfo(user);
+		session.setAttribute("user", user);
+		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
 	}
 }

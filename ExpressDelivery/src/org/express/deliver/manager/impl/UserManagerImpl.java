@@ -45,4 +45,10 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.queryAllUserAcount();
 	}
 
+	@Override
+	public void modifyUserInfo(User user) {
+		userDAO.modifyUser(user);
+		
+	}
+
 }
