@@ -59,7 +59,15 @@ public class UserControllor {
 		}
 
 	}
-
+	@RequestMapping("/loginAndroid")
+	@ResponseBody
+	public String loginAndroid(User user){
+		user.setUserType("管理员");
+		User user2=userManager.login(user);
+		
+		return "{\"id\":"+user2.getId()+"}";
+		
+	}
 	/**
 	 * 分页查询所有用户信息，显示在后台管理页面中
 	 * 
