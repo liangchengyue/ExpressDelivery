@@ -18,6 +18,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.User;
+import org.express.deliver.sms.IndustrySMS;
 import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -249,5 +250,15 @@ public class UserControllor {
 		// 替换路径中斜杠
 		path = path.replace("\\", "/");
 		return path;
+	}
+	/**
+	 * 通过短信发送验证码
+	 * @param phone 手机号
+	 * @param valitCode 验证码
+	 * @param time 有效时间
+	 * @return 短信状态
+	 */
+	public String getIndustrySMS(String phone,String valitCode,int time){
+		return IndustrySMS.execute(phone, valitCode, time);
 	}
 }
