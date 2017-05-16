@@ -161,6 +161,7 @@ public class UserControllor {
 	@RequestMapping("/updateUserInfo")
 	public String updateUserInfo(User user, HttpServletRequest request,
 			MultipartFile userImg) {
+		//设置图片路径
 		user.setImagePath(uploadUserImg(userImg, request));
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
@@ -175,13 +176,13 @@ public class UserControllor {
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
 	}
-
+	
 	/**
-	 * 上传头像
+	 * 上传图片
 	 * 
 	 * @param userImg
-	 * @param httpSession
 	 * @param request
+	 * @return 保存的图片路径
 	 */
 	public String uploadUserImg(MultipartFile userImg,
 			HttpServletRequest request) {
@@ -206,9 +207,10 @@ public class UserControllor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//截取图片路径
 		path = path.substring(path.indexOf("ui"), path.length());
+		//替换路径中斜杠
 		path = path.replace("\\", "/");
-		System.out.println(path);
 		return path;
 	}
 }

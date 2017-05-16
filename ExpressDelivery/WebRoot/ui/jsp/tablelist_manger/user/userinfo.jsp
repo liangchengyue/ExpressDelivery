@@ -25,8 +25,8 @@
 		<ul class="nav navbar-nav pull-right">
 			<li class="dropdown user"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" data-hover="dropdown"
-				data-close-others="true"> <img alt=""
-					src="${user.imagePath }" width="50px" height="30px"/> <span class="username">欢迎您：${user.userName}</span>
+				data-close-others="true"> <img alt="" src="${user.imagePath }"
+					width="50px" height="30px" /> <span class="username">欢迎您：${user.userName}</span>
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
@@ -101,9 +101,11 @@
 												</div>
 												<div class="form-group">
 													<label for="exampleInputFile"
-														class="col-md-3 control-label">头像</label>
-														
-													<div class="col-md-9">${user.imagePath }</div>
+														class="col-md-3 control-label">头像</label> <label
+														for="exampleInputFile" class="col-md-3 control-label"><img
+														alt="" src="${user.imagePath }"></label>
+
+													<div class="col-md-9"></div>
 												</div>
 											</div>
 											<div class="form-actions fluid"></div>
@@ -120,7 +122,8 @@
 									</div>
 									<div class="portlet-body form">
 										<form class="form-horizontal" role="form"
-											action="user/updateUserInfo" method="post" enctype="multipart/form-data">
+											action="user/updateUserInfo" method="post"
+											enctype="multipart/form-data">
 											<div class="form-body">
 												<div class="form-group">
 													<label class="col-md-3 control-label">昵称</label>
@@ -170,13 +173,16 @@
 													</div>
 												</div>
 												<div class="form-group">
-													<label for="exampleInputFile"
-														class="col-md-3 control-label">上传头像</label>
+													<!-- <label for="exampleInputFile"
+														class="col-md-3 control-label">上传头像</label> -->
 													<div class="col-md-9">
+														<label for="exampleInputFile"
+															class="col-md-3 control-label"><img alt=""
+															src="${user.imagePath }"></label><br>
 														<input type="file" id="exampleInputFile" name="userImg">
 													</div>
 												</div>
-												
+
 											</div>
 											<div class="form-actions fluid">
 												<div class="col-md-offset-3 col-md-9">
@@ -185,11 +191,6 @@
 												</div>
 											</div>
 										</form>
-										<!-- <form action="user/uploadUserImg" method="post" enctype="multipart/form-data">
-													请选择头像:
-													<input type="file" name="userImg" >
-													<input type="submit" value="上传">
-												</form> -->
 									</div>
 								</div>
 							</div>
