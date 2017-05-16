@@ -70,6 +70,12 @@ public interface IUserDAO {
 	 * @return 所有用户名集合
 	 */
 	public List<String> queryAllUserName();
+	/**
+	 * 查询所有用户的电话号码
+	 * 
+	 * @return 所有用户的电话号码集合
+	 */
+	public List<String> queryAllUserTelephone();
 
 	/**
 	 * 查询用户总数
@@ -77,4 +83,9 @@ public interface IUserDAO {
 	 * @return 用户总数
 	 */
 	public int queryAllUserAcount();
+	/**
+	 * 根据电话号码修改密码
+	 * @param user
+	 */
+	public void modifyUserPassword(User user);
 }
