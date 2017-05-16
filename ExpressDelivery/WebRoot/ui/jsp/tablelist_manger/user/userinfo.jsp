@@ -26,7 +26,7 @@
 			<li class="dropdown user"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" data-hover="dropdown"
 				data-close-others="true"> <img alt="" src="${user.imagePath }"
-					width="50px" height="30px" /> <span class="username">欢迎您：${user.userName}</span>
+					width="30px" height="30px" /> <span class="username">欢迎您：${user.userName}</span>
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">

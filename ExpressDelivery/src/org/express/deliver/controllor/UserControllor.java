@@ -1,6 +1,7 @@
 package org.express.deliver.controllor;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.User;
+import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -139,9 +141,11 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
+		
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
 
@@ -199,11 +203,22 @@ public class UserControllor {
 				+ originalFilename.substring(originalFilename.lastIndexOf("."));
 		String path = filePath + newFileName;
 		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+			 file = new File(path);
+		}
 		try {
 			userImg.transferTo(file);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//压缩图片
+		try {
+			CutImg.CompressedImage(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
