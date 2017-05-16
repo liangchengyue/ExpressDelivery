@@ -35,7 +35,7 @@
 				<value>org.express.deliver.pojo.Comment</value>
 				<value>org.express.deliver.pojo.Goods</value>
 				<value>org.express.deliver.pojo.Reply</value>
-
+				<value>org.express.deliver.pojo.City</value>
 			</list>
 		</property>
 	</bean>
