@@ -34,7 +34,7 @@ public interface IUserDAO {
 	 * 删除用户
 	 * 
 	 * @param User
-	 *           用户信息
+	 *            用户信息
 	 */
 	public void delUser(User user);
 
@@ -54,17 +54,26 @@ public interface IUserDAO {
 	 * @param pageSize
 	 *            页面大小
 	 * @param keyword
-	 *           关键字
+	 *            关键字
+	 * @param userType
+	 *            用户类型
+	 * @param expressType
+	 *            快递类型
 	 * @return List 用户信息的集合
 	 */
-	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword);
+	public List<User> queryUserByPaging(int pageNo, int pageSize,
+			String keyword, String userType, String expressType);
+
 	/**
 	 * 查询所有用户名
+	 * 
 	 * @return 所有用户名集合
 	 */
 	public List<String> queryAllUserName();
+
 	/**
 	 * 查询用户总数
+	 * 
 	 * @return 用户总数
 	 */
 	public int queryAllUserAcount();

@@ -60,6 +60,11 @@ public class User {
 	@Column(length = 50, nullable = false)
 	private String userType;
 	/**
+	 * 快递类型
+	 */
+     @Column(length = 50)                                                        
+     private String expressType;
+	/**
 	 * 电话
 	 */
 	@Column(length = 50, nullable = false)
@@ -417,6 +422,21 @@ public class User {
 	public void setBusinessActivities(Set<BusinessActivities> businessActivities) {
 		this.businessActivities = businessActivities;
 	}
+	/**
+	 * 获取快递类型
+	 * @return 快递类型
+	 */
+	public String getExpressType() {
+		return expressType;
+	}
+	/**
+	 * 设置快递类型
+	 * @param expressType 快递类型
+	 */
+	public void setExpressType(String expressType) {
+		this.expressType = expressType;
+	}
+
 	/**
 	 * 将List<User>集合转换为json数组
 	 * @param list List<User>集合

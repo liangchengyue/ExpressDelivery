@@ -47,9 +47,11 @@ public interface IUserManager {
 	 *            页面大小
 	 * @param keyword
 	 *            关键字
+	 * @param userType 用户类型
+	 * @param expressType 快递类型
 	 * @return List 用户信息的集合
 	 */
-	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword);
+	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword,String userType,String expressType);
 
 	/**
 	 * 查询所有用户名

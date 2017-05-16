@@ -94,6 +94,8 @@ html,body {
 <body>
 	<div class="search-area">
 		<div class="sa-ele">
+			<input type="hidden" value="${user.userType }" id="userType">
+			<input type="hidden" value="${user.expressType }" id="expressType">
 			<label class="se-title">关键字:</label>
 			<input class="se-con" name="keyword" />
 		</div>
@@ -107,6 +109,8 @@ html,body {
 	<table></table>
 	<script type="text/javascript">
 		var table = document.querySelector('table');
+		var userType = document.getElementById('userType').value;
+		var expressType = document.getElementById('expressType').value;
 		var TGM = table
 				.GM(
 						{
@@ -123,7 +127,9 @@ html,body {
 								pageNo : 1,
 								pageSize : 30,
 								pluginId : 1,
-								keyword : ""
+								keyword : "",
+								userType : userType,
+								expressType : expressType
 							}
 							//		,textAlign: 'center'
 							,
@@ -293,7 +299,9 @@ html,body {
 								pageNo : 1,
 								pageSize : 30,
 								keyword : document
-										.querySelector('[name="keyword"]').value
+										.querySelector('[name="keyword"]').value,
+								userType : userType,
+								expressType : expressType
 							};
 							table.GM('setQuery', _query).GM('refreshGrid',
 									function() {

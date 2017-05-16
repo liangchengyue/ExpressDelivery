@@ -73,9 +73,10 @@ public class UserControllor {
 	 */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserList(String keyword, int pageNo, int pageSize)
+	public String getUserList(String keyword, int pageNo, int pageSize,String userType,String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "");
+		System.out.println(userType+"============"+expressType);
+		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",userType,expressType);
 		int total = userManager.queryAllUserAcount();
 		String json = User.getUserListJson(list);
 		StringBuffer sBuffer = new StringBuffer();
