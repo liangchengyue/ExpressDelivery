@@ -1,6 +1,8 @@
 package org.express.deliver.controllor;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.User;
+import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -81,10 +85,12 @@ public class UserControllor {
 	 */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
 	@ResponseBody
-	public String getUserList(String keyword, int pageNo, int pageSize,String userType,String expressType)
+	public String getUserList(String keyword, int pageNo, int pageSize,
+			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		System.out.println(userType+"============"+expressType);
-		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",userType,expressType);
+		System.out.println(userType + "============" + expressType);
+		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",
+				userType, expressType);
 		int total = userManager.queryAllUserAcount();
 		String json = User.getUserListJson(list);
 		StringBuffer sBuffer = new StringBuffer();
@@ -147,9 +153,11 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
+
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
 
@@ -170,6 +178,7 @@ public class UserControllor {
 	@RequestMapping("/updateUserInfo")
 	public String updateUserInfo(User user, HttpServletRequest request,
 			MultipartFile userImg) {
+		// 设置图片路径
 		user.setImagePath(uploadUserImg(userImg, request));
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
@@ -186,11 +195,11 @@ public class UserControllor {
 	}
 
 	/**
-	 * 上传头像
+	 * 上传图片
 	 * 
 	 * @param userImg
-	 * @param httpSession
 	 * @param request
+	 * @return 保存的图片路径
 	 */
 	public String uploadUserImg(MultipartFile userImg,
 			HttpServletRequest request) {
@@ -198,14 +207,19 @@ public class UserControllor {
 		User user = (User) session.getAttribute("user");
 		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
 		// 图片保存路径
-		String filePath =  request.getSession().getServletContext().getRealPath("/ui/userimg/1");
+		String filePath = request.getSession().getServletContext()
+				.getRealPath("/ui/userimg/1");
 		// 获取图片原始名称
 		String originalFilename = userImg.getOriginalFilename();
 		// 以用户id加图片扩展名给图片命名
-		String newFileName = user.getId() 
+		String newFileName = user.getId()
 				+ originalFilename.substring(originalFilename.lastIndexOf("."));
 		String path = filePath + newFileName;
 		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+			file = new File(path);
+		}
 		try {
 			userImg.transferTo(file);
 		} catch (IllegalStateException e) {
@@ -215,9 +229,25 @@ public class UserControllor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// 压缩图片1
+		BufferedImage bi = null;
+		try {
+			bi = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			ImageIO.write(CutImg.ImageTransform(bi, 100, 100), "png", new File(
+					path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 截取图片路径
 		path = path.substring(path.indexOf("ui"), path.length());
+		// 替换路径中斜杠
 		path = path.replace("\\", "/");
-		System.out.println(path);
 		return path;
 	}
 }
