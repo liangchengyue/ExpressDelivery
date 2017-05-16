@@ -47,11 +47,13 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword) {
-		String hql = "FROM User AS u WHERE u.userName LIKE ? OR u.nickName LIKE ?";
+	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword,String userType,String expressType) {
+		String hql = "FROM User AS u WHERE u.userType=?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString(0, "%" + keyword + "%");
-		query.setString(1, "%" + keyword + "%");
+		query.setString(0, userType);
+		//query.setString(1, expressType);
+//		query.setString(2, "%" + keyword + "%");
+//		query.setString(3, "%" + keyword + "%");
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
 		return query.list();

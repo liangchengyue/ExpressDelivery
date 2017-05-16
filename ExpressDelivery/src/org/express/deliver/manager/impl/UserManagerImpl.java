@@ -23,9 +23,9 @@ public class UserManagerImpl implements IUserManager {
 	}
 
 	@Override
-	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword) {
+	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword,String userType,String expressType) {
 		// TODO Auto-generated method stub
-		return userDAO.queryUserByPaging(pageNo, pageSize, keyword);
+		return userDAO.queryUserByPaging(pageNo, pageSize, keyword,userType,expressType);
 	}
 
 	@Override

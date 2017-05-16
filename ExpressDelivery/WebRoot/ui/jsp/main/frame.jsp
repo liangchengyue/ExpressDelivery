@@ -1,3 +1,4 @@
+<%@page import="org.express.deliver.pojo.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -78,6 +79,8 @@
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title " lang="ui/jsp/tablelist_manger/goods/goods_listplugs.jsp">货物</span> <b class="selected"></b>
 							</a></li>
+			
+
 						</ul>
 				</a></li>
 			</ul>
