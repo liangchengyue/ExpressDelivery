@@ -27,13 +27,13 @@
 		<ul class="nav navbar-nav pull-right">
 			<li class="dropdown user"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" data-hover="dropdown"
-				data-close-others="true"> <img alt=""
-					src="${user.imagePath }" /> <span class="username">欢迎您：${user.userName}</span>
+				data-close-others="true"> <img alt="" src="${user.imagePath }"
+					width="30px" height="30px" /> <span class="username">欢迎您：${user.userName}</span>
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
-					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i class="fa fa-user"></i>
-							我的资料</a></li>
+					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
+							class="fa fa-user"></i> 我的资料</a></li>
 					<li><a href="inbox.html"><i class="fa fa-envelope"></i>
 							我的消息 <span class="badge badge-danger">3</span></a></li>
 					<li><a href="user/exitLogin"><i class="fa fa-key"></i>
@@ -52,34 +52,46 @@
 						class="title ">表单管理</span> <b class=""></b>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/user/userlistplugs.jsp">用户列表</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/user/userlistplugs.jsp">用户列表</span>
+									<b class="selected"></b>
 							</a></li>
 						</ul>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/order/order_listplugs.jsp">订单</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/order/order_listplugs.jsp">订单</span>
+									<b class="selected"></b>
 							</a></li>
 						</ul>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/businessactivities/businessactivities_listplugs.jsp">商家活动</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/businessactivities/businessactivities_listplugs.jsp">商家活动</span>
+									<b class="selected"></b>
 							</a></li>
 						</ul>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/comment/comment_listplugs.jsp">评论</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/comment/comment_listplugs.jsp">评论</span>
+									<b class="selected"></b>
 							</a></li>
 						</ul>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/reply/reply_listplugs.jsp">回复</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/reply/reply_listplugs.jsp">回复</span>
+									<b class="selected"></b>
 							</a></li>
 						</ul>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title " lang="ui/jsp/tablelist_manger/goods/goods_listplugs.jsp">货物</span> <b class="selected"></b>
+									<span class="title "
+									lang="ui/jsp/tablelist_manger/goods/goods_listplugs.jsp">货物</span>
+									<b class="selected"></b>
 							</a></li>
-			
+
 
 						</ul>
 				</a></li>
@@ -99,9 +111,9 @@
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-		jQuery(document).ready(function() {    
-		   App.init(); // initlayout and core plugins
-		   Index.init();
+		jQuery(document).ready(function() {
+			App.init(); // initlayout and core plugins
+			Index.init();
 		});
 	</script>
 	<script>
@@ -115,12 +127,12 @@
 				var url = $(this).find("span").attr("lang");
 				if (url != undefined) {
 					$.ajax({
-		                url: url,
-		                success: function (data) {
-		                    $(".page-content").html(data);
-		                }
-		            });
-		        }
+						url : url,
+						success : function(data) {
+							$(".page-content").html(data);
+						}
+					});
+				}
 			});
 		});
 	</script>
