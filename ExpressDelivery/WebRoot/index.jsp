@@ -72,19 +72,69 @@
 				</p>
 			</div>
 		</form>
+		<form class="forget-form" action="index.html" method="post">
+			<h3>忘记密码 ?</h3>
+			<p>输入您的手机号码重置登录密码。</p>
+			<div class="form-group row">
+				<div class="input-icon col-md-7" style="padding: 0;margin-left: 15px">
+					<i class="fa fa-phone-square"></i>
+					<input class="form-control placeholder-no-fix" type="text"
+						autocomplete="off" placeholder="手机号码" name="phoneNumber" />
+				</div>
+				<div class="col-md-4" style=""><span style="display:block; cursor: pointer;padding-top: 8px;margin-left: 15px;">获取验证码</span></div>
+			</div>
+			<div class="form-group">
+				<div class="input-icon">
+					<i class="fa fa-check-square"></i>
+					<input class="form-control placeholder-no-fix" type="text"
+						autocomplete="off" placeholder="验证码" name="erificationCode" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">密码</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"></i>
+					<input class="form-control placeholder-no-fix" type="password"
+						autocomplete="off" id="register_password" placeholder="密码"
+						name="password" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
+				<div class="controls">
+					<div class="input-icon">
+						<i class="fa fa-check"></i>
+						<input class="form-control placeholder-no-fix" type="password"
+							autocomplete="off" placeholder="确认密码" name="rpassword" />
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="form-actions">
+				<button type="button" id="back-btn" class="btn">
+					<i class="m-icon-swapleft"></i> 返回
+				</button>
+				<button type="submit" class="btn green pull-right">
+					确定 <i class="m-icon-swapright m-icon-white"></i>
+				</button>
+			</div>
+		</form>
 		<form class="register-form" action="user/regster" method="post">
 			<h3 class="center-block">注册</h3>
 
 			<div class="form-group">
 				<label class="control-label visible-ie8 visible-ie9">用户名</label>
-				<div class="input-icon">
+				<div class="input-icon" style="height:34px;">
 					<i class="fa fa-user"></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						autocomplete="off" placeholder="用户名" name="userName"
 						id="userNameinput" />
-					<br> <span class="userNameIsEmptyPrompt"></span>
+					<br>
 				</div>
+
 			</div>
+			<span class="userNameIsEmptyPrompt"></span>
 			<div class="form-group">
 				<label class="control-label visible-ie8 visible-ie9">密码</label>
 				<div class="input-icon">
@@ -115,11 +165,11 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-md-3 control-label">性别</label>
-				<div class="col-md-9">
-					<label> <input class="col-md-3" type="radio" name="gender"
+				<label class="col-md-4 control-label">性别</label>
+				<div class="col-md-8 row">
+					<label> <input class="col-md-6" type="radio" name="gender"
 							id="optionsRadios1" value="男" checked>男
-					</label> <label> <input class="col-md-3" type="radio" name="gender"
+					</label> <label> <input class="col-md-6" type="radio" name="gender"
 							id="optionsRadios2" value="女"> 女
 					</label>
 				</div>
@@ -132,6 +182,22 @@
 					</label> <label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios2" value="商家"> 商家
 					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="options2">
+						<option value="Option 1">申通快递</option>
+						<option value="Option 2">圆通快递</option>
+						<option value="Option 3">中通快递</option>
+						<option value="Option 4">韵达快递</option>
+						<option value="Option 5">天天快递</option>
+						<option value="Option 6">百世汇通</option>
+						<option value="Option 7">邮政</option>
+						<option value="Option 8">天猫商城</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-actions">
