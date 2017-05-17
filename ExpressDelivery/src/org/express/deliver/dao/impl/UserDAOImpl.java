@@ -17,11 +17,12 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public User login(User user) {
-		String hql = "FROM User AS u WHERE u.userName=? AND u.password=? AND u.userType=?";
+		String hql = "FROM User AS u WHERE u.userName=? AND u.password=? AND u.userType=? AND u.expressType = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, user.getUserName());
 		query.setString(1, user.getPassword());
 		query.setString(2, user.getUserType());
+		query.setString(3, user.getExpressType());
 		List<User> lUsers = query.list();
 		if (lUsers != null && lUsers.size() > 0) {
 			return lUsers.get(0);

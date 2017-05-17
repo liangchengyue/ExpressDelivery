@@ -47,11 +47,28 @@
 			</div>
 			<div class="form-group">
 				<div class="radio-inline row">
-					<label> <input class="col-md-3" type="radio"
+					<label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios1" value="商家" checked>商家
-					</label> <label> <input class="col-md-3" type="radio"
+					</label> <label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios2" value="管理员"> 管理员
 					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -73,6 +90,98 @@
 						onclick="queryAllUser()">注册账号</a>
 				</p>
 			</div>
+		</div>
+		<form class="register-form" action="user/regster" method="post">
+			<h3 class="center-block">注册</h3>
+
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">用户名</label>
+				<div class="input-icon" style="height:34px;">
+					<i class="fa fa-user"></i>
+					<input class="form-control placeholder-no-fix required" type="text"
+						autocomplete="off" placeholder="用户名" name="userName"
+						id="userNameinput" />
+					<br>
+				</div>
+
+			</div>
+			<span class="userNameIsEmptyPrompt"></span>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">密码</label>
+				<div class="input-icon">
+					<i class="fa fa-lock"></i>
+					<input class="form-control placeholder-no-fix" type="password"
+						autocomplete="off" id="register_password" placeholder="密码"
+						name="password" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
+				<div class="controls">
+					<div class="input-icon">
+						<i class="fa fa-check"></i>
+						<input class="form-control placeholder-no-fix" type="password"
+							autocomplete="off" placeholder="确认密码" name="rpassword" />
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
+				<div class="input-icon">
+					<i class="fa fa-check-circle"></i>
+					<input class="form-control placeholder-no-fix required" type="text"
+						placeholder="联系电话" name="telephone" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-md-4 control-label">性别</label>
+				<div class="col-md-8 row">
+					<label> <input class="col-md-6" type="radio" name="gender"
+							id="optionsRadios1" value="男" checked>男
+					</label> <label> <input class="col-md-6" type="radio" name="gender"
+							id="optionsRadios2" value="女"> 女
+					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-md-4 control-label">用户类型</label>
+				<div class="col-md-8 row">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios1" value="管理员" checked>管理员
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios2" value="商家"> 商家
+					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="">请选择</option>
+							<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button id="register-back-btn" type="button" class="btn">
+					<i class="m-icon-swapleft"></i>返回
+				</button>
+				<button type="submit" id="register-submit-btn"
+					class="btn green pull-right">
+					注册 <i class="m-icon-swapright m-icon-white"></i>
+				</button>
+			</div>
+>>>>>>> branch 'master' of https://github.com/liangchengyue/ExpressDelivery.git
 		</form>
 	</div>
 	<form class="register-form" action="user/regster" method="post">

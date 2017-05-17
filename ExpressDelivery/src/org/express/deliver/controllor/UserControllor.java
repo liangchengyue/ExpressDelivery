@@ -44,6 +44,7 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user, HttpServletRequest request) {
+		System.out.println(user.getExpressType());
 		User user2 = userManager.login(user);
 		ModelAndView modelAndView = null;
 		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
@@ -58,7 +59,7 @@ public class UserControllor {
 			// 视图解析器将model中的每个元素都通过model.put(name, value);
 			// 这样就可以在JSP页面中通过EL表达式来获取对应的值
 			model.put("url", "index.jsp");
-			model.put("message", "用户名或密码错误!");
+			model.put("message", "信息输入有误，请您核对后再次登录!");
 			modelAndView = new ModelAndView("ui/jsp/commont/error", model);
 			return modelAndView;
 		}

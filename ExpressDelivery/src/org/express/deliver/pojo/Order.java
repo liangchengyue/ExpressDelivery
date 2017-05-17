@@ -51,10 +51,12 @@ public class Order {
 	/**
 	 * 接单时间
 	 */
+	@Column(nullable = false)
 	private Date takeOrderDate;
 	/**
 	 * 订单结束时间
 	 */
+	@Column(nullable = false)
 	private Date orderEndDate;
 	/**
 	 * 备注
