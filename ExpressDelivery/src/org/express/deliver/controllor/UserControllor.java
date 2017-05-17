@@ -65,15 +65,17 @@ public class UserControllor {
 		}
 
 	}
+
 	@RequestMapping("/loginAndroid")
 	@ResponseBody
-	public String loginAndroid(User user){
+	public String loginAndroid(User user) {
 		user.setUserType("管理员");
-		User user2=userManager.login(user);
-		
-		return "{\"id\":"+user2.getId()+"}";
-		
+		User user2 = userManager.login(user);
+
+		return "{\"id\":" + user2.getId() + "}";
+
 	}
+
 	/**
 	 * 分页查询所有用户信息，显示在后台管理页面中
 	 * 
@@ -90,7 +92,6 @@ public class UserControllor {
 	public String getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		System.out.println(userType + "============" + expressType);
 		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",
 				userType, expressType);
 		int total = userManager.queryAllUserAcount();
@@ -252,14 +253,110 @@ public class UserControllor {
 		path = path.replace("\\", "/");
 		return path;
 	}
+
 	/**
 	 * 通过短信发送验证码
-	 * @param phone 手机号
-	 * @param valitCode 验证码
-	 * @param time 有效时间
+	 * 
+	 * @param phone
+	 *            手机号
+	 * @param valitCode
+	 *            验证码
+	 * @param time
+	 *            有效时间
 	 * @return 短信状态
 	 */
-	public String getIndustrySMS(String phone,String valitCode,int time){
-		return IndustrySMS.execute(phone, valitCode, time);
+	@RequestMapping("/getIndustrySMS")
+	public String getIndustrySMS(String phone, int time,
+			HttpServletRequest request) {
+
+		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
+		final HttpSession session = request.getSession();
+		session.setAttribute("valiCode", valiCode);
+		// 发送验证码
+		IndustrySMS.execute(phone, valiCode, time);
+		return valiCode;
+	}
+/**
+ * 判断输入的验证码是否正确
+ * @param userinputvaliCode
+ * @param request
+ * @return
+ */
+	@RequestMapping("/useVerificationCodeIsCorrect")
+	public String useVerificationCodeIsCorrect(String userinputvaliCode,
+			HttpServletRequest request) {
+		String urlString="";
+		String valicode = (String) request.getSession()
+				.getAttribute("valiCode");
+		if (valicode.equals(userinputvaliCode)) {
+			urlString="ui/jsp/tablelist_manger/user/userupdatepassword";
+		}
+		
+		return urlString;
+	}
+
+	/**
+	 * 找回密码前要输入电话号码，先查询数据库的所有用户电话，以此判断用户输入的号码是否存在
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/preSeekPassword")
+	public String preSeekPassword(HttpServletRequest request) {
+		final HttpSession session = request.getSession();
+		// 取得sesion
+		// 开启线程查询数据库的所有用户名
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				List<String> alluserTelephoneList = userManager
+						.queryAllUserTelephone();
+				session.setAttribute("alluserTelephoneList",
+						alluserTelephoneList);
+			}
+		};
+		thread.start();
+		return "ui/jsp/tablelist_manger/user/usergetvalicode";
+	}
+
+	/**
+	 * 验证用户找回密码时输入的电话号码是否注册
+	 * 
+	 * @param request
+	 * @param userTelephone
+	 *            找回密码时输入的电话号码
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/userTelephoneIsExist")
+	@ResponseBody
+	public String userTelephoneIsExist(HttpServletRequest request,
+			String userTelephone) {
+
+		List<String> alluserTelephoneList = (List<String>) request.getSession()
+				.getAttribute("alluserTelephoneList");
+		boolean flag = false;
+		/**
+		 * contains判断alluserTelephoneList集合里面是否包含了userTelephone
+		 */
+		if (alluserTelephoneList.contains(userTelephone)) {
+			final HttpSession session = request.getSession();
+			session.setAttribute("userTelephone", userTelephone);
+			flag = true;
+		}
+		return flag + "";
+
+	}
+
+	/**
+	 * 根据电话号码修改密码
+	 * 
+	 * @param user
+	 * @return 登录页
+	 */
+	@RequestMapping("/modifyUserPassword")
+	public String modifyUserPassword(HttpServletRequest request,User user) {
+		user.setTelephone((String)(request.getSession().getAttribute("userTelephone")));
+		userManager.modifyUserPassword(user);
+		return "redirect:/index.jsp";
 	}
 }
