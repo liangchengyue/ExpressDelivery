@@ -73,98 +73,97 @@
 						onclick="queryAllUser()">注册账号</a>
 				</p>
 			</div>
-		</form>		
-		</div>
-		<form class="register-form" action="user/regster" method="post">
-			<h3 class="center-block">注册</h3>
-
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">用户名</label>
-				<div class="input-icon" style="height:34px;">
-					<i class="fa fa-user"></i>
-					<input class="form-control placeholder-no-fix required" type="text"
-						autocomplete="off" placeholder="用户名" name="userName"
-						id="userNameinput" />
-					<br>
-				</div>
-
-			</div>
-			<span class="userNameIsEmptyPrompt"></span>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">密码</label>
-				<div class="input-icon">
-					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix" type="password"
-						autocomplete="off" id="register_password" placeholder="密码"
-						name="password" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
-				<div class="controls">
-					<div class="input-icon">
-						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
-				<div class="input-icon">
-					<i class="fa fa-check-circle"></i>
-					<input class="form-control placeholder-no-fix required" type="text"
-						placeholder="联系电话" name="telephone" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-md-4 control-label">性别</label>
-				<div class="col-md-8 row">
-					<label> <input class="col-md-6" type="radio" name="gender"
-							id="optionsRadios1" value="男" checked>男
-					</label> <label> <input class="col-md-6" type="radio" name="gender"
-							id="optionsRadios2" value="女"> 女
-					</label>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-md-4 control-label">用户类型</label>
-				<div class="col-md-8 row">
-					<label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios1" value="管理员" checked>管理员
-					</label> <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios2" value="商家"> 商家
-					</label>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-4">快递站类别</label>
-				<div class="col-md-8">
-					<select id="form_2_select2" class="form-control select2me"
-						name="options2">
-						<option value="Option 1">申通快递</option>
-						<option value="Option 2">圆通快递</option>
-						<option value="Option 3">中通快递</option>
-						<option value="Option 4">韵达快递</option>
-						<option value="Option 5">天天快递</option>
-						<option value="Option 6">百世汇通</option>
-						<option value="Option 7">邮政</option>
-						<option value="Option 8">天猫商城</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-actions">
-				<button id="register-back-btn" type="button" class="btn">
-					<i class="m-icon-swapleft"></i>返回
-				</button>
-				<button type="submit" id="register-submit-btn"
-					class="btn green pull-right">
-					注册 <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
 		</form>
+	</div>
+	<form class="register-form" action="user/regster" method="post">
+		<h3 class="center-block">注册</h3>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">用户名</label>
+			<div class="input-icon" style="height:34px;">
+				<i class="fa fa-user"></i>
+				<input class="form-control placeholder-no-fix required" type="text"
+					autocomplete="off" placeholder="用户名" name="userName"
+					id="userNameinput" />
+				<br>
+			</div>
+
+		</div>
+		<span class="userNameIsEmptyPrompt"></span>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<div class="input-icon">
+				<i class="fa fa-lock"></i>
+				<input class="form-control placeholder-no-fix" type="password"
+					autocomplete="off" id="register_password" placeholder="密码"
+					name="password" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">确认密码</label>
+			<div class="controls">
+				<div class="input-icon">
+					<i class="fa fa-check"></i>
+					<input class="form-control placeholder-no-fix" type="password"
+						autocomplete="off" placeholder="确认密码" name="rpassword" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">联系电话</label>
+			<div class="input-icon">
+				<i class="fa fa-check-circle"></i>
+				<input class="form-control placeholder-no-fix required" type="text"
+					placeholder="联系电话" name="telephone" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-md-4 control-label">性别</label>
+			<div class="col-md-8 row">
+				<label> <input class="col-md-6" type="radio" name="gender"
+						id="optionsRadios1" value="男" checked>男
+				</label> <label> <input class="col-md-6" type="radio" name="gender"
+						id="optionsRadios2" value="女"> 女
+				</label>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-md-4 control-label">用户类型</label>
+			<div class="col-md-8 row">
+				<label> <input class="col-md-6" type="radio" name="userType"
+						id="optionsRadios1" value="管理员" checked>管理员
+				</label> <label> <input class="col-md-6" type="radio"
+						name="userType" id="optionsRadios2" value="商家"> 商家
+				</label>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="control-label col-md-4">快递站类别</label>
+			<div class="col-md-8">
+				<select id="form_2_select2" class="form-control select2me"
+					name="options2">
+					<option value="Option 1">申通快递</option>
+					<option value="Option 2">圆通快递</option>
+					<option value="Option 3">中通快递</option>
+					<option value="Option 4">韵达快递</option>
+					<option value="Option 5">天天快递</option>
+					<option value="Option 6">百世汇通</option>
+					<option value="Option 7">邮政</option>
+					<option value="Option 8">天猫商城</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button id="register-back-btn" type="button" class="btn">
+				<i class="m-icon-swapleft"></i>返回
+			</button>
+			<button type="submit" id="register-submit-btn"
+				class="btn green pull-right">
+				注册 <i class="m-icon-swapright m-icon-white"></i>
+			</button>
+		</div>
+	</form>
 	</div>
 	<div class="copyright">2017 &copy;老司机</div>
 	<jsp:include page="ui/jsp/commont/foot-script.jsp" />
@@ -175,18 +174,6 @@
 			App.init();
 			Login.init();
 		});
-		function sumbitinputvalicode() {
-			var useVerificationCodeinput = $("#useVerificationCodeinput").val();
-			$.ajax({
-				url : "user/useVerificationCodeIsCorrect",
-				type : "post",
-				data : {
-					"userinputvaliCode" : useVerificationCodeinput
-				},
-				success : function(data) {
-				}
-			});
-		}
 		/* 登录页点击注册时，查询数据库的所有用户名 
 		        使用ajax异步加载 调用controllor里面的方法
 		 */
@@ -199,12 +186,13 @@
 		使用ajax异步加载 调用controllor里面的方法
 		 */
 		function queryAllUserTelephone() {
-			$.ajax({
-				url : "user/preSeekPassword",
-				success : function(data) {
-					   window.location.href = "ui/jsp/tablelist_manger/user/usergetvalicode.jsp";
-				}
-			})
+			$
+					.ajax({
+						url : "user/preSeekPassword",
+						success : function(data) {
+							window.location.href = "ui/jsp/tablelist_manger/user/usergetvalicode.jsp";
+						}
+					})
 		}
 		/*判断用户输入的名字是否已存在  */
 		$(function() {
@@ -229,66 +217,6 @@
 				});
 			});
 		});
-		/*判断用户输入的电话号码是否存在  */
-		function GetValidationCode() {
-			//电话号码输入错误提示清空
-			$(".userTelephoneIsRegisterPrompt").html("");
-			//取得输入的电话号码
-			var userTelephone = $("#useTelephoneinput").val();
-			$.ajax({
-				url : "user/userTelephoneIsExist",
-				type : "post",
-				data : {
-					"userTelephone" : userTelephone
-				},
-				success : function(data) {
-					if (data == "true") {
-						$(".userTelephoneIsRegisterPrompt").html("");
-						//短信过期时间 （小时）
-						var time = 5;
-						//电话号码输入正确以后，发送验证码到该电话号码
-						$.ajax({
-							url : "user/getIndustrySMS",
-							type : "post",
-							data : {
-								"userTelephone" : userTelephone,
-								"time" : time
-							},
-							success : function(data) {
-								/* //判断验证码输入是否正确
-								$(function(){//start
-								$("#useVerificationCodeinput")
-										.bind(
-												"change input",
-												function() {
-													var useVerificationCode = $(
-															"#useVerificationCodeinput")
-															.val();
-													alert(useVerificationCode);
-													alert(data);
-													if (data == useVerificationCode) {
-														$(
-																".useVerificationCodeIsCorrectPrompt")
-																.html(
-																		"");
-													} else {
-														$(
-																".useVerificationCodeIsCorrectPrompt")
-																.html(
-																		"验证码错误，重新输入");
-													}
-												});
-								}) ;//end */
-
-							}
-						});
-
-					} else {
-						$(".userTelephoneIsRegisterPrompt").html("请输入正确的手机号码");
-					}
-				}
-			});
-		}
 	</script>
 </body>
 </html>

@@ -27,10 +27,9 @@
 
 <body class="login">
 	<div class="content">
-		<!-- <form class="login-form" action="" method="post"> -->
 		<div class="form-group">
 			<h3>忘记密码 ?</h3>
-			<p>输入您的手机号码重置登录密码。</p>
+			<p>请填写手机号进行身份确认</p>	
 			<div class="form-group row">
 				<div class="input-icon col-md-7"
 					style="padding: 0;margin-left: 15px">
@@ -40,11 +39,11 @@
 						id="useTelephoneinput" />
 					<span class="userTelephoneIsRegisterPrompt"></span>
 				</div>
-				<div class="col-md-4" style="">
-					<span
-						style="display:block; cursor: pointer;padding-top: 8px;margin-left: 15px;"
-						onclick="GetValidationCode()">获取验证码</span>
-				</div>
+				<button type="submit" class="btn green pull-right"
+					onclick="GetValidationCode()">
+					获取验证码<i class="m-icon-swapright m-icon-white"></i>
+				</button>
+
 			</div>
 			<div class="form-group row">
 				<div class="input-icon col-md-7"
@@ -57,11 +56,10 @@
 				</div>
 				<button type="submit" class="btn green pull-right"
 					onclick="sumbitinputvalicode()">
-					提交 <i class="m-icon-swapright m-icon-white"></i>
+					提交验证码<i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
 		</div>
-		</form>
 	</div>
 	<script type="text/javascript">
 		function sumbitinputvalicode() {

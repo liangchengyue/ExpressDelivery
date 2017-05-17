@@ -27,7 +27,10 @@
 
 <body class="login">
 	<div class="content">
-		<form class="login-form" action="user/modifyUserPassword" method="post">
+		<form class="register-form" action="user/modifyUserPassword"
+			method="post">
+			<h3>重置密码 -</h3>
+			<p> 新密码将作为您的登录密码</p>
 			<div class="form-group">
 				<label class="control-label visible-ie8 visible-ie9">密码</label>
 				<div class="input-icon">
@@ -48,8 +51,8 @@
 				</div>
 			</div>
 			<div class="form-actions">
-				<button type="button" id="back-btn" class="btn">
-					<i class="m-icon-swapleft"></i> 返回
+				<button type="reset" id="back-btn" class="btn">
+					<i class="m-icon-swapleft"></i> 重置
 				</button>
 				<button type="submit" class="btn green pull-right">
 					确定 <i class="m-icon-swapright m-icon-white"></i>
