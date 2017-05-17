@@ -21,6 +21,7 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<jsp:include page="/ui/jsp/commont/head-script.jsp" />
 <link href="ui/assets/css/pages/login.css" rel="stylesheet"
 	type="text/css" />
 </head>
