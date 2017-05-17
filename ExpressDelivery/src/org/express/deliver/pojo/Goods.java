@@ -1,5 +1,6 @@
 package org.express.deliver.pojo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,21 @@ public class Goods {
 	 */
 	@Column(length = 350)
 	private String pickupAddress;
+	/**
+	 * 到站时间
+	 */
+	@Column(nullable = false)
+	private Date arrivalTimeDate;
+	/**
+	 * 离站时间
+	 */
+	@Column(nullable = false)
+	private Date leaveTimeDate;
+	/**
+	 * 货物状态
+	 */
+	@Column(length = 50, nullable = false)
+	private String state;
 	/**
 	 * 预留号码
 	 */
@@ -125,6 +141,60 @@ public class Goods {
 	 */
 	public void setPickupAddress(String pickupAddress) {
 		this.pickupAddress = pickupAddress;
+	}
+	
+    /**
+     * 获取到站时间
+     * 
+     * @return 到站时间
+     */
+	public Date getArrivalTimeDate() {
+		return arrivalTimeDate;
+	}
+
+	/**
+	 * 设置到站时间
+	 * 
+	 * @param arrivalTimeDate 到站时间
+	 */
+	public void setArrivalTimeDate(Date arrivalTimeDate) {
+		this.arrivalTimeDate = arrivalTimeDate;
+	}
+
+	/**
+	 * 获取离站时间
+	 * 
+	 * @return 离站时间
+	 */
+	public Date getLeaveTimeDate() {
+		return leaveTimeDate;
+	}
+
+	/**
+	 * 设置离站时间
+	 * 
+	 * @param leaveTimeDate 离站时间
+	 */
+	public void setLeaveTimeDate(Date leaveTimeDate) {
+		this.leaveTimeDate = leaveTimeDate;
+	}
+
+	/**
+	 * 获取货物状态
+	 * 
+	 * @return 货物状态
+	 */
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * 设置货物状态
+	 * 
+	 * @param state 货物状态
+	 */
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	/**

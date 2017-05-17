@@ -47,11 +47,28 @@
 			</div>
 			<div class="form-group">
 				<div class="radio-inline row">
-					<label> <input class="col-md-3" type="radio"
+					<label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios1" value="商家" checked>商家
-					</label> <label> <input class="col-md-3" type="radio"
+					</label> <label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios2" value="管理员"> 管理员
 					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -95,7 +112,7 @@
 				<div class="input-icon">
 					<i class="fa fa-lock"></i>
 					<input class="form-control placeholder-no-fix" type="password"
-						autocomplete="off" id="register_password" placeholder="密码"
+						  placeholder="密码"
 						name="password" />
 				</div>
 			</div>
@@ -105,7 +122,7 @@
 					<div class="input-icon">
 						<i class="fa fa-check"></i>
 						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
+							 placeholder="确认密码" name="rpassword" />
 					</div>
 				</div>
 			</div>
@@ -188,15 +205,16 @@
 				<label class="control-label col-md-4">快递站类别</label>
 				<div class="col-md-8">
 					<select id="form_2_select2" class="form-control select2me"
-						name="options2">
-						<option value="Option 1">申通快递</option>
-						<option value="Option 2">圆通快递</option>
-						<option value="Option 3">中通快递</option>
-						<option value="Option 4">韵达快递</option>
-						<option value="Option 5">天天快递</option>
-						<option value="Option 6">百世汇通</option>
-						<option value="Option 7">邮政</option>
-						<option value="Option 8">天猫商城</option>
+						name="expressType">
+						<option value="">请选择</option>
+							<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
 					</select>
 				</div>
 			</div>
