@@ -47,12 +47,21 @@ public interface IUserManager {
 	 *            页面大小
 	 * @param keyword
 	 *            关键字
-	 * @param userType 用户类型
-	 * @param expressType 快递类型
+	 * @param userType
+	 *            用户类型
+	 * @param expressType
+	 *            快递类型
 	 * @return List 用户信息的集合
 	 */
-	public List<User> queryUserByPaging(int pageNo, int pageSize, String keyword,String userType,String expressType);
+	public List<User> queryUserByPaging(int pageNo, int pageSize,
+			String keyword, String userType, String expressType);
 
+	/**
+	 * 查询所有用户电话号码
+	 * 
+	 * @return 所有用户电话号码集合
+	 */
+	public List<String> queryAllUserTelephone();
 	/**
 	 * 查询所有用户名
 	 * 
@@ -66,4 +75,11 @@ public interface IUserManager {
 	 * @return 用户总数
 	 */
 	public int queryAllUserAcount();
+
+	/**
+	 * 根据电话号码修改密码
+	 * 
+	 * @param user
+	 */
+	public void modifyUserPassword(User user);
 }

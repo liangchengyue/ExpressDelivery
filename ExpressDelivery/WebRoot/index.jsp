@@ -47,11 +47,28 @@
 			</div>
 			<div class="form-group">
 				<div class="radio-inline row">
-					<label> <input class="col-md-3" type="radio"
+					<label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios1" value="商家" checked>商家
-					</label> <label> <input class="col-md-3" type="radio"
+					</label> <label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios2" value="管理员"> 管理员
 					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -62,7 +79,9 @@
 			<div class="forget-password">
 				<h4>忘记密码 ?</h4>
 				<p>
-					点击 <a href="javascript:;" id="forget-password">这里</a> 重置密码.
+					点击 <a href="javascript:;" onclick="queryAllUserTelephone()">这里</a>
+					重置密码.
+					<!-- id="forget-password" -->
 				</p>
 			</div>
 			<div class="create-account">
@@ -71,55 +90,7 @@
 						onclick="queryAllUser()">注册账号</a>
 				</p>
 			</div>
-		</form>
-		<form class="forget-form" action="index.html" method="post">
-			<h3>忘记密码 ?</h3>
-			<p>输入您的手机号码重置登录密码。</p>
-			<div class="form-group row">
-				<div class="input-icon col-md-7" style="padding: 0;margin-left: 15px">
-					<i class="fa fa-phone-square"></i>
-					<input class="form-control placeholder-no-fix" type="text"
-						autocomplete="off" placeholder="手机号码" name="phoneNumber" />
-				</div>
-				<div class="col-md-4" style=""><span style="display:block; cursor: pointer;padding-top: 8px;margin-left: 15px;">获取验证码</span></div>
-			</div>
-			<div class="form-group">
-				<div class="input-icon">
-					<i class="fa fa-check-square"></i>
-					<input class="form-control placeholder-no-fix" type="text"
-						autocomplete="off" placeholder="验证码" name="erificationCode" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">密码</label>
-				<div class="input-icon">
-					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix" type="password"
-						autocomplete="off" id="register_password" placeholder="密码"
-						name="password" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
-				<div class="controls">
-					<div class="input-icon">
-						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="form-actions">
-				<button type="button" id="back-btn" class="btn">
-					<i class="m-icon-swapleft"></i> 返回
-				</button>
-				<button type="submit" class="btn green pull-right">
-					确定 <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-		</form>
+		</div>
 		<form class="register-form" action="user/regster" method="post">
 			<h3 class="center-block">注册</h3>
 
@@ -188,15 +159,16 @@
 				<label class="control-label col-md-4">快递站类别</label>
 				<div class="col-md-8">
 					<select id="form_2_select2" class="form-control select2me"
-						name="options2">
-						<option value="Option 1">申通快递</option>
-						<option value="Option 2">圆通快递</option>
-						<option value="Option 3">中通快递</option>
-						<option value="Option 4">韵达快递</option>
-						<option value="Option 5">天天快递</option>
-						<option value="Option 6">百世汇通</option>
-						<option value="Option 7">邮政</option>
-						<option value="Option 8">天猫商城</option>
+						name="expressType">
+						<option value="">请选择</option>
+							<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
 					</select>
 				</div>
 			</div>
@@ -209,7 +181,98 @@
 					注册 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
+>>>>>>> branch 'master' of https://github.com/liangchengyue/ExpressDelivery.git
 		</form>
+	</div>
+	<form class="register-form" action="user/regster" method="post">
+		<h3 class="center-block">注册</h3>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">用户名</label>
+			<div class="input-icon" style="height:34px;">
+				<i class="fa fa-user"></i>
+				<input class="form-control placeholder-no-fix required" type="text"
+					autocomplete="off" placeholder="用户名" name="userName"
+					id="userNameinput" />
+				<br>
+			</div>
+
+		</div>
+		<span class="userNameIsEmptyPrompt"></span>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<div class="input-icon">
+				<i class="fa fa-lock"></i>
+				<input class="form-control placeholder-no-fix" type="password"
+					autocomplete="off" id="register_password" placeholder="密码"
+					name="password" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">确认密码</label>
+			<div class="controls">
+				<div class="input-icon">
+					<i class="fa fa-check"></i>
+					<input class="form-control placeholder-no-fix" type="password"
+						autocomplete="off" placeholder="确认密码" name="rpassword" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">联系电话</label>
+			<div class="input-icon">
+				<i class="fa fa-check-circle"></i>
+				<input class="form-control placeholder-no-fix required" type="text"
+					placeholder="联系电话" name="telephone" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-md-4 control-label">性别</label>
+			<div class="col-md-8 row">
+				<label> <input class="col-md-6" type="radio" name="gender"
+						id="optionsRadios1" value="男" checked>男
+				</label> <label> <input class="col-md-6" type="radio" name="gender"
+						id="optionsRadios2" value="女"> 女
+				</label>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-md-4 control-label">用户类型</label>
+			<div class="col-md-8 row">
+				<label> <input class="col-md-6" type="radio" name="userType"
+						id="optionsRadios1" value="管理员" checked>管理员
+				</label> <label> <input class="col-md-6" type="radio"
+						name="userType" id="optionsRadios2" value="商家"> 商家
+				</label>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="control-label col-md-4">快递站类别</label>
+			<div class="col-md-8">
+				<select id="form_2_select2" class="form-control select2me"
+					name="options2">
+					<option value="Option 1">申通快递</option>
+					<option value="Option 2">圆通快递</option>
+					<option value="Option 3">中通快递</option>
+					<option value="Option 4">韵达快递</option>
+					<option value="Option 5">天天快递</option>
+					<option value="Option 6">百世汇通</option>
+					<option value="Option 7">邮政</option>
+					<option value="Option 8">天猫商城</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-actions">
+			<button id="register-back-btn" type="button" class="btn">
+				<i class="m-icon-swapleft"></i>返回
+			</button>
+			<button type="submit" id="register-submit-btn"
+				class="btn green pull-right">
+				注册 <i class="m-icon-swapright m-icon-white"></i>
+			</button>
+		</div>
+	</form>
 	</div>
 	<div class="copyright">2017 &copy;老司机</div>
 	<jsp:include page="ui/jsp/commont/foot-script.jsp" />
@@ -228,8 +291,22 @@
 				url : "user/preRegister"
 			})
 		}
+		/* 登录页点击找回密码时，查询数据库的所有用户电话号码 
+		使用ajax异步加载 调用controllor里面的方法
+		 */
+		function queryAllUserTelephone() {
+			$
+					.ajax({
+						url : "user/preSeekPassword",
+						success : function(data) {
+							window.location.href = "ui/jsp/tablelist_manger/user/usergetvalicode.jsp";
+						}
+					})
+		}
 		/*判断用户输入的名字是否已存在  */
 		$(function() {
+			//电话号码输入错误提示清空
+			$(".userTelephoneIsRegisterPrompt").html("");
 			$("#userNameinput").bind("change input", function() {
 				var userName = $("#userNameinput").val();
 				$.ajax({
@@ -240,6 +317,7 @@
 					},
 					success : function(data) {
 						if (data == "true") {
+
 							$(".userNameIsEmptyPrompt").html("用户名已经存在！");
 						} else {
 							$(".userNameIsEmptyPrompt").html("");

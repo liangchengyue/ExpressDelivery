@@ -48,8 +48,13 @@
 				<li>
 					<div class="sidebar-toggler hidden-phone"></div>
 				</li>
+				
 				<li class="start"><a> <i class="fa fa-home"></i> <span
 						class="title ">表单管理</span> <b class=""></b>
+						<%
+						User user=(User)session.getAttribute("user");
+				if(user.getUserType().equals("商家")){
+				%>
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title "
@@ -71,7 +76,7 @@
 									<b class="selected"></b>
 							</a></li>
 						</ul>
-						<ul class="sub-menu">
+						<!-- <ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title "
 									lang="ui/jsp/tablelist_manger/comment/comment_listplugs.jsp">评论</span>
@@ -84,7 +89,7 @@
 									lang="ui/jsp/tablelist_manger/reply/reply_listplugs.jsp">回复</span>
 									<b class="selected"></b>
 							</a></li>
-						</ul>
+						</ul> -->
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title "
@@ -94,6 +99,49 @@
 
 
 						</ul>
+						<%
+				}else if(user.getUserType().equals("管理员")){
+					%>
+					<ul class="sub-menu">
+					<li class="start active "><a> <i class="fa fa-home"></i>
+							<span class="title "
+							lang="ui/jsp/tablelist_manger/order/order_listplugs.jsp">订单</span>
+							<b class="selected"></b>
+					</a></li>
+				</ul>
+				<ul class="sub-menu">
+					<li class="start active "><a> <i class="fa fa-home"></i>
+							<span class="title "
+							lang="ui/jsp/tablelist_manger/businessactivities/businessactivities_listplugs.jsp">商家活动</span>
+							<b class="selected"></b>
+					</a></li>
+				</ul>
+				<!-- <ul class="sub-menu">
+					<li class="start active "><a> <i class="fa fa-home"></i>
+							<span class="title "
+							lang="ui/jsp/tablelist_manger/comment/comment_listplugs.jsp">评论</span>
+							<b class="selected"></b>
+					</a></li>
+				</ul>
+				<ul class="sub-menu">
+					<li class="start active "><a> <i class="fa fa-home"></i>
+							<span class="title "
+							lang="ui/jsp/tablelist_manger/reply/reply_listplugs.jsp">回复</span>
+							<b class="selected"></b>
+					</a></li>
+				</ul> -->
+				<ul class="sub-menu">
+					<li class="start active "><a> <i class="fa fa-home"></i>
+							<span class="title "
+							lang="ui/jsp/tablelist_manger/goods/goods_listplugs.jsp">货物</span>
+							<b class="selected"></b>
+					</a></li>
+
+
+				</ul>
+					<%
+					}
+				%>
 				</a></li>
 			</ul>
 		</div>
