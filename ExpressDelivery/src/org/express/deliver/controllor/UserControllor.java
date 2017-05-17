@@ -68,9 +68,9 @@ public class UserControllor {
 	@RequestMapping("/loginAndroid")
 	@ResponseBody
 	public String loginAndroid(User user) {
-		user.setUserType("管理员");
+		user.setUserType("商家");
+		user.setExpressType("申通快递");
 		User user2 = userManager.login(user);
-
 		return "{\"id\":" + user2.getId() + "}";
 
 	}
@@ -125,6 +125,18 @@ public class UserControllor {
 			}
 		};
 		thread.start();
+		// 取得sesion
+		// 开启线程查询数据库的所有电话号码
+		Thread thread1 = new Thread() {
+			@Override
+			public void run() {
+				List<String> alluserTelephoneList = userManager
+						.queryAllUserTelephone();
+				session.setAttribute("alluserTelephoneList",
+						alluserTelephoneList);
+			}
+		};
+		thread1.start();
 	}
 
 	/**
@@ -307,7 +319,7 @@ public class UserControllor {
 	public String preSeekPassword(HttpServletRequest request) {
 		final HttpSession session = request.getSession();
 		// 取得sesion
-		// 开启线程查询数据库的所有用户名
+		// 开启线程查询数据库的所有电话号码
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
@@ -327,7 +339,7 @@ public class UserControllor {
 	 * @param request
 	 * @param userTelephone
 	 *            找回密码时输入的电话号码
-	 * @return
+	 * @return json 包含号码是否正确 以及号码
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/userTelephoneIsExist")

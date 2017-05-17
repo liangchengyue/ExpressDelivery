@@ -133,8 +133,9 @@
 			<div class="input-icon">
 				<i class="fa fa-check-circle"></i>
 				<input class="form-control placeholder-no-fix required" type="text"
-					placeholder="联系电话" name="telephone" />
+					placeholder="联系电话" name="telephone"   id="userTelephoneinput" />
 			</div>
+			<span class="userTelephoneIsEmptyPrompt"></span>
 		</div>
 		<div class="form-group row">
 			<label class="col-md-4 control-label">性别</label>
