@@ -73,69 +73,7 @@
 						onclick="queryAllUser()">注册账号</a>
 				</p>
 			</div>
-		</form>
-		<!-- <form class="forget-form" action="index.html" method="post"> -->
-		<div class="forget-form">
-			<h3>忘记密码 ?</h3>
-			<p>输入您的手机号码重置登录密码。</p>
-			<div class="form-group row">
-				<div class="input-icon col-md-7"
-					style="padding: 0;margin-left: 15px">
-					<i class="fa fa-phone-square"></i>
-					<input class="form-control placeholder-no-fix" type="text"
-						autocomplete="off" placeholder="手机号码" name="phoneNumber"
-						id="useTelephoneinput" />
-					<span class="userTelephoneIsRegisterPrompt"></span>
-				</div>
-				<div class="col-md-4" style="">
-					<span
-						style="display:block; cursor: pointer;padding-top: 8px;margin-left: 15px;"
-						onclick="GetValidationCode()">获取验证码</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="input-icon">
-					<i class="fa fa-check-square"></i>
-					<input class="form-control placeholder-no-fix" type="text"
-						autocomplete="off" placeholder="验证码" name="erificationCode"
-						id="useVerificationCodeinput" />
-					<span class="useVerificationCodeIsCorrectPrompt"></span>
-				</div>
-				<button type="submit" class="btn green pull-right"
-					onclick="sumbitinputvalicode()">
-					提交 <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-			<!-- <div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">密码</label>
-				<div class="input-icon">
-					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix" type="password"
-						autocomplete="off" id="register_password" placeholder="密码"
-						name="password" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
-				<div class="controls">
-					<div class="input-icon">
-						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
-					</div>
-				</div>
-			</div> 
-
-
-			<div class="form-actions">
-				<button type="button" id="back-btn" class="btn">
-					<i class="m-icon-swapleft"></i> 返回
-				</button>
-				<button type="submit" class="btn green pull-right">
-					确定 <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>-->
-			<!-- </form> -->
+		</form>		
 		</div>
 		<form class="register-form" action="user/regster" method="post">
 			<h3 class="center-block">注册</h3>
