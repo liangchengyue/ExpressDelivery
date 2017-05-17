@@ -44,7 +44,6 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user, HttpServletRequest request) {
-		System.out.println(user.getExpressType());
 		User user2 = userManager.login(user);
 		ModelAndView modelAndView = null;
 		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
@@ -103,7 +102,10 @@ public class UserControllor {
 //		sBuffer.append("\"data\":");
 //		sBuffer.append(json);
 //		sBuffer.append("}");
-		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",list);
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("count", total);
+		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
 	}
 
 	/**

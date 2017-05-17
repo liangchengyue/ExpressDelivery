@@ -5,7 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -39,14 +39,15 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${result.list }" var="r">
 							<tr>
-								<td>梁城月</td>
-								<td>憧憬未来</td>
-								<td>13078507782</td>
-								<td>贵阳</td>
+								<td>${r.userName }</td>
+								<td>${r.nickName }</td>
+								<td>${r.telephone}</td>
+								<td>${r.address }</td>
 								<td>修改|删除</td>
 							</tr>
-
+							</c:forEach>
 						</tbody>
 					</table>
 					<div class="pager row">
@@ -63,7 +64,7 @@
 						</ul></div>
 						<div class="col-md-2">转到第<input type="text" style="width:30px; ">页</div>
 						<div class="col-md-4">
-						<span>当前第1页，共10页，共100条数据</span>
+						<span>当前第1页，共10页，共${result.count }条数据</span>
 						</div>
 					</div>
 				</div>

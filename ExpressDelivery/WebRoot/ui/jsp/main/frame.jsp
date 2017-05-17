@@ -6,7 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -58,7 +58,7 @@
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title "
-									lang="user/UserList">用户列表</span>
+									lang="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">用户列表</span>
 									<b class="selected"></b>
 							</a></li>
 						</ul>
@@ -145,7 +145,7 @@
 				</a></li>
 			</ul>
 		</div>
-		<div class="page-content"></div>
+		<iframe class="page-content" name="iframe"></iframe>
 	</div>
 	<div class="footer">
 		<div class="footer-inner">2017 &copy; 老司机</div>
@@ -174,11 +174,9 @@
 				$(this).find("b").attr("class", "selected");
 				var url = $(this).find("span").attr("lang");
 				if (url != undefined) {
-					var data={"pageSize":10,"pageNo":1};
 					$.ajax({
 						url : url,
-						type:"post",
-						data:data,
+						type:"get",
 						success : function(data) {
 							$(".page-content").html(data);
 						}

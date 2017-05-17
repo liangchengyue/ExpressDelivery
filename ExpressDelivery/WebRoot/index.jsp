@@ -58,7 +58,7 @@
 				<div class="col-md-8">
 					<select id="form_2_select2" class="form-control select2me"
 						name="expressType">
-						<option value="">请选择</option>
+						<option value="其他">请选择</option>
 						<option value="申通快递">申通快递</option>
 						<option value="圆通快递">圆通快递</option>
 						<option value="中通快递">中通快递</option>
