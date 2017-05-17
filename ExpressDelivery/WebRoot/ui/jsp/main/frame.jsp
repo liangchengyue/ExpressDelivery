@@ -19,8 +19,8 @@
 </script>
 </head>
 
-<body class="page-header-fixed">
-	<div class="header navbar navbar-inverse navbar-fixed-top">
+<body class="page-header-fixed" style="background: red">
+	<div class="header navbar navbar-inverse navbar-fixed-top" style="background-color: blue;">
 		<a class="navbar-brand" href="index.html"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
