@@ -85,23 +85,23 @@ public class UserControllor {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
-	@ResponseBody
-	public String getUserList(String keyword, int pageNo, int pageSize,
+	
+	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println(userType + "============" + expressType);
 		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",
 				userType, expressType);
 		int total = userManager.queryAllUserAcount();
-		String json = User.getUserListJson(list);
-		StringBuffer sBuffer = new StringBuffer();
-		sBuffer.append("{");
-		sBuffer.append("\"status\":\"success\",");
-		sBuffer.append("\"totals\":" + total + ",");
-		sBuffer.append("\"data\":");
-		sBuffer.append(json);
-		sBuffer.append("}");
-		return sBuffer.toString();
+//		String json = User.getUserListJson(list);
+//		StringBuffer sBuffer = new StringBuffer();
+//		sBuffer.append("{");
+//		sBuffer.append("\"status\":\"success\",");
+//		sBuffer.append("\"totals\":" + total + ",");
+//		sBuffer.append("\"data\":");
+//		sBuffer.append(json);
+//		sBuffer.append("}");
+		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",list);
 	}
 
 	/**
