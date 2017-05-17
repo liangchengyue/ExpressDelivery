@@ -47,7 +47,9 @@
 					<div class="input-icon">
 						<i class="fa fa-check"></i>
 						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
+							autocomplete="off" placeholder="确认密码" name="rpassword"
+							id="again_register_password" />
+						<span class="Password_inconsistency"></span>
 					</div>
 				</div>
 			</div>
@@ -55,15 +57,32 @@
 				<button type="reset" id="back-btn" class="btn">
 					<i class="m-icon-swapleft"></i> 重置
 				</button>
-				<button type="submit" class="btn green pull-right">
+				<button type="submit" class="btn green pull-right" id="btn">
 					确定 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
 		</form>
 	</div>
+	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
 	<script type="text/javascript">
-		
+		$(function() {
+			$("#btn").attr("disabled", true);
+			$(".Password_inconsistency").html("");
+			$("#again_register_password").bind(
+					"change input",
+					function() {
+						var register_password = $("#register_password").val();
+						var again_register_password = $(
+								"#again_register_password").val();
+						if (register_password == again_register_password) {
+							$(".Password_inconsistency").html("");
+							$("#btn").attr("disabled", false);
+						} else {
+							$(".Password_inconsistency").html("两次密码不一致");
+						}
+					});
+		});
 	</script>
-	<jsp:include page="/ui/jsp/commont/foot-script.jsp" /></body>
+</body>
 
 </html>

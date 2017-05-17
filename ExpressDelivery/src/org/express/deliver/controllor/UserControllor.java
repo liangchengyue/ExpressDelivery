@@ -325,7 +325,7 @@ public class UserControllor {
 	 * @param request
 	 * @param userTelephone
 	 *            找回密码时输入的电话号码
-	 * @return
+	 * @return json 包含号码是否正确 以及号码
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/userTelephoneIsExist")
