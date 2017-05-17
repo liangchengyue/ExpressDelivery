@@ -33,24 +33,24 @@
 			<h3>重置密码 -</h3>
 			<p> 新密码将作为您的登录密码</p>
 			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<div class="input-icon">
+				<i class="fa fa-lock"></i>
+				<input class="form-control placeholder-no-fix" type="password"
+					autocomplete="off" id="register_password" placeholder="密码"
+					name="password" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">确认密码</label>
+			<div class="controls">
 				<div class="input-icon">
-					<i class="fa fa-lock"></i>
+					<i class="fa fa-check"></i>
 					<input class="form-control placeholder-no-fix" type="password"
-						autocomplete="off" id="register_password" placeholder="密码"
-						name="password" />
+						autocomplete="off" placeholder="确认密码" name="rpassword" />
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">确认密码</label>
-				<div class="controls">
-					<div class="input-icon">
-						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
-					</div>
-				</div>
-			</div>
+		</div>
 			<div class="form-actions">
 				<button type="reset" id="back-btn" class="btn">
 					<i class="m-icon-swapleft"></i> 重置
