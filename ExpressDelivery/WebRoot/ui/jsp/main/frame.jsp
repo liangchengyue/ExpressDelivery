@@ -58,7 +58,7 @@
 						<ul class="sub-menu">
 							<li class="start active "><a> <i class="fa fa-home"></i>
 									<span class="title "
-									lang="ui/jsp/tablelist_manger/user/userlistplugs.jsp">用户列表</span>
+									lang="user/UserList">用户列表</span>
 									<b class="selected"></b>
 							</a></li>
 						</ul>
@@ -174,8 +174,11 @@
 				$(this).find("b").attr("class", "selected");
 				var url = $(this).find("span").attr("lang");
 				if (url != undefined) {
+					var data={"pageSize":10,"pageNo":1};
 					$.ajax({
 						url : url,
+						type:"post",
+						data:data,
 						success : function(data) {
 							$(".page-content").html(data);
 						}
