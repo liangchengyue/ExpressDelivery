@@ -44,7 +44,6 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user, HttpServletRequest request) {
-		System.out.println(user.getExpressType());
 		User user2 = userManager.login(user);
 		ModelAndView modelAndView = null;
 		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
@@ -123,6 +122,18 @@ public class UserControllor {
 			}
 		};
 		thread.start();
+		// 取得sesion
+		// 开启线程查询数据库的所有电话号码
+		Thread thread1 = new Thread() {
+			@Override
+			public void run() {
+				List<String> alluserTelephoneList = userManager
+						.queryAllUserTelephone();
+				session.setAttribute("alluserTelephoneList",
+						alluserTelephoneList);
+			}
+		};
+		thread1.start();
 	}
 
 	/**
@@ -305,7 +316,7 @@ public class UserControllor {
 	public String preSeekPassword(HttpServletRequest request) {
 		final HttpSession session = request.getSession();
 		// 取得sesion
-		// 开启线程查询数据库的所有用户名
+		// 开启线程查询数据库的所有电话号码
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
