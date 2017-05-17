@@ -18,6 +18,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.User;
+import org.express.deliver.sms.IDCardValidate;
 import org.express.deliver.sms.IndustrySMS;
 import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
@@ -206,6 +207,7 @@ public class UserControllor {
 		user.setUserType(user2.getUserType());
 		user.setCredit(user2.getCredit());
 		user.setIntegral(user2.getIntegral());
+		user.setExpressType(user2.getExpressType());
 		userManager.modifyUserInfo(user);
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
@@ -374,5 +376,16 @@ public class UserControllor {
 		user.setTelephone((String)(request.getSession().getAttribute("userTelephone")));
 		userManager.modifyUserPassword(user);
 		return "redirect:/index.jsp";
+	}
+	/**
+	 * 身份证实名认证
+	 * @param idCard 身份证号
+	 * @param realName 真实姓名
+	 * @return 验证结果
+	 */
+	@RequestMapping("/IdCard")
+	@ResponseBody
+	public String getIdCard(String idCard,String realName) {
+		return IDCardValidate.getIdCard(idCard, realName);
 	}
 }
