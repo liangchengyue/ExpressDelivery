@@ -29,7 +29,7 @@
 	<div class="content">
 		<div class="form-group">
 			<h3>忘记密码 ?</h3>
-			<p>请填写手机号进行身份确认</p>	
+			<p>请填写手机号进行身份确认</p>
 			<div class="form-group row">
 				<div class="input-icon col-md-7"
 					style="padding: 0;margin-left: 15px">
@@ -72,13 +72,15 @@
 							"userinputvaliCode" : useVerificationCodeinput
 						},
 						success : function(data) {
-
-							if (data) {
+							if (data=="true") {
 								window.location.href = "ui/jsp/tablelist_manger/user/userupdatepassword.jsp";
 							}
-							/* window.location.href = "ui/jsp/tablelist_manger/user/usergetvalicode.jsp"; */
-							$(".useVerificationCodeIsCorrectPrompt").html(
-									"请输入正确的验证码");
+							
+							else {
+								alert("请输入正确的验证码");
+								$(".useVerificationCodeIsCorrectPrompt").html(
+										"请输入正确的验证码");
+							}
 
 						}
 					});
@@ -92,11 +94,14 @@
 			$.ajax({
 				url : "user/userTelephoneIsExist",
 				type : "post",
+				datatype : "json",
 				data : {
 					"userTelephone" : userTelephone
 				},
 				success : function(data) {
-					if (data == "true") {
+					var d = JSON.parse(data);
+					if (d["flag"] == "true") {
+						alert("验证码发送成功");
 						$(".userTelephoneIsRegisterPrompt").html("");
 						//短信过期时间 （小时）
 						var time = 5;
@@ -105,7 +110,7 @@
 							url : "user/getIndustrySMS",
 							type : "post",
 							data : {
-								"userTelephone" : userTelephone,
+								"phone" : d["phone"],
 								"time" : time
 							},
 							success : function(data) {

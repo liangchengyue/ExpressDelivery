@@ -271,6 +271,7 @@ public class UserControllor {
 
 		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
 		final HttpSession session = request.getSession();
+		System.out.println("HAHAH"+phone);
 		session.setAttribute("valiCode", valiCode);
 		// 发送验证码
 		IndustrySMS.execute(phone, valiCode, time);
@@ -283,16 +284,16 @@ public class UserControllor {
  * @return
  */
 	@RequestMapping("/useVerificationCodeIsCorrect")
+	@ResponseBody
 	public String useVerificationCodeIsCorrect(String userinputvaliCode,
 			HttpServletRequest request) {
-		String urlString="";
+		boolean flag=false;
 		String valicode = (String) request.getSession()
 				.getAttribute("valiCode");
 		if (valicode.equals(userinputvaliCode)) {
-			urlString="ui/jsp/tablelist_manger/user/userupdatepassword";
+			flag=true;
 		}
-		
-		return urlString;
+		return flag+"";
 	}
 
 	/**
@@ -343,7 +344,8 @@ public class UserControllor {
 			session.setAttribute("userTelephone", userTelephone);
 			flag = true;
 		}
-		return flag + "";
+		String json="{\"flag\":\""+flag+"\",\"phone\":\""+userTelephone+"\"}";
+		return json;
 
 	}
 
