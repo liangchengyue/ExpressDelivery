@@ -68,9 +68,9 @@ public class UserControllor {
 	@RequestMapping("/loginAndroid")
 	@ResponseBody
 	public String loginAndroid(User user) {
-		user.setUserType("管理员");
+		user.setUserType("商家");
+		user.setExpressType("申通快递");
 		User user2 = userManager.login(user);
-
 		return "{\"id\":" + user2.getId() + "}";
 
 	}
