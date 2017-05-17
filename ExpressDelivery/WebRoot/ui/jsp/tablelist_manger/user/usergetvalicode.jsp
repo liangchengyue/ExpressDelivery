@@ -40,7 +40,7 @@
 					<span class="userTelephoneIsRegisterPrompt"></span>
 				</div>
 				<button type="submit" class="btn green pull-right"
-					onclick="GetValidationCode()">
+					onclick="GetValidationCode()" id="getvalicodeBtn">
 					获取验证码<i class="m-icon-swapright m-icon-white"></i>
 				</button>
 
@@ -55,13 +55,17 @@
 					<span class="useVerificationCodeIsCorrectPrompt"></span>
 				</div>
 				<button type="submit" class="btn green pull-right"
-					onclick="sumbitinputvalicode()">
+					onclick="sumbitinputvalicode()" id="sumbitinputvalicodeBtn">
 					提交验证码<i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
 	<script type="text/javascript">
+	$(function(){
+		$("#sumbitinputvalicodeBtn").attr("disabled", true);
+	});
 		function sumbitinputvalicode() {
 			var useVerificationCodeinput = $("#useVerificationCodeinput").val();
 			$
@@ -101,6 +105,7 @@
 				success : function(data) {
 					var d = JSON.parse(data);
 					if (d["flag"] == "true") {
+						$("#sumbitinputvalicodeBtn").attr("disabled", false);
 						alert("验证码发送成功");
 						$(".userTelephoneIsRegisterPrompt").html("");
 						//短信过期时间 （小时）
@@ -124,6 +129,6 @@
 			});
 		}
 	</script>
-	<jsp:include page="/ui/jsp/commont/foot-script.jsp" /></body>
+	</body>
 
 </html>

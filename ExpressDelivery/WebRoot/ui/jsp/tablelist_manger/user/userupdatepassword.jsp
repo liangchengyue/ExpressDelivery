@@ -78,6 +78,7 @@
 							$(".Password_inconsistency").html("");
 							$("#btn").attr("disabled", false);
 						} else {
+							$("#btn").attr("disabled", true);
 							$(".Password_inconsistency").html("两次密码不一致");
 						}
 					});
