@@ -90,6 +90,7 @@
 						onclick="queryAllUser()">注册账号</a>
 				</p>
 			</div>
+<<<<<<< HEAD
 		</form>
 		<!-- <form class="forget-form" action="index.html" method="post"> -->
 		<div class="forget-form">
@@ -153,6 +154,9 @@
 				</button>
 			</div>-->
 			<!-- </form> -->
+=======
+		</form>		
+>>>>>>> branch 'master' of https://github.com/liangchengyue/ExpressDelivery.git
 		</div>
 		<form class="register-form" action="user/regster" method="post">
 			<h3 class="center-block">注册</h3>
