@@ -115,6 +115,7 @@ public class UserControllor {
 	 * @return
 	 */
 	@RequestMapping("/preRegister")
+	@ResponseBody
 	public void preRegster(HttpServletRequest request) {
 		final HttpSession session = request.getSession();// 取得sesion
 		// 开启线程查询数据库的所有用户名
@@ -282,15 +283,15 @@ public class UserControllor {
 	 * @return 短信状态
 	 */
 	@RequestMapping("/getIndustrySMS")
+	@ResponseBody
 	public String getIndustrySMS(String phone, int time,
 			HttpServletRequest request) {
 
 		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
 		final HttpSession session = request.getSession();
-		System.out.println("HAHAH"+phone);
 		session.setAttribute("valiCode", valiCode);
 		// 发送验证码
-		IndustrySMS.execute(phone, valiCode, time);
+		IndustrySMS.execute(phone, valiCode, time);	
 		return valiCode;
 	}
 /**
