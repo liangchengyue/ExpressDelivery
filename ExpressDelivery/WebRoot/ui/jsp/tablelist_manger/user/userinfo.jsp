@@ -61,55 +61,69 @@
 										</div>
 									</div>
 									<div class="portlet-body form">
-										<form class="form-horizontal" role="form">
+										<form class="form-horizontal" role="form" style="width: 50%;">
 											<div class="form-body">
 												<div class="form-group">
-													<label class="col-md-3 control-label">用户名</label> <label
-														class="col-md-3 control-label">${user.userName}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">用户名:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.userName}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">昵称</label> <label
-														class="col-md-3 control-label">${user.nickName}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">昵称:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.nickName}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">用户类型</label> <label
-														class="col-md-3 control-label">${user.userType}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">性别:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.gender}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">联系电话</label> <label
-														class="col-md-3 control-label">${user.telephone}</label>
+													<label class="col-md-6 control-label"
+														style="text-align:right;">用户类型:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.userType}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">联系地址</label> <label
-														class="col-md-3 control-label">${user.address}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">联系电话:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.telephone}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">身份证号 </label> <label
-														class="col-md-3 control-label left">${user.idCard}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">联系地址:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.address}</label>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">性别</label> <label
-														class="col-md-3 control-label">${user.gender}</label>
+													<label class="col-md-6 control-label"
+														style="text-align: right;">身份证号: </label> <label
+														class="col-md-3 control-label left"
+														style="text-align: left;">${user.idCard}</label>
 												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label">信誉度</label> <label
-														class="col-md-3 control-label">${user.credit}</label>
-												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label">积分</label> <label
-														class="col-md-3 control-label">${user.credit}</label>
-												</div>
-												<div class="form-group">
-													<label for="exampleInputFile"
-														class="col-md-3 control-label">头像</label> <label
-														for="exampleInputFile" class="col-md-3 control-label"><img
-														alt="" src="${user.imagePath }"></label>
 
-													<div class="col-md-9"></div>
+												<div class="form-group">
+													<label class="col-md-6 control-label"
+														style="text-align: right;">信誉度:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.credit}</label>
 												</div>
+												<div class="form-group">
+													<label class="col-md-6 control-label"
+														style="text-align: right;">积分:</label> <label
+														class="col-md-3 control-label" style="text-align: left;">${user.credit}</label>
+												</div>
+
 											</div>
-											<div class="form-actions fluid"></div>
+
 										</form>
+										<div class="form-actions fluid"
+											style="width:50%;height:398px;float:right;margin-top: -412px;background-color: white;">
+											<div class="form-group">
+												<label for="exampleInputFile" class="col-md-3 control-label"
+													style="text-align: right;">头像:</label> <label
+													for="exampleInputFile" class="col-md-3 control-label"
+													style="text-align: left;"><img alt=""
+													src="${user.imagePath }" width="240px;" height="240px;"></label>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -124,31 +138,31 @@
 										<form class="form-horizontal" role="form"
 											action="user/updateUserInfo" method="post"
 											enctype="multipart/form-data">
-											<div class="form-body">
+											<div class="form-body" style="width: 60%;">
 												<div class="form-group">
-													<label class="col-md-3 control-label">昵称</label>
-													<div class="col-md-9">
+													<label class="col-md-5 control-label">昵称:</label>
+													<div class="col-md-6">
 														<input type="text" class="form-control" placeholder="昵称"
 															value="${user.nickName}" name="nickName">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">联系电话</label>
-													<div class="col-md-9">
+													<label class="col-md-5 control-label">联系电话:</label>
+													<div class="col-md-6">
 														<input type="text" class="form-control" placeholder="联系电话"
 															value="${user.telephone}" name="telephone">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">联系地址</label>
-													<div class="col-md-9">
+													<label class="col-md-5 control-label">联系地址:</label>
+													<div class="col-md-6">
 														<input type="text" class="form-control" placeholder="联系地址"
 															value="${user.address}" name="address">
 													</div>
 												</div>
 												<div class="form-group">
-													<label class="col-md-3 control-label">身份证号 </label>
-													<div class="col-md-9">
+													<label class="col-md-5 control-label">身份证号:</label>
+													<div class="col-md-6">
 														<input type="text" class="form-control" placeholder="身份证号"
 															value="${user.idCard}" name="idCard">
 													</div>
@@ -157,11 +171,13 @@
 													String gender = ((User) session.getAttribute("user")).getGender();
 												%>
 												<div class="form-group">
-													<label class="col-md-3 control-label">性别</label>
-													<div class="col-md-9">
+													<label class="col-md-5 control-label">性别:</label>
+													<div class="col-md-6">
 														<div class="radio-list" name="gender">
-															<label class="radio-inline"> <input type="radio"
-																	name="gender" id="optionsRadios25" value="男"
+															<label class="radio-inline col-md-3"
+																style="float:left;margin-left: 20px;"> <input
+																	type="radio" name="gender" id="optionsRadios25"
+																	value="男"
 																	<%=gender.equals("男") ? "checked=\"checked\"" : ""%>>
 																男
 															</label> <label class="radio-inline"> <input type="radio"
@@ -172,22 +188,28 @@
 														</div>
 													</div>
 												</div>
-												<div class="form-group">
-													<!-- <label for="exampleInputFile"
-														class="col-md-3 control-label">上传头像</label> -->
-													<div class="col-md-9">
-														<label for="exampleInputFile"
-															class="col-md-3 control-label"><img alt=""
-															src="${user.imagePath }"></label><br>
-														<input type="file" id="exampleInputFile" name="userImg">
-													</div>
-												</div>
+
 
 											</div>
+											<div class="form-group"
+												style="width:40%;height:260px;float: left;margin-top: -260px;margin-left: 780px;">
+												<!-- <label for="exampleInputFile"
+														class="col-md-3 control-label">上传头像:</label> -->
+												<div class="col-md-9">
+													<label for="exampleInputFile"
+														class="col-md-6 control-label"><img alt=""
+														src="${user.imagePath }" width="150px;" height="150px;"
+														style="margin-top: 30px;margin-left:30px;"></label><br>
+													<input class="col-md-3"
+														style="margin-top: 148px;margin-left: 20px;" type="file"
+														id="exampleInputFile" name="userImg">
+												</div>
+											</div>
 											<div class="form-actions fluid">
-												<div class="col-md-offset-3 col-md-9">
+												<div class="col-md-offset-5 col-md-6">
 													<button type="submit" class="btn green">提交修改</button>
-													<button type="reset" class="btn default">重置</button>
+													<button type="reset" class="btn default"
+														style="margin-left: 30px;">重置</button>
 												</div>
 											</div>
 										</form>
