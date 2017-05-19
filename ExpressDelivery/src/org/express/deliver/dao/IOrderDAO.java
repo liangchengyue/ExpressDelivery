@@ -1,6 +1,7 @@
 package org.express.deliver.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.Order;
 
@@ -39,9 +40,9 @@ public interface IOrderDAO {
 	 * @param pageNo 当前页
 	 * @param pageSize 页面大小
 	 * @param keyword 关键字
-	 * @return List 订单信息集合
+	 * @return Map 订单信息集合
 	 */
-	public List<Order> queryOrderByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryOrderByPaging(int pageNo, int pageSize,
 			String keyword);
 	/**
 	 * 查询订单总数

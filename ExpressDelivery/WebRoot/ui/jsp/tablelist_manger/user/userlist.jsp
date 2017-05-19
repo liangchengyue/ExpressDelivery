@@ -101,7 +101,6 @@
 										<th>昵称</th>
 										<th class="hidden-xs">联系电话</th>
 										<th class="hidden-xs">地址</th>
-										<th class="hidden-xs">操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -113,7 +112,6 @@
 										<td><%=user2.getNickName()%></td>
 										<td><%=user2.getTelephone()%></td>
 										<td><%=user2.getAddress()%></td>
-										<td>修改|删除</td>
 									</tr>
 									<%
 										}

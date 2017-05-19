@@ -92,6 +92,10 @@ public class UserControllor {
 	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
+		System.out.println(keyword);
+		if (keyword==null) {
+			keyword="";
+		}
 		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword,
 				userType, expressType);
 		int total = userManager.queryAllUserAcount();

@@ -52,11 +52,11 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 	@Override
 	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType) {
-		String hql = "FROM User AS u WHERE u.userType=? AND u.userName LIKE ? ";
+		String hql = "FROM User AS u WHERE u.userType=? AND u.expressType=? AND u.userName LIKE ? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userType);
-		// query.setString(1, expressType);
-		 query.setString(1, "%" + keyword + "%");
+		 query.setString(1, expressType);
+		 query.setString(2, "%" + keyword + "%");
 		// query.setString(3, "%" + keyword + "%");
 		int count=query.list().size();
 		query.setFirstResult((pageNo - 1) * pageSize);

@@ -1,7 +1,9 @@
 package org.express.deliver.controllor;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,6 +16,7 @@ import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 订单Controllor类
@@ -26,9 +29,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OrderControllor {
 	@Resource(name = "orderManager")
 	private IOrderManager orderManager;
-	
+
 	/**
 	 * 分页查询所有用户信息，显示在后台管理页面中
+	 * 
 	 * @param keyword
 	 * @param pageNo
 	 * @param pageSize
@@ -37,20 +41,26 @@ public class OrderControllor {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-		@RequestMapping(value = "/OrderList", produces = "text/html;charset=UTF-8")
-		@ResponseBody
-		public String getOrderList() throws JsonGenerationException,
-				JsonMappingException, IOException {
-			List<Order> list = orderManager.queryOrderByPaging(1, 10, "");
-			int total=orderManager.queryAllOrderAcount();
-			String json=Order.getOrderListJson(list);
-			StringBuffer sBuffer=new StringBuffer();
-			sBuffer.append("{");
-			sBuffer.append("\"status\":\"success\",");
-			sBuffer.append("\"totals\":"+total+",");
-			sBuffer.append("\"data\":");
-			sBuffer.append(json);
-			sBuffer.append("}");
-			return sBuffer.toString();
+	@RequestMapping(value = "/OrderList", produces = "text/html;charset=UTF-8")
+	public ModelAndView getOrderList(String keyword, int pageNo, int pageSize)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		if (keyword==null) {
+			keyword="";
 		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = orderManager.queryOrderByPaging(pageNo, pageSize, keyword);
+		map.put("keyword", keyword);
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+//		int total = orderManager.queryAllOrderAcount();
+//		String json = Order.getOrderListJson(list);
+//		StringBuffer sBuffer = new StringBuffer();
+//		sBuffer.append("{");
+//		sBuffer.append("\"status\":\"success\",");
+//		sBuffer.append("\"totals\":" + total + ",");
+//		sBuffer.append("\"data\":");
+//		sBuffer.append(json);
+//		sBuffer.append("}");
+		return new ModelAndView("ui/jsp/tablelist_manger/order/orderlist","result",map);
+	}
 }
