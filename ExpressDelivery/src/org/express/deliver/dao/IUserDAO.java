@@ -1,6 +1,7 @@
 package org.express.deliver.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.User;
 
@@ -59,9 +60,9 @@ public interface IUserDAO {
 	 *            用户类型
 	 * @param expressType
 	 *            快递类型
-	 * @return List 用户信息的集合
+	 * @return Map 用户信息的集合
 	 */
-	public List<User> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String,Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType);
 
 	/**

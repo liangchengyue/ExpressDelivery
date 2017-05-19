@@ -1,6 +1,7 @@
 package org.express.deliver.manager.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IUserDAO;
 import org.express.deliver.manager.IUserManager;
@@ -23,7 +24,7 @@ public class UserManagerImpl implements IUserManager {
 	}
 
 	@Override
-	public List<User> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType) {
 		// TODO Auto-generated method stub
 		return userDAO.queryUserByPaging(pageNo, pageSize, keyword, userType,

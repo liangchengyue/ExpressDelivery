@@ -92,7 +92,7 @@ public class UserControllor {
 	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		List<User> list = userManager.queryUserByPaging(pageNo, pageSize, "",
+		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword,
 				userType, expressType);
 		int total = userManager.queryAllUserAcount();
 //		String json = User.getUserListJson(list);
@@ -103,9 +103,10 @@ public class UserControllor {
 //		sBuffer.append("\"data\":");
 //		sBuffer.append(json);
 //		sBuffer.append("}");
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("list", list);
-		map.put("count", total);
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		map.put("keyword", keyword);
+		System.out.println(map.get("count"));
 		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
 	}
 

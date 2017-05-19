@@ -1,6 +1,8 @@
 package org.express.deliver.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IUserDAO;
 import org.express.deliver.pojo.User;
@@ -48,17 +50,23 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 	}
 
 	@Override
-	public List<User> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType) {
-		String hql = "FROM User AS u WHERE u.userType=?";
+		String hql = "FROM User AS u WHERE u.userType=? AND u.userName LIKE ? ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userType);
 		// query.setString(1, expressType);
-		// query.setString(2, "%" + keyword + "%");
+		 query.setString(1, "%" + keyword + "%");
 		// query.setString(3, "%" + keyword + "%");
+		int count=query.list().size();
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
-		return query.list();
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("count", count);
+		map.put("users", query.list());
+		map.put("userType", userType);
+		map.put("expressType", expressType);
+		return map;
 	}
 
 	@Override
