@@ -40,6 +40,11 @@ public class User {
 	@Column(length = 50, unique = true, nullable = false)
 	private String userName;
 	/**
+	 *  真实姓名
+	 */
+	@Column(length = 50, nullable = false)
+	private String trueName;
+	/**
 	 * 密码
 	 */
 	@Column(length = 50, nullable = false)
@@ -154,6 +159,25 @@ public class User {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	/**
+	 *  获取用户真实姓名
+	 *  
+	 * @return  真实姓名
+	 */
+	public String getTrueName() {
+		return trueName;
+	}
+
+	/**
+	 * 设置用户真实姓名
+	 * 
+	 * @param trueName
+	 *    真实姓名
+	 */
+	public void setTrueName(String trueName) {
+		this.trueName = trueName;
 	}
 
 	/**
