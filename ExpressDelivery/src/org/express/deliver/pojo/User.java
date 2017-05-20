@@ -37,17 +37,17 @@ public class User {
 	/**
 	 * 用户名
 	 */
-	@Column(length = 50, unique = true, nullable = false)
+	@Column(length = 50, unique = true)
 	private String userName;
 	/**
-	 *  真实姓名
+	 * 真实姓名
 	 */
-	@Column(length = 50, nullable = false)
+	@Column(length = 50)
 	private String trueName;
 	/**
 	 * 密码
 	 */
-	@Column(length = 50, nullable = false)
+	@Column(length = 50)
 	private String password;
 	/**
 	 * 昵称
@@ -62,22 +62,22 @@ public class User {
 	/**
 	 * 用户类型
 	 */
-	@Column(length = 50, nullable = false)
+	@Column(length = 50)
 	private String userType;
 	/**
 	 * 快递类型
 	 */
-     @Column(length = 50)                                                        
-     private String expressType;
+	@Column(length = 50)
+	private String expressType;
 	/**
 	 * 电话
 	 */
-	@Column(length = 50, nullable = false)
+	@Column(length = 50)
 	private String telephone;
 	/**
 	 * 性别
 	 */
-	@Column(length = 5, nullable = false)
+	@Column(length = 5)
 	private String gender;
 	/**
 	 * 注册日期
@@ -88,22 +88,26 @@ public class User {
 	 * 信誉度
 	 */
 	@Column(nullable = false)
-	private Integer credit=0;
+	private Integer credit = 0;
 	/**
 	 * 积分
 	 */
 	@Column(nullable = false)
-	private Integer integral=0;
+	private Integer integral = 0;
 	/**
 	 * 身份证号码
 	 */
-	@Column(length = 18, nullable = false)
+	@Column(length = 18)
 	private String idCard;
 	/**
 	 * 图片路径
 	 */
 	@Column(length = 200)
 	private String imagePath;
+	/**
+	 * 校区
+	 */
+	private String school;
 	/**
 	 * 下单用户列表
 	 */
@@ -160,11 +164,11 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	/**
-	 *  获取用户真实姓名
-	 *  
-	 * @return  真实姓名
+	 * 获取用户真实姓名
+	 * 
+	 * @return 真实姓名
 	 */
 	public String getTrueName() {
 		return trueName;
@@ -174,7 +178,7 @@ public class User {
 	 * 设置用户真实姓名
 	 * 
 	 * @param trueName
-	 *    真实姓名
+	 *            真实姓名
 	 */
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
@@ -446,74 +450,99 @@ public class User {
 	public void setBusinessActivities(Set<BusinessActivities> businessActivities) {
 		this.businessActivities = businessActivities;
 	}
+
 	/**
 	 * 获取快递类型
+	 * 
 	 * @return 快递类型
 	 */
 	public String getExpressType() {
 		return expressType;
 	}
+
 	/**
 	 * 设置快递类型
-	 * @param expressType 快递类型
+	 * 
+	 * @param expressType
+	 *            快递类型
 	 */
 	public void setExpressType(String expressType) {
 		this.expressType = expressType;
 	}
 
 	/**
+	 * 获取校区
+	 * 
+	 * @return
+	 */
+	public String getSchool() {
+		return school;
+	}
+
+	/**
+	 * 设置校区
+	 * 
+	 * @param school
+	 */
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	/**
 	 * 将List<User>集合转换为json数组
-	 * @param list List<User>集合
+	 * 
+	 * @param list
+	 *            List<User>集合
 	 * @return json数组
 	 */
 	public static String getUserListJson(List<User> list) {
-		StringBuffer sBuffer=new StringBuffer();
+		StringBuffer sBuffer = new StringBuffer();
 		sBuffer.append("[");
 		for (User user : list) {
 			sBuffer.append("{");
 			sBuffer.append("\"id\":");
-			sBuffer.append("\""+user.getId()+"\"");
+			sBuffer.append("\"" + user.getId() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"address\":");
-			sBuffer.append("\""+user.getAddress()+"\"");
+			sBuffer.append("\"" + user.getAddress() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"credit\":");
 			sBuffer.append(user.getCredit());
 			sBuffer.append(",");
 			sBuffer.append("\"gender\":");
-			sBuffer.append("\""+user.getGender()+"\"");
+			sBuffer.append("\"" + user.getGender() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"idCard\":");
-			sBuffer.append("\""+user.getIdCard()+"\"");
+			sBuffer.append("\"" + user.getIdCard() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"imagePath\":");
-			sBuffer.append("\""+user.getImagePath()+"\"");
+			sBuffer.append("\"" + user.getImagePath() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"integral\":");
 			sBuffer.append(user.getIntegral());
 			sBuffer.append(",");
 			sBuffer.append("\"nickName\":");
-			sBuffer.append("\""+user.getNickName()+"\"");
+			sBuffer.append("\"" + user.getNickName() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"password\":");
-			sBuffer.append("\""+user.getPassword()+"\"");
+			sBuffer.append("\"" + user.getPassword() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"regDate\":");
-			sBuffer.append("\""+user.getRegDate()+"\"");
+			sBuffer.append("\"" + user.getRegDate() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"telephone\":");
-			sBuffer.append("\""+user.getTelephone()+"\"");
+			sBuffer.append("\"" + user.getTelephone() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"userName\":");
-			sBuffer.append("\""+user.getUserName()+"\"");
+			sBuffer.append("\"" + user.getUserName() + "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"userType\":");
-			sBuffer.append("\""+user.getUserType()+"\"");
+			sBuffer.append("\"" + user.getUserType() + "\"");
 			sBuffer.append("}");
 			sBuffer.append(",");
-			
+
 		}
-		sBuffer.replace(sBuffer.length()-1, sBuffer.length(), "");
+		sBuffer.replace(sBuffer.length() - 1, sBuffer.length(), "");
 		sBuffer.append("]");
 		return sBuffer.toString();
 	}

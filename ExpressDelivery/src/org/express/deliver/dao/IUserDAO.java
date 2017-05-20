@@ -22,6 +22,12 @@ public interface IUserDAO {
 	 * @return 用户信息
 	 */
 	public User login(User user);
+	/**
+	 * 安卓端登录
+	 * @param user 用户信息
+	 * @return 用户信息
+	 */
+	public User loginAndroid(User user);
 
 	/**
 	 * 添加用户

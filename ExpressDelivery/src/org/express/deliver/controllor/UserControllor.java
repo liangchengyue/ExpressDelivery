@@ -2,7 +2,6 @@ package org.express.deliver.controllor;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -69,9 +68,7 @@ public class UserControllor {
 	@RequestMapping("/loginAndroid")
 	@ResponseBody
 	public String loginAndroid(User user) {
-		user.setUserType("商家");
-		user.setExpressType("申通快递");
-		User user2 = userManager.login(user);
+		User user2 = userManager.loginAndroid(user);
 		return "{\"id\":" + user2.getId() + "}";
 
 	}
@@ -184,7 +181,19 @@ public class UserControllor {
 
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
-
+	/**
+	 * 安卓注册账户
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/regsterAndroid")
+	@ResponseBody
+	public String regsterAndroid(User user) {
+		// 将当前时间设置为注册时间
+		user.setRegDate(new Date());
+		userManager.addUser(user);
+		return "succss";
+	}
 	/**
 	 * 退出登录，返回登录页
 	 * 
@@ -297,6 +306,27 @@ public class UserControllor {
 		session.setAttribute("valiCode", valiCode);
 		// 发送验证码
 		IndustrySMS.execute(phone, valiCode, time);	
+		return valiCode;
+	}
+	/**
+	 *安卓端 通过短信发送验证码
+	 * 
+	 * @param phone
+	 *            手机号
+	 * @param valitCode
+	 *            验证码
+	 * @param time
+	 *            有效时间
+	 * @return 短信状态
+	 */
+	@RequestMapping("/getAndroidIndustrySMS")
+	@ResponseBody
+	public String getAndroidIndustrySMS(String phone) {
+
+		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
+		// 发送验证码
+		//IndustrySMS.execute(phone, valiCode, 5);
+		System.out.println(valiCode);
 		return valiCode;
 	}
 /**

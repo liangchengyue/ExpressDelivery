@@ -66,4 +66,10 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.queryAllUserTelephone();
 	}
 
+	@Override
+	public User loginAndroid(User user) {
+		// TODO Auto-generated method stub
+		return userDAO.loginAndroid(user);
+	}
+
 }

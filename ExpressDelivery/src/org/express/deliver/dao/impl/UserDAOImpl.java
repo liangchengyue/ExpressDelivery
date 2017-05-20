@@ -101,4 +101,17 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 		return allUsertelephone;
 	}
 
+	@Override
+	public User loginAndroid(User user) {
+		String hql = "FROM User AS u WHERE u.userName=? AND u.password=?";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, user.getUserName());
+		query.setString(1, user.getPassword());
+		List<User> lUsers = query.list();
+		if (lUsers != null && lUsers.size() > 0) {
+			return lUsers.get(0);
+		}
+		return null;
+	}
+
 }
