@@ -146,7 +146,7 @@
 					id="useVerificationCodeinput" />
 				<span class="useVerificationCodeIsCorrectPrompt"></span>
 			</div>
-			<button type="submit" class="btn green pull-right"
+			<button type="button" class="btn green pull-right"
 				onclick="getvalicode()" id="getvalicodeBtn">
 				获取验证码<i class="m-icon-swapright m-icon-white"></i>
 			</button>
