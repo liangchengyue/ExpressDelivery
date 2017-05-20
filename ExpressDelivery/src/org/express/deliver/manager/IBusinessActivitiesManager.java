@@ -1,6 +1,7 @@
 package org.express.deliver.manager;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.BusinessActivities;
 
@@ -22,7 +23,7 @@ public interface IBusinessActivitiesManager {
 	 *            关键字
 	 * @return List 订商家列表的集合
 	 */
-	public List<BusinessActivities> queryBusinessActivitiesByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo, int pageSize,
 			String keyword);
 
 	/**

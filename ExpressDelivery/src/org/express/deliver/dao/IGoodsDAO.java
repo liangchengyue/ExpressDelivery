@@ -1,6 +1,7 @@
 package org.express.deliver.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.BusinessActivities;
 import org.express.deliver.pojo.Goods;
@@ -61,9 +62,9 @@ public interface IGoodsDAO {
 	 * @param pageNo 当前页
 	 * @param pageSize 页面大小
 	 * @param keyword 关键字
-	 * @return List 货物信息对象的集合
+	 * @return Map 货物信息对象的集合
 	 */
-	public List<Goods> queryGoodsByPaging(int pageNo,
+	public Map<String, Object> queryGoodsByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception;
 	/**
 	 * 查询货物总数

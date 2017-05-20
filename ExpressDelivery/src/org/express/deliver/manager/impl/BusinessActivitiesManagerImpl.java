@@ -1,6 +1,7 @@
 package org.express.deliver.manager.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IBusinessActivitiesDAO;
 import org.express.deliver.manager.IBusinessActivitiesManager;
@@ -20,17 +21,17 @@ public class BusinessActivitiesManagerImpl implements
 	}
 
 	@Override
-	public List<BusinessActivities> queryBusinessActivitiesByPaging(int pageNo,
+	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo,
 			int pageSize, String keyword) {
-		List<BusinessActivities> list=null;
+		Map<String, Object> map=null;
 		try {
-			list = businessactivitiesDAO.queryBusinessActivitiesByPaging(
+			map = businessactivitiesDAO.queryBusinessActivitiesByPaging(
 					pageNo, pageSize, keyword);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return map;
 	}
 
 	@Override

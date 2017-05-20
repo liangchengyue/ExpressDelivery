@@ -1,3 +1,4 @@
+<%@page import="org.express.deliver.pojo.Goods"%>
 <%@page import="org.express.deliver.pojo.Order"%>
 <%@page import="org.express.deliver.pojo.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -39,13 +40,14 @@
 							<%
 								}
 							%>
-							<li class="start active"><a
+							<li class="start "><a
 								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
-							<li class="start"><a
+							<li class="start active"><a
 								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
 								<li class="start"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
 						</ul>
+
 				</a></li>
 			</ul>
 		</div>
@@ -62,7 +64,7 @@
 						<div class="portlet-body">
 							<%
 								Map<String, Object> map = (Map) request.getAttribute("result");
-								List<Order> orders = (List<Order>) map.get("oredrs");
+								List<Goods> goods = (List<Goods>) map.get("goodss");
 								int pageNo = (Integer) map.get("pageNo");
 								int pageSize = (Integer) map.get("pageSize");
 								int count = (Integer) map.get("count");
@@ -81,19 +83,21 @@
 								id="sample_2">
 								<thead>
 									<tr>
-										<th>下单用户</th>
-										<th>订单状态</th>
-										<th class="hidden-xs">接单用户</th>
+										<th>订单号</th>
+										<th>取货号</th>
+										<th class="hidden-xs">预留号码</th>
+										<th class="hidden-xs">取货地址</th>
 									</tr>
 								</thead>
 								<tbody>
 									<%
-										for (Order order : orders) {
+										for (Goods item : goods) {
 									%>
 									<tr>
-										<td><%=order.getPreOrderuUser().getNickName()%></td>
-										<td><%=order.getState()%></td>
-										<td><%=order.getTakeOrderUser().getNickName()%></td>
+										<td><%=item.getOrderNumber()%></td>
+										<td><%=item.getTakeNo()%></td>
+										<td><%=item.getReservedNumber()%></td>
+										<td><%=item.getPickupAddress()%></td>
 									</tr>
 									<%
 										}
@@ -113,7 +117,7 @@
 											for (int i = 1; i <= pageCount; i++) {
 										%>
 										<li><a
-											href="order/OrderList?pageSize=<%=pageSize%>&pageNo=<%=i%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="goods/goodsList?pageSize=<%=pageSize%>&pageNo=<%=i%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
 											<%=pageNo == i ? "onclick=\"return false;\"" : ""%>><%=i%></a></li>
 										<%
 											}

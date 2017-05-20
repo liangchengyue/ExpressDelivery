@@ -1,6 +1,8 @@
 package org.express.deliver.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IGoodsDAO;
 import org.express.deliver.pojo.Goods;
@@ -44,7 +46,7 @@ public class GoodsDAOImpl extends BaseDAO implements IGoodsDAO {
 	}
 
 	@Override
-	public List<Goods> queryGoodsByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryGoodsByPaging(int pageNo, int pageSize,
 			String keyword) throws Exception {
 		String hql = "FROM Goods AS g WHERE g.orderNumber LIKE ? OR "
 				+ "g.takeNo LIKE ? OR g.pickupAddress LIKE ?";
@@ -52,10 +54,13 @@ public class GoodsDAOImpl extends BaseDAO implements IGoodsDAO {
 		query.setString(0, "%" + keyword + "%");
 		query.setString(1, "%" + keyword + "%");
 		query.setString(2, "%" + keyword + "%");
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("count", query.list().size());
 		// 分页查询
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
-		return query.list();
+		map.put("goodss", query.list());
+		return map;
 	}
 
 	@Override
