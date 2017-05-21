@@ -59,7 +59,8 @@
 									</div>
 								</div>
 								<div class="portlet-body form" align="center">
-									<form class="form-horizontal" role="form" action="businessActivities/addBusinessActivities"
+									<form class="form-horizontal" role="form"
+										action="businessActivities/addBusinessActivities"
 										method="post" enctype="multipart/form-data">
 										<div class="form-body" style="width: 60%;">
 											<div class="form-group">
@@ -101,16 +102,17 @@
 												<label class="col-md-5 control-label">活动内容:</label>
 												<div class="col-md-6">
 													<textarea placeholder="活动内容" name="activeContent"
-														class="form-control" ></textarea>
+														class="form-control"></textarea>
 
 												</div>
 											</div>
-											  <div class="form-group">
+											<div class="form-group">
 												<label class="col-md-5 control-label">添加活动图片:</label>
 												<div class="col-md-6">
-													<input type="file"  name="imagePath">
+													<input type="file" name="businessactivitiesimg">
 												</div>
-											</div>   
+											</div>
+
 										</div>
 
 										<div class="form-actions fluid">

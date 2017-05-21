@@ -1,27 +1,23 @@
 package org.express.deliver.controllor;
 
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IBusinessActivitiesManager;
 import org.express.deliver.pojo.BusinessActivities;
-import org.express.deliver.pojo.User;
-import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
 
 /**
  * 商家列表Controllor类
@@ -37,17 +33,16 @@ public class BusinessActivitiesControllor {
 
 	/**
 	 * 添加商家活动
-	 * 
-	 * @param businessActivities
-	 *            商家活动
-	 * @return
+	 * @param businessActivities 商家活动信息
+	 * @param request
+	 * @param businessactivitiesimg 商家活动图片
+	 * @return 商家活动显示页面
 	 */
 	@RequestMapping("/addBusinessActivities")
 	public ModelAndView addBusinessActivities(BusinessActivities businessActivities,
-			HttpServletRequest request) {
-		System.out.println("555555");
-		//设置图片路径,MultipartFile imagePath
-		/* businessActivities.setImagePath(uploadUserImg(imagePath, request)); */
+			HttpServletRequest request,MultipartFile businessactivitiesimg) {
+		//设置图片路径
+		businessActivities.setImagePath(uploadBusinessActivitiesImg(businessactivitiesimg, request));
 		// 设置当前时间为添加活动时间
 		businessActivities.setAddDate(new Date());
 		businessactivitiesManager.addBusinessActivities(businessActivities);
@@ -99,18 +94,16 @@ public class BusinessActivitiesControllor {
 	 * @param request
 	 * @return 保存的图片路径
 	 */
-	public String uploadUserImg(MultipartFile userImg,
+	public String uploadBusinessActivitiesImg(MultipartFile userImg,
 			HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
 		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
 		// 图片保存路径
 		String filePath = request.getSession().getServletContext()
-				.getRealPath("/ui/userimg/1");
+				.getRealPath("/ui/businessactivitiesimg/1");
 		// 获取图片原始名称
 		String originalFilename = userImg.getOriginalFilename();
 		// 以用户id加图片扩展名给图片命名
-		String newFileName = user.getId()
+		String newFileName = (new Date()).getTime()
 				+ originalFilename.substring(originalFilename.lastIndexOf("."));
 		String path = filePath + newFileName;
 		File file = new File(path);
@@ -123,21 +116,6 @@ public class BusinessActivitiesControllor {
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// 压缩图片1
-		BufferedImage bi = null;
-		try {
-			bi = ImageIO.read(new File(path));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			ImageIO.write(CutImg.ImageTransform(bi, 100, 100), "png", new File(
-					path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
