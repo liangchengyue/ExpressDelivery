@@ -92,7 +92,7 @@ public class User {
 	/**
 	 * 身份证号码
 	 */
-	@Column(length = 18, nullable = false)
+	@Column(length = 18)
 	private String idCard;
 	/**
 	 * 图片路径
