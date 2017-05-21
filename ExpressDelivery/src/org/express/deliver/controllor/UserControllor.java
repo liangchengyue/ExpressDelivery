@@ -421,7 +421,17 @@ public class UserControllor {
 	 */
 	@RequestMapping("/IdCard")
 	@ResponseBody
-	public String getIdCard(String idCard,String realName) {
-		return IDCardValidate.getIdCard(idCard, realName);
+	public String getIdCard(User user,HttpServletRequest request) {
+		String result=IDCardValidate.getIdCard(user.getIdCard().trim(),user.getTrueName().trim());
+		String tString=result.substring(result.indexOf("msg"),result.indexOf("result"));
+		tString=tString.substring(tString.indexOf(":")+2, tString.indexOf(",")-1);
+		User user2=(User)request.getSession().getAttribute("user");
+		if (tString.equals("ok")) {
+			user2.setTrueName(user.getTrueName());
+			user2.setIdCard(user.getIdCard());
+			userManager.modifyUserInfo(user2);
+		}
+		return result ;
+		 
 	}
 }
