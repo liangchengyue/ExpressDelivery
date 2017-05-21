@@ -29,21 +29,9 @@
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
 						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
-							<%
-								User user = (User) session.getAttribute("user");
-								if (user.getUserType().equals("商家")) {
-							%>
 
 							<li class="start active"><a
-								href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
-									用户 </a></li>
-							<%
-								}
-							%>
-							<li class="start "><a
-								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
-							<li class="start"><a
-								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
+								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
 							<li class="start"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
 									商家活动 </a></li>
@@ -76,10 +64,6 @@
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
-								<input type="hidden" name="userType"
-									value="<%=map.get("userType")%>">
-								<input type="hidden" name="expressType"
-									value="<%=map.get("expressType")%>">
 								<button type="submit" class="btn">搜索</button>
 							</form>
 							<table
@@ -94,25 +78,13 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%-- <%
-										for (User user2 : users) {
-									%>
-									<tr>
-										<td><%=user2.getUserName()%></td>
-										<td><%=user2.getNickName()%></td>
-										<td><%=user2.getTelephone()%></td>
-										<td><%=user2.getAddress()%></td>
-									</tr>
-									<%
-										}
-									%> --%>
-									<c:forEach var="user" items="result.users" >
-									<tr>
-									<td>${user.userName }</td>
-									<td>${user.nickName }</td>
-									<td>${user.telephone }</td>
-									<td>${user.address }</td>
-									</tr>
+									<c:forEach var="user" items="${ result.users}">
+										<tr>
+											<td>${user.userName }</td>
+											<td>${user.nickName }</td>
+											<td>${user.telephone }</td>
+											<td>${user.address }</td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -120,26 +92,26 @@
 								<div class="col-md-8">
 									<ul>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=1&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=1"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>首页</a></li>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>上一页</a></li>
 										<%
 											for (int i = 1; i <= pageCount; i++) {
 										%>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=i%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=i%>"
 											<%=pageNo == i ? "onclick=\"return false;\"" : ""%>><%=i%></a></li>
 										<%
 											}
 										%>
 
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>下一页</a></li>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>尾页</a></li>
 									</ul>
 								</div>

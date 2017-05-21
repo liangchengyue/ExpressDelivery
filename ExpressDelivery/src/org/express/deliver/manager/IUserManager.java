@@ -44,7 +44,6 @@ public interface IUserManager {
 	 *            用户信息
 	 */
 	public void modifyUserInfo(User user);
-
 	/**
 	 * 分页查询用户信息
 	 * 
@@ -60,8 +59,22 @@ public interface IUserManager {
 	 *            快递类型
 	 * @return Map 用户信息的集合
 	 */
+	/*public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
+			String keyword, String userType, String expressType);*/
+
+	/**
+	 * 分页查询用户信息
+	 * 
+	 * @param pageNo
+	 *            当前页
+	 * @param pageSize
+	 *            页面大小
+	 * @param keyword
+	 *            关键字
+	 * @return Map 用户信息的集合
+	 */
 	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
-			String keyword, String userType, String expressType);
+			String keyword);
 
 	/**
 	 * 查询所有用户电话号码

@@ -22,14 +22,19 @@ public class UserManagerImpl implements IUserManager {
 	public User login(User user) {
 		return userDAO.login(user);
 	}
-
 	@Override
+	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
+			String keyword) {
+		// TODO Auto-generated method stub
+		return userDAO.queryUserByPaging(pageNo, pageSize, keyword);
+	}
+	/*@Override
 	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType) {
 		// TODO Auto-generated method stub
 		return userDAO.queryUserByPaging(pageNo, pageSize, keyword, userType,
 				expressType);
-	}
+	}*/
 
 	@Override
 	public void addUser(User user) {

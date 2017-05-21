@@ -89,6 +89,20 @@ public class UserControllor {
 	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
+		if (keyword==null) {
+			keyword="";
+		}
+		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword);
+		int total = userManager.queryAllUserAcount();
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		map.put("keyword", keyword);
+		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
+	}
+	/*这里注释的是通过类型查找用户的方法
+	 * public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
+			String userType, String expressType)
+			throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println(keyword);
 		if (keyword==null) {
 			keyword="";
@@ -96,20 +110,11 @@ public class UserControllor {
 		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword,
 				userType, expressType);
 		int total = userManager.queryAllUserAcount();
-//		String json = User.getUserListJson(list);
-//		StringBuffer sBuffer = new StringBuffer();
-//		sBuffer.append("{");
-//		sBuffer.append("\"status\":\"success\",");
-//		sBuffer.append("\"totals\":" + total + ",");
-//		sBuffer.append("\"data\":");
-//		sBuffer.append(json);
-//		sBuffer.append("}");
 		map.put("pageSize", pageSize);
 		map.put("pageNo", pageNo);
 		map.put("keyword", keyword);
-		System.out.println(map.get("count"));
 		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
-	}
+	}*/
 
 	/**
 	 * 注册账户之前查询所有用户名，以便判断注册时输入的用户名是否已存在
@@ -436,6 +441,10 @@ public class UserControllor {
 		return flag;
 		 
 	}
+	/**
+	 * 拦截到404错误时，跳转到错误提示页
+	 * @return
+	 */
 	@RequestMapping("/error404")
 	public ModelAndView error404(){
 		Map<String, Object> model = new HashMap<String, Object>();
