@@ -1,19 +1,30 @@
 package org.express.deliver.controllor;
 
+
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IBusinessActivitiesManager;
+import org.express.deliver.pojo.BusinessActivities;
+import org.express.deliver.pojo.User;
+import org.express.deliver.util.CutImg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 订单Controllor类
+ * 商家列表Controllor类
  * 
  * @author 吴文鑫
  * 
@@ -23,9 +34,40 @@ import org.springframework.web.servlet.ModelAndView;
 public class BusinessActivitiesControllor {
 	@Resource(name = "businessactivitiesManager")
 	private IBusinessActivitiesManager businessactivitiesManager;
-	
+
+	/**
+	 * 添加商家活动
+	 * 
+	 * @param businessActivities
+	 *            商家活动
+	 * @return
+	 */
+	@RequestMapping("/addBusinessActivities")
+	public ModelAndView addBusinessActivities(BusinessActivities businessActivities,
+			HttpServletRequest request) {
+		System.out.println("555555");
+		//设置图片路径,MultipartFile imagePath
+		/* businessActivities.setImagePath(uploadUserImg(imagePath, request)); */
+		// 设置当前时间为添加活动时间
+		businessActivities.setAddDate(new Date());
+		businessactivitiesManager.addBusinessActivities(businessActivities);
+		//添加完成以后，分页查询并显示
+		int pageNo=1;
+		int pageSize=10;
+		String keyword="";
+		Map<String, Object> map = businessactivitiesManager
+				.queryBusinessActivitiesByPaging(pageNo, pageSize, keyword);
+		map.put("keyword", keyword);
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		return new ModelAndView(
+				"ui/jsp/tablelist_manger/businessactivities/businessactivitielist",
+				"result", map);
+	}
+
 	/**
 	 * 分页查询所有商家信息，显示在后台管理页面中
+	 * 
 	 * @param keyword
 	 * @param pageNo
 	 * @param pageSize
@@ -34,25 +76,76 @@ public class BusinessActivitiesControllor {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-		@RequestMapping(value = "/BusinessActivitiesList", produces = "text/html;charset=UTF-8")
-	
-		public ModelAndView getBusinessActivitiesList(String keyword,int pageSize,int pageNo){
-			if (keyword==null) {
-				keyword="";
-			}
-			Map<String, Object> map = businessactivitiesManager.queryBusinessActivitiesByPaging(pageNo, pageSize, keyword);
-			map.put("keyword", keyword);
-			map.put("pageSize", pageSize);
-			map.put("pageNo", pageNo);
-//			int total=businessactivitiesManager.queryAllBusinessActivitiesAcount();
-//			String json=BusinessActivities.getBusinessActivitiesListJson(list);
-//			StringBuffer sBuffer=new StringBuffer();
-//			sBuffer.append("{");
-//			sBuffer.append("\"status\":\"success\",");
-//			sBuffer.append("\"totals\":"+total+",");
-//			sBuffer.append("\"data\":");
-//			sBuffer.append(json);
-//			sBuffer.append("}");
-			return new ModelAndView("ui/jsp/tablelist_manger/businessactivities/businessactivitielist","result",map);
+	@RequestMapping(value = "/BusinessActivitiesList", produces = "text/html;charset=UTF-8")
+	public ModelAndView getBusinessActivitiesList(String keyword, int pageSize,
+			int pageNo) {
+		if (keyword == null) {
+			keyword = "";
 		}
+		Map<String, Object> map = businessactivitiesManager
+				.queryBusinessActivitiesByPaging(pageNo, pageSize, keyword);
+		map.put("keyword", keyword);
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		return new ModelAndView(
+				"ui/jsp/tablelist_manger/businessactivities/businessactivitielist",
+				"result", map);
+	}
+
+	/**
+	 * 上传图片
+	 * 
+	 * @param userImg
+	 * @param request
+	 * @return 保存的图片路径
+	 */
+	public String uploadUserImg(MultipartFile userImg,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
+		// 图片保存路径
+		String filePath = request.getSession().getServletContext()
+				.getRealPath("/ui/userimg/1");
+		// 获取图片原始名称
+		String originalFilename = userImg.getOriginalFilename();
+		// 以用户id加图片扩展名给图片命名
+		String newFileName = user.getId()
+				+ originalFilename.substring(originalFilename.lastIndexOf("."));
+		String path = filePath + newFileName;
+		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+			file = new File(path);
+		}
+		try {
+			userImg.transferTo(file);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 压缩图片1
+		BufferedImage bi = null;
+		try {
+			bi = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			ImageIO.write(CutImg.ImageTransform(bi, 100, 100), "png", new File(
+					path));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 截取图片路径
+		path = path.substring(path.indexOf("ui"), path.length());
+		// 替换路径中斜杠
+		path = path.replace("\\", "/");
+		return path;
+	}
 }

@@ -212,22 +212,43 @@ public class UserControllor {
 		session.removeAttribute("user");
 		return "redirect:/index.jsp";
 	}
+	/**
+	 * 修改个人头像
+	 * @param user
+	 * @param request
+	 * @param 
+	 * @return
+	 */
+		@RequestMapping("/updateUserImg")
+		public String updateUserImg(User user, HttpServletRequest request,
+				MultipartFile userImg) {
+			// 设置图片路径
+			HttpSession session = request.getSession();
+			User user2 = (User) session.getAttribute("user");
+			user2.setImagePath(uploadUserImg(userImg, request));
+			userManager.modifyUserInfo(user2);
+			return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
+		}
 
+/**
+ * 修改个人信息
+ * @param user
+ * @param request
+ * @param 
+ * @return
+ */
 	@RequestMapping("/updateUserInfo")
-	public String updateUserInfo(User user, HttpServletRequest request,
-			MultipartFile userImg) {
-		// 设置图片路径
-		user.setImagePath(uploadUserImg(userImg, request));
+	public String updateUserInfo(User user, HttpServletRequest request) {		
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
 		user.setId(user2.getId());
+		user.setImagePath(user2.getImagePath());
 		user.setUserName(user2.getUserName());
 		user.setPassword(user2.getPassword());
 		user.setRegDate(user2.getRegDate());
 		user.setUserType(user2.getUserType());
 		user.setCredit(user2.getCredit());
 		user.setIntegral(user2.getIntegral());
-		user.setExpressType(user2.getExpressType());
 		userManager.modifyUserInfo(user);
 		session.setAttribute("user", user);
 		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";

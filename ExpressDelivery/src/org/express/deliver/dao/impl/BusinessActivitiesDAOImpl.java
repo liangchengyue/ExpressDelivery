@@ -93,7 +93,7 @@ public class BusinessActivitiesDAOImpl extends BaseDAO implements
 	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception {
 		String hql = "FROM BusinessActivities AS b WHERE b.businessName LIKE ? OR "
-				+ "b.businessAddress LIKE ? OR b.activeContent LIKE ?";
+				+ "b.businessAddress LIKE ? OR b.activeContent LIKE ? ORDER BY b.addDate DESC";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%" + keyword + "%");
 		query.setString(1, "%" + keyword + "%");

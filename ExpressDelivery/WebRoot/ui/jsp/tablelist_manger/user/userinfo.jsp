@@ -48,6 +48,7 @@
 							<li><a href="ui/jsp/main/frame.jsp">返回首页</a></li>
 							<li class="active"><a href="#tab_1_1" data-toggle="tab">基本信息</a></li>
 							<li class=""><a href="#tab_1_2" data-toggle="tab">修改信息</a></li>
+							<li class=""><a href="#tab_1_4" data-toggle="tab">修改头像</a></li>
 							<li class=""><a href="#tab_1_3" data-toggle="tab">身份审核</a></li>
 						</ul>
 						<div class="tab-content">
@@ -124,8 +125,7 @@
 									</div>
 									<div class="portlet-body form">
 										<form class="form-horizontal" role="form"
-											action="user/updateUserInfo" method="post"
-											enctype="multipart/form-data">
+											action="user/updateUserInfo" method="post">
 											<div class="form-body" style="width: 60%;">
 												<div class="form-group">
 													<label class="col-md-5 control-label">昵称:</label>
@@ -166,11 +166,15 @@
 																style="float:left;margin-left: 20px;"> <input
 																	type="radio" name="gender" id="optionsRadios25"
 																	value="男"
-																	<%=gender.equals("男") ? "checked=\"checked\"" : ""%>>
+																	<%=gender != null && gender.equals("男")
+					? "checked=\"checked\""
+					: ""%>>
 																男
 															</label> <label class="radio-inline"> <input type="radio"
 																	name="gender" id="optionsRadios26" value="女"
-																	<%=gender.equals("女") ? "checked=\"checked\"" : ""%>>
+																	<%=gender != null && gender.equals("女")
+					? "checked=\"checked\""
+					: ""%>>
 																女
 															</label>
 														</div>
@@ -178,17 +182,6 @@
 												</div>
 
 
-											</div>
-											<div class="form-group"
-												style="width:40%;height:260px;float: left;margin-top: -260px;margin-left: 780px;">
-												<div class="col-md-9">
-													<label class="col-md-6 control-label"><img alt=""
-														src="${user.imagePath }" width="150px;" height="150px;"
-														style="margin-top: 30px;margin-left:30px;"></label><br>
-													<input class="col-md-3"
-														style="margin-top: 148px;margin-left: 20px;" type="file"
-														name="userImg">
-												</div>
 											</div>
 											<div class="form-actions fluid">
 												<div class="col-md-offset-5 col-md-6">
@@ -201,7 +194,34 @@
 									</div>
 								</div>
 							</div>
+							<!-- ---------------------------------- 修改头像     --------------------------------- -->
+							<div class="tab-pane" id="tab_1_4">
+								<div class="portlet box green ">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-edit"></i>修改头像
+										</div>
+									</div>
+									<form class="form-horizontal" role="form"
+										action="user/updateUserImg" method="post"
+										enctype="multipart/form-data">
+										<div class="col-md-9">
+											<label class="col-md-6 control-label" style="margin-top: 30px"><img alt=""
+												src="${user.imagePath }" width="300px;" height="300px;"></label><br>
+											<input class="col-md-3" type="file" name="userImg">
+										</div>
+										<div class="col-md-offset-5 col-md-6">
+											<button type="submit" class="btn green">提交修改</button>
+											<button type="reset" class="btn default"
+												style="margin-left: 30px;">重置</button>
+										</div>
+									</form>
+								</div>
+
+
+							</div>
 							<!-- ---------------------------------- 身份认证     --------------------------------- -->
+
 							<div class="tab-pane" id="tab_1_3">
 								<div class="portlet box green ">
 									<div class="portlet-title">
