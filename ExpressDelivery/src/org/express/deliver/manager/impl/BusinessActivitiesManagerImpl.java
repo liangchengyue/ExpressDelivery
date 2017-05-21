@@ -40,4 +40,15 @@ public class BusinessActivitiesManagerImpl implements
 		return businessactivitiesDAO.queryAllBusinessActivitiesAcount();
 	}
 
+	@Override
+	public void addBusinessActivities(BusinessActivities businessActivities) {
+		try {
+			businessactivitiesDAO.addBusinessActivities(businessActivities);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

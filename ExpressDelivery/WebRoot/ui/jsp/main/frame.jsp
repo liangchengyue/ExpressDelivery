@@ -29,11 +29,14 @@
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
 						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
-							<li class="start active"><a
+							<li class="start "><a
 								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
 							<li class="start"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
 									商家活动 </a></li>
+									<li class="start"><a
+								href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+									添加商家活动 </a></li>
 						</ul>
 				</a></li>
 			</ul>

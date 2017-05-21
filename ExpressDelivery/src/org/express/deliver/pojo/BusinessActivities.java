@@ -45,6 +45,19 @@ public class BusinessActivities {
 	@Column(length = 500, nullable = false)
 	private String activeContent;
 	/**
+	 * 电话
+	 */
+	@Column(length = 50)
+	private String telephone;
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	/**
 	 * 活动开始时间
 	 */
 	@Column(nullable = false)
@@ -60,6 +73,32 @@ public class BusinessActivities {
 	@ManyToOne(cascade = CascadeType.REFRESH, optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
 	private User user;
+	/**
+	 * 图片路径
+	 */
+	@Column(length = 200)
+	private String imagePath;
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	/**
+	 * 添加日期
+	 */
+	private Date addDate;
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+	public Date getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
 
 	/**
 	 * 获取ID

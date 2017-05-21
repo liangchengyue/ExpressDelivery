@@ -13,6 +13,14 @@ import org.express.deliver.pojo.BusinessActivities;
  */
 public interface IBusinessActivitiesManager {
 	/**
+	 * 添加商家活动
+	 * 
+	 * @param businessActivities
+	 *            商家活动
+	 */
+	public void addBusinessActivities(BusinessActivities businessActivities);
+
+	/**
 	 * 分页查询商家列表
 	 * 
 	 * @param pageNo
@@ -23,8 +31,8 @@ public interface IBusinessActivitiesManager {
 	 *            关键字
 	 * @return List 订商家列表的集合
 	 */
-	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo, int pageSize,
-			String keyword);
+	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo,
+			int pageSize, String keyword);
 
 	/**
 	 * 查询商家列表总数

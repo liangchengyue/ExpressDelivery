@@ -30,13 +30,16 @@
 
 				<li class="start active"><a href="javascript:;"> <i
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
-						class="arrow "></span> <span class="selected"></span> 
+						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
 							<li class="start "><a
-								href="user/UserList?pageSize=10&pageNo=1">
-									用户 </a></li>														
-								<li class="start active"><a
-								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
+								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
+							<li class="start active"><a
+								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
+									商家活动 </a></li>
+							<li class="start"><a
+								href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+									添加商家活动 </a></li>
 						</ul>
 
 				</a></li>
@@ -55,19 +58,24 @@
 						<div class="portlet-body">
 							<%
 								Map<String, Object> map = (Map) request.getAttribute("result");
-								List<BusinessActivities> bs = (List<BusinessActivities>) map.get("businessActivities");
+								List<BusinessActivities> bs = (List<BusinessActivities>) map
+										.get("businessActivities");
 								int pageNo = (Integer) map.get("pageNo");
 								int pageSize = (Integer) map.get("pageSize");
 								int count = (Integer) map.get("count");
 								int pageCount = (count - 1) / pageSize + 1;
 							%>
-							<form action="businessActivities/BusinessActivitiesList" method="post">
+							<form action="businessActivities/BusinessActivitiesList"
+								method="post">
 								<input type="text" class="input-medium search-query"
 									name="keyword"
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
 								<button type="submit" class="btn">搜索</button>
+								<span ><a
+									href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+									添加商家活动 </a></span>
 							</form>
 							<table
 								class="table table-striped table-bordered table-hover table-full-width"
@@ -75,22 +83,31 @@
 								<thead>
 									<tr>
 										<th>商家名称</th>
-										<th>活动开始时间</th>
+										<th>商家地址</th>
+										<th>联系电话</th>
+										<th>活动内容</th>
+										<th>活动图片</th>
+										<th class="hidden-xs">活动添加时间</th>
+										<th class="hidden-xs">活动开始时间</th>
 										<th class="hidden-xs">活动结束时间</th>
-										<th class="hidden-xs">活动地址</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="BusinessActivitiesList" items="${result.businessActivities }">
-									<tr>
-										<td>${BusinessActivitiesList.businessName}</td>
-										<td>${BusinessActivitiesList.activeStartDate}</td>
-										<td>${BusinessActivitiesList.activeEndDate}</td>
-										<td>${BusinessActivitiesList.businessAddress}</td>
-									</tr>
+									<c:forEach var="BusinessActivitiesList"
+										items="${result.businessActivities }">
+										<tr>
+											<td>${BusinessActivitiesList.businessName}</td>
+											<td>${BusinessActivitiesList.businessAddress}</td>
+											<td>${BusinessActivitiesList.telephone}</td>
+											<td>${BusinessActivitiesList.activeContent}</td>
+											<td>${BusinessActivitiesList.imagePath}</td>
+											<td>${BusinessActivitiesList.addDate}</td>
+											<td>${BusinessActivitiesList.activeStartDate}</td>
+											<td>${BusinessActivitiesList.activeEndDate}</td>
+										</tr>
 									</c:forEach>
-									
-									
+
+
 								</tbody>
 							</table>
 							<div class="pager row">
