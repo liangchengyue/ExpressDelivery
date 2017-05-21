@@ -148,13 +148,6 @@
 															value="${user.address}" name="address">
 													</div>
 												</div>
-												<div class="form-group">
-													<label class="col-md-5 control-label">身份证号:</label>
-													<div class="col-md-6">
-														<input type="text" class="form-control" placeholder="身份证号"
-															value="${user.idCard}" name="idCard">
-													</div>
-												</div>
 												<%
 													String gender = ((User) session.getAttribute("user")).getGender();
 												%>
@@ -204,11 +197,11 @@
 									</div>
 									<form class="form-horizontal" role="form"
 										action="user/updateUserImg" method="post"
-										enctype="multipart/form-data">
+										enctype="multipart/form-data" onsubmit="return ISChioceImg()">
 										<div class="col-md-9">
 											<label class="col-md-6 control-label" style="margin-top: 30px"><img alt=""
 												src="${user.imagePath }" width="300px;" height="300px;"></label><br>
-											<input class="col-md-3" type="file" name="userImg">
+											<input class="col-md-3" type="file" name="userImg" id="input_ChioceImg">
 										</div>
 										<div class="col-md-offset-5 col-md-6">
 											<button type="submit" class="btn green">提交修改</button>
@@ -329,6 +322,16 @@
 					}
 				}
 			});
+		}
+		//判断修改头像时是否选择图片
+		function ISChioceImg(){
+			var ISChioceimg = $("#input_ChioceImg").val();
+			if(ISChioceimg==""){
+				alert("请先选择图片！");
+				return false;
+				
+			}
+			return true;
 		}
 	</script>
 </body>

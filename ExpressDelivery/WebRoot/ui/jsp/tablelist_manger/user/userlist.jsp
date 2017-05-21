@@ -71,7 +71,7 @@
 							</form>
 							<table
 								class="table table-striped table-bordered table-hover table-full-width"
-								id="sample_2">
+								id="sample_2" align="center">
 								<thead>
 									<tr>
 										<th>用户名</th>

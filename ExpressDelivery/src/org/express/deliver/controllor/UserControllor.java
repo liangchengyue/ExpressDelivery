@@ -226,6 +226,7 @@ public class UserControllor {
 			HttpSession session = request.getSession();
 			User user2 = (User) session.getAttribute("user");
 			user2.setImagePath(uploadUserImg(userImg, request));
+			session.setAttribute("user", user2);
 			userManager.modifyUserInfo(user2);
 			return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
 		}
@@ -242,6 +243,7 @@ public class UserControllor {
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
 		user.setId(user2.getId());
+		user.setIdCard(user2.getIdCard());
 		user.setImagePath(user2.getImagePath());
 		user.setUserName(user2.getUserName());
 		user.setPassword(user2.getPassword());
@@ -469,6 +471,8 @@ public class UserControllor {
 			user2.setTrueName(user.getTrueName());
 			user2.setIdCard(user.getIdCard());
 			userManager.modifyUserInfo(user2);
+			HttpSession session =request.getSession();
+			session.setAttribute("user", user2);
 			flag = true;
 		}
 		return flag;
