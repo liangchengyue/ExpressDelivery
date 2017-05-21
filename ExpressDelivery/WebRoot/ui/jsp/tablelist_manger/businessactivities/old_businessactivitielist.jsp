@@ -30,11 +30,21 @@
 
 				<li class="start active"><a href="javascript:;"> <i
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
-						class="arrow "></span> <span class="selected"></span> 
+						class="arrow "></span> <span class="selected"></span> <%
+ 	User user = (User) session.getAttribute("user");
+ 	if (user.getUserType().equals("商家")) {
+ %>
 						<ul class="sub-menu">
 							<li class="start "><a
-								href="user/UserList?pageSize=10&pageNo=1">
-									用户 </a></li>														
+								href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
+									用户 </a></li>
+							<%
+								}
+							%>
+							<li class="start "><a
+								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
+							<li class="start"><a
+								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
 								<li class="start active"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
 						</ul>

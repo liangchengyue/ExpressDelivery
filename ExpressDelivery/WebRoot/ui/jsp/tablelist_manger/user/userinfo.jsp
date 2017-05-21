@@ -45,6 +45,7 @@
 				<div class="col-md-12">
 					<div class="tabbable tabbable-custom tabbable-full-width">
 						<ul class="nav nav-tabs">
+							<li><a href="ui/jsp/main/frame.jsp">返回首页</a></li>
 							<li class="active"><a href="#tab_1_1" data-toggle="tab">基本信息</a></li>
 							<li class=""><a href="#tab_1_2" data-toggle="tab">修改信息</a></li>
 							<li class=""><a href="#tab_1_3" data-toggle="tab">身份审核</a></li>
@@ -97,23 +98,11 @@
 														class="col-md-3 control-label left"
 														style="text-align: left;">${user.idCard}</label>
 												</div>
-
-												<div class="form-group">
-													<label class="col-md-6 control-label"
-														style="text-align: right;">信誉度:</label> <label
-														class="col-md-3 control-label" style="text-align: left;">${user.credit}</label>
-												</div>
-												<div class="form-group">
-													<label class="col-md-6 control-label"
-														style="text-align: right;">积分:</label> <label
-														class="col-md-3 control-label" style="text-align: left;">${user.credit}</label>
-												</div>
-
 											</div>
 
 										</form>
 										<div class="form-actions fluid"
-											style="width:50%;height:398px;float:right;margin-top: -412px;background-color: white;">
+											style="width:50%;height:398px;float:right;margin-top: -380px;background-color: white;">
 											<div class="form-group">
 												<label for="exampleInputFile" class="col-md-3 control-label"
 													style="text-align: right;">头像:</label> <label
@@ -193,13 +182,12 @@
 											<div class="form-group"
 												style="width:40%;height:260px;float: left;margin-top: -260px;margin-left: 780px;">
 												<div class="col-md-9">
-													<label 
-														class="col-md-6 control-label"><img alt=""
+													<label class="col-md-6 control-label"><img alt=""
 														src="${user.imagePath }" width="150px;" height="150px;"
 														style="margin-top: 30px;margin-left:30px;"></label><br>
 													<input class="col-md-3"
 														style="margin-top: 148px;margin-left: 20px;" type="file"
-														 name="userImg">
+														name="userImg">
 												</div>
 											</div>
 											<div class="form-actions fluid">
@@ -221,25 +209,23 @@
 											<i class="fa fa-edit"></i>实名认证
 										</div>
 									</div>
-									<div class="portlet-body form" id="realNameValidata"  >
+									<div class="portlet-body form" id="realNameValidata">
 										<%
-											User user=(User)session.getAttribute("user");
-											if(user.getIdCard()==null){
+											User user = (User) session.getAttribute("user");
+											if (user.getIdCard() == null) {
 										%>
 										<form class="form-horizontal" role="form"
 											action="user/updateUserInfo" method="post"
 											enctype="multipart/form-data" onsubmit="return false;">
 											<div class="form-body">
 
-												<div class="form-group" style="height: 50px;">
-													
-												</div>
+												<div class="form-group" style="height: 50px;"></div>
 
 												<div class="form-group">
 													<label class="col-md-4 control-label">真实姓名:</label>
 													<div class="col-md-4">
 														<input type="text" class="form-control" placeholder="真实姓名"
-															value="${user.trueName}" name="trueName" id="trueName" >
+															value="${user.trueName}" name="trueName" id="trueName">
 													</div>
 												</div>
 												<span id="trueNameS"></span>
@@ -253,16 +239,21 @@
 												<span id="idCardS"></span>
 												<div class="form-actions fluid">
 													<div class="col-md-offset-5 col-md-6">
-														<button type="button" class="btn green" onclick="valiIDCard()">提交修改</button>
+														<button type="button" class="btn green"
+															onclick="valiIDCard()">提交修改</button>
 														<button type="reset" class="btn default"
 															style="margin-left: 30px;">重置</button>
 													</div>
 												</div>
 											</div>
-									</form>
-										<%} else{ %>
-											<h2>恭喜你通过实名认证</h2>
-										<%} %>
+										</form>
+										<%
+											} else {
+										%>
+										<h2>恭喜你通过实名认证</h2>
+										<%
+											}
+										%>
 									</div>
 								</div>
 
@@ -275,7 +266,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="footer">
 		<div class="footer-inner">2017 &copy; 老司机</div>
 		<div class="footer-tools">
@@ -289,29 +280,31 @@
 	<script src="ui/assets/scripts/index.js" type="text/javascript"></script>
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		function valiIDCard(){
-			var trueName=$("#trueName").val();
-			var idCard=$("#idcard").val();
-			var p=/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
-			if(trueName==""){
+		function valiIDCard() {
+			var trueName = $("#trueName").val();
+			var idCard = $("#idcard").val();
+			var p = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
+			if (trueName == "") {
 				$("#trueNameS").html("真实姓名不能为空！");
 				return;
 			}
-			if(!p.test(idCard)){
+			if (!p.test(idCard)) {
 				$("#idCardS").html("身份证格式不正确！");
 				return;
 			}
-			var data={"trueName":trueName,"idCard":idCard};
+			var data = {
+				"trueName" : trueName,
+				"idCard" : idCard
+			};
 			$.ajax({
-				url:"user/IdCard",
-				type:"post",
-				data:data,
-				success:function(data){
+				url : "user/IdCard",
+				type : "post",
+				data : data,
+				success : function(data) {
 					console.log(data);
-					if(data){
+					if (data) {
 						$("#realNameValidata").html("<h2>恭喜你通过实名认证</h2>");
-					}
-					else{
+					} else {
 						$("#idCardS").html("身份证信息错误");
 					}
 				}

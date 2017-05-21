@@ -22,7 +22,7 @@
 	</div>
 	<div class="content">
 		<form class="login-form" action="user/login" method="post">
-			<h3 class="form-title">管理员登录</h3>
+			<h3 class="form-title">登录</h3>
 			<div class="alert alert-danger display-hide">
 				<button class="close" data-close="alert"></button>
 				<span>请输入用户名或密码</span>
@@ -44,8 +44,33 @@
 						autocomplete="off" placeholder="密码" name="password" />
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="radio-inline row">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios1" value="商家" checked>商家
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios2" value="管理员"> 管理员
+					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="其他">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
 			<div class="form-actions">
-				<button type="reset" class="btn green pull-left">重置</button>
 				<button type="submit" class="btn green pull-right">
 					登录<i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -119,7 +144,7 @@
 				<input class="form-control placeholder-no-fix" type="text"
 					autocomplete="off" placeholder="验证码" name="erificationCode"
 					id="useVerificationCodeinput" />
-				<span class="useVerificationCodeIsCorrectPrompt"></span><br>
+				<span class="useVerificationCodeIsCorrectPrompt"></span>
 			</div>
 			<button type="button" class="btn green pull-right"
 				onclick="getvalicode()" id="getvalicodeBtn">
@@ -141,8 +166,25 @@
 					<label> <input class="col-md-6" type="radio"
 							name="userType" id="optionsRadios1" value="管理员" checked>管理员
 					</label> <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios2" value="普通用户"> 普通用户
+							name="userType" id="optionsRadios2" value="商家"> 商家
 					</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-4">快递站类别</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me"
+						name="expressType">
+						<option value="">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -191,6 +233,7 @@
 				success : function(data) {
 					//把返回來验证码复制给全局变量，用来判断用户输入的验证码是否正确
 					returnedValicode = data;
+					
 
 				}
 			});
@@ -209,23 +252,26 @@
 		}
 
 		$(function() {
-			$(".useVerificationCodeIsCorrectPrompt").html("");
+			$(".useVerificationCodeIsCorrectPrompt").html(
+			"");
 			//绑定注册时验证码输入框的input和chang事件
 			$("#useVerificationCodeinput").bind(
 					"change input",
 					function() {
 						//清空验证码输入提示
-						$(".useVerificationCodeIsCorrectPrompt").html("");
+						$(".useVerificationCodeIsCorrectPrompt").html(
+						"");
 						//取得输入的验证码
 						var getuseVerificationCodeinput = $(
 								"#useVerificationCodeinput").val();
-
+						
 						if (getuseVerificationCodeinput == returnedValicode) {
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入正确√");
 							//注册时输入验证码正确，则注册按钮点亮
 							$("#register-submit-btn").attr("disabled", false);
-						} else {
+						}
+						else {
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入错误");
 							//注册时输入验证码错误，则注册按钮不能点亮
@@ -253,7 +299,7 @@
 										//注册时输入号码符合规范，获取验证码能点亮 
 										$("#getvalicodeBtn").attr("disabled",
 												false);
-
+										
 										$(".userTelephoneIsEmptyPrompt").html(
 												"√");
 									} else {
