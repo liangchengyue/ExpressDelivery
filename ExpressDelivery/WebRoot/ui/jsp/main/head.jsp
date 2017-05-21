@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 	<div class="header navbar navbar-inverse navbar-fixed-top"
 		style="background-color: blue;">
-		<a class="navbar-brand" href="index.html"> <img
+		<a class="navbar-brand" href="index.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
@@ -14,8 +14,6 @@
 				<ul class="dropdown-menu">
 					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
 							class="fa fa-user"></i> 我的资料</a></li>
-					<li><a href="inbox.html"><i class="fa fa-envelope"></i>
-							我的消息 <span class="badge badge-danger">3</span></a></li>
 					<li><a href="user/exitLogin"><i class="fa fa-key"></i>
 							退出登录</a></li>
 				</ul></li>

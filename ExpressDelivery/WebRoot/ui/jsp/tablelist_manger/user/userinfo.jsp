@@ -19,7 +19,7 @@
 
 <body class="page-header-fixed page-full-width">
 	<div class="header navbar navbar-inverse navbar-fixed-top">
-		<a class="navbar-brand" href="index.html"> <img
+		<a class="navbar-brand" href="index.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
@@ -30,11 +30,8 @@
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
-					<li><a href="extra_profile.html"> <i class="fa fa-user"></i>
-							我的资料
-					</a></li>
-					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"> <i
-							class="fa fa-envelope"></i> 我的消息 <span class="badge badge-danger">3</span>
+					<li><a href="ui/jsp/main/frame.jsp"> <i class="fa fa-user"></i>
+							返回首页
 					</a></li>
 					<li><a href="user/exitLogin"> <i class="fa fa-key"></i>
 							退出登录
@@ -226,10 +223,14 @@
 											<i class="fa fa-edit"></i>实名认证
 										</div>
 									</div>
-									<div class="portlet-body form">
+									<div class="portlet-body form" id="realNameValidata"  >
+										<%
+											User user=(User)session.getAttribute("user");
+											if(user.getIdCard()==null){
+										%>
 										<form class="form-horizontal" role="form"
 											action="user/updateUserInfo" method="post"
-											enctype="multipart/form-data">
+											enctype="multipart/form-data" onsubmit="return false;">
 											<div class="form-body">
 
 												<div class="form-group" style="height: 50px;">
@@ -239,43 +240,44 @@
 												<div class="form-group">
 													<label class="col-md-4 control-label">真实姓名:</label>
 													<div class="col-md-4">
-														<input type="text" class="form-control" placeholder="联系地址"
-															value="${user.trueName}" name="address">
+														<input type="text" class="form-control" placeholder="真实姓名"
+															value="${user.trueName}" name="trueName" id="trueName" >
 													</div>
 												</div>
+												<span id="trueNameS"></span>
 												<div class="form-group">
 													<label class="col-md-4 control-label">身份证号:</label>
 													<div class="col-md-4">
 														<input type="text" class="form-control" placeholder="身份证号"
-															value="${user.idCard}" name="idCard">
+															value="${user.idCard}" name="idCard" id="idcard">
 													</div>
 												</div>
+												<span id="idCardS"></span>
 												<div class="form-actions fluid">
 													<div class="col-md-offset-5 col-md-6">
-														<button type="submit" class="btn green">提交修改</button>
+														<button type="button" class="btn green" onclick="valiIDCard()">提交修改</button>
 														<button type="reset" class="btn default"
 															style="margin-left: 30px;">重置</button>
 													</div>
 												</div>
 											</div>
+									</form>
+										<%} else{ %>
+											<h2>恭喜你通过实名认证</h2>
+										<%} %>
 									</div>
 								</div>
 
 
 							</div>
 
-
-							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-
-	</div>
+	
 	<div class="footer">
 		<div class="footer-inner">2017 &copy; 老司机</div>
 		<div class="footer-tools">
@@ -288,5 +290,32 @@
 	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
 	<script src="ui/assets/scripts/index.js" type="text/javascript"></script>
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function valiIDCard(){
+			var trueName=$("#trueName").val();
+			var idCard=$("#idcard").val();
+			var p=/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
+			if(trueName==""){
+				$("#trueNameS").html("真实姓名不能为空！");
+				return;
+			}
+			if(!p.test(idCard)){
+				$("#idCardS").html("身份证格式不正确！");
+				return;
+			}
+			var data={"trueName":trueName,"idCard":idCard};
+			$.ajax({
+				url:"user/IdCard",
+				type:"post",
+				data:data,
+				dataType:"json",
+				success:function(data){
+					if(data.msg=="ok"){
+						$("#realNameValidata").html("<h2>恭喜你通过实名认证</h2>");
+					}
+				}
+			});
+		}
+	</script>
 </body>
 </html>
