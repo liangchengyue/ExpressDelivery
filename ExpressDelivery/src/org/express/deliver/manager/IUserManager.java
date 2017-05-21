@@ -89,4 +89,10 @@ public interface IUserManager {
 	 * @param user
 	 */
 	public void modifyUserPassword(User user);
+	/**
+	 * 根据ID获取用户信息
+	 * @param id id
+	 * @return 用户信息
+	 */
+	public User queryUserById(String id);
 }

@@ -95,4 +95,10 @@ public interface IUserDAO {
 	 * @param user
 	 */
 	public void modifyUserPassword(User user);
+	/**
+	 * 根据ID查询用户信息
+	 * @param id
+	 * @return 用户信息
+	 */
+	public User queryUserById(String id);
 }

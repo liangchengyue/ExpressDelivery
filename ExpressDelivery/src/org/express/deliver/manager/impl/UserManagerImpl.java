@@ -72,4 +72,10 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.loginAndroid(user);
 	}
 
+	@Override
+	public User queryUserById(String id) {
+		// TODO Auto-generated method stub
+		return userDAO.queryUserById(id);
+	}
+
 }

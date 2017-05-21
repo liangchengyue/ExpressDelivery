@@ -53,4 +53,11 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 		return ((Long)query.uniqueResult()).intValue();
 	}
 
+	@Override
+	public List<Order> queryOrderLists() {
+		String hql="FROM Order AS o WHERE o.state='未接单'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
+	}
+
 }

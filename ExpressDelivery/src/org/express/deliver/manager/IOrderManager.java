@@ -35,4 +35,9 @@ public interface IOrderManager {
 	 * @param order 订单信息
 	 */
 	public void addOrder(Order order);
+	/**
+	 * 查询未接单的订单
+	 * @return 订单列表
+	 */
+	public List<Order> queryOrderLists();
 }

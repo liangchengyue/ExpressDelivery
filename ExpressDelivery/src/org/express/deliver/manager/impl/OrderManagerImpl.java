@@ -35,4 +35,10 @@ public class OrderManagerImpl implements IOrderManager {
 		
 	}
 
+	@Override
+	public List<Order> queryOrderLists() {
+		// TODO Auto-generated method stub
+		return orderDAO.queryOrderLists();
+	}
+
 }

@@ -49,4 +49,9 @@ public interface IOrderDAO {
 	 * @return 订单总数
 	 */
 	public int queryAllOrderAcount();
+	/**
+	 * 查询未接单的订单
+	 * @return 订单列表
+	 */
+	public List<Order> queryOrderLists();
 }

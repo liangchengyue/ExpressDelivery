@@ -12,6 +12,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.express.deliver.manager.IOrderManager;
+import org.express.deliver.manager.IUserManager;
 import org.express.deliver.pojo.Order;
 import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class OrderControllor {
 	@Resource(name = "orderManager")
 	private IOrderManager orderManager;
+	@Resource(name="userManager")
+	private IUserManager userManager;
 
 	/**
 	 * 分页查询所有用户信息，显示在后台管理页面中
@@ -60,9 +63,17 @@ public class OrderControllor {
 	@RequestMapping("/addOrder")
 	@ResponseBody
 	public String addOrder(Order order) {
+		User user=userManager.queryUserById(order.getPreOrderuUser().getId());
+		order.setPreOrderuUser(user);
 		order.setPreOrderDate(new Date());
 		order.setState("未接单");
 		orderManager.addOrder(order);
 		return "true";
+	}
+	@RequestMapping("/queryOrderList")
+	@ResponseBody
+	public  String queryOrderList(){
+		List<Order> orders=orderManager.queryOrderLists();
+		return "ds";
 	}
 }

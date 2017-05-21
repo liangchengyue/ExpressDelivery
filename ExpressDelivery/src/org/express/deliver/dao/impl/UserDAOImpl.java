@@ -17,7 +17,7 @@ import org.hibernate.Query;
 public class UserDAOImpl extends BaseDAO implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
-	@Override
+	@Override 
 	public User login(User user) {
 		String hql = "FROM User AS u WHERE u.userName=? AND u.password=? AND u.userType=? AND u.expressType = ?";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -112,6 +112,16 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 			return lUsers.get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public User queryUserById(String id) {
+		String hql="FROM User AS u WHERE u.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, id);
+		User user=(User)query.list().get(0);
+		System.out.println(user.getUserName());
+		return user;
 	}
 
 
