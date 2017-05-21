@@ -9,9 +9,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://47.93.226.3/express_delivery"></property>
+		<property name="url" value="jdbc:mysql://123.207.32.178/express_delivery"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="123456789"></property>
+		<property name="password" value="123456"></property>
 	</bean>
 
 	<!-- 配置SessionFactory -->

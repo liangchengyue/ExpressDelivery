@@ -192,16 +192,14 @@
 											</div>
 											<div class="form-group"
 												style="width:40%;height:260px;float: left;margin-top: -260px;margin-left: 780px;">
-												<!-- <label for="exampleInputFile"
-														class="col-md-3 control-label">上传头像:</label> -->
 												<div class="col-md-9">
-													<label for="exampleInputFile"
+													<label 
 														class="col-md-6 control-label"><img alt=""
 														src="${user.imagePath }" width="150px;" height="150px;"
 														style="margin-top: 30px;margin-left:30px;"></label><br>
 													<input class="col-md-3"
 														style="margin-top: 148px;margin-left: 20px;" type="file"
-														id="exampleInputFile" name="userImg">
+														 name="userImg">
 												</div>
 											</div>
 											<div class="form-actions fluid">
@@ -308,10 +306,13 @@
 				url:"user/IdCard",
 				type:"post",
 				data:data,
-				dataType:"json",
 				success:function(data){
-					if(data.msg=="ok"){
+					console.log(data);
+					if(data){
 						$("#realNameValidata").html("<h2>恭喜你通过实名认证</h2>");
+					}
+					else{
+						$("#idCardS").html("身份证信息错误");
 					}
 				}
 			});
