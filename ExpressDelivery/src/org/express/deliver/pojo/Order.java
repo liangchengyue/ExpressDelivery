@@ -56,13 +56,36 @@ public class Order {
 	/**
 	 * 订单结束时间
 	 */
-	@Column(nullable = false)
 	private Date orderEndDate;
 	/**
 	 * 备注
 	 */
 	@Column(length = 500)
 	private String remarks;
+	/**
+	 * 取件时间
+	 */
+	private String takeDate;
+	/**
+	 * 快递名称
+	 */
+	private String name;
+	/**
+	 * 取件地址
+	 */
+	private String takeaddress;
+	/**
+	 * 送达地址
+	 */
+	private String preaddress;
+	/**
+	 * 手机号码
+	 */
+	private String teltPhone;
+	/**
+	 * 积分
+	 */
+	private int grade;
 	/**
 	 * 下单用户
 	 */
@@ -280,6 +303,92 @@ public class Order {
 	public void setGoods(Set<Goods> goods) {
 		this.goods = goods;
 	}
+	/**
+	 * 获取取货时间
+	 * @return 取货时间
+	 */
+	public String getTakeDate() {
+		return takeDate;
+	}
+	/**
+	 * 设置取货时间
+	 * @param takeDate 取货时间
+	 */
+	public void setTakeDate(String takeDate) {
+		this.takeDate = takeDate;
+	}
+	/**
+	 * 获取快递名称 
+	 * @return 快递名称
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * 设置快递名称
+	 * @param name 快递名称
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * 获取取货地址
+	 * @return
+	 */
+	public String getTakeaddress() {
+		return takeaddress;
+	}
+	/**
+	 * 设置取货地址
+	 * @param takeaddress 取货地址
+	 */
+	public void setTakeaddress(String takeaddress) {
+		this.takeaddress = takeaddress;
+	}
+	/**
+	 * 获取送达地址
+	 * @return 送达地址
+	 */
+	public String getPreaddress() {
+		return preaddress;
+	}
+	/**
+	 * 设置送达地址
+	 * @param preaddresString 送达地址
+	 */
+	public void setPreaddress(String preaddress) {
+		this.preaddress = preaddress;
+	}
+	/**
+	 * 获取积分
+	 * @return 积分
+	 */
+	public int getGrade() {
+		return grade;
+	}
+	/**
+	 * 设置积分
+	 * @param grade 积分
+	 */
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	/**
+	 * 获取手机号码
+	 * @return 手机号码
+	 */
+
+	public String getTeltPhone() {
+		return teltPhone;
+	}
+	/**
+	 * 设置手机号码
+	 * @param teltPhone 手机号码
+	 */
+	public void setTeltPhone(String teltPhone) {
+		this.teltPhone = teltPhone;
+	}
+
 	/**
 	 * 将 List<Order>集合转换为json数组
 	 * @param oList  List<Order>集合

@@ -30,4 +30,9 @@ public interface IOrderManager {
 	 * @return 订单总数
 	 */
 	public int queryAllOrderAcount();
+	/**
+	 * 添加订单
+	 * @param order 订单信息
+	 */
+	public void addOrder(Order order);
 }
