@@ -419,6 +419,18 @@ public class UserControllor {
 		return "redirect:/index.jsp";
 	}
 	/**
+	 * 安卓端根据电话号码修改密码
+	 * 
+	 * @param user
+	 * @return 成功更改信息
+	 */
+	@RequestMapping("/modifyAndroidUserPassword")
+	@ResponseBody
+	public String modifyAndroidUserPassword(User user) {
+		userManager.modifyUserPassword(user);
+		return "success";
+	}
+	/**
 	 * 身份证实名认证
 	 * @param idCard 身份证号
 	 * @param realName 真实姓名
