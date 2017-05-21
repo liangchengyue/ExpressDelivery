@@ -29,4 +29,10 @@ public class OrderManagerImpl implements IOrderManager {
 		return orderDAO.queryAllOrderAcount();
 	}
 
+	@Override
+	public void addOrder(Order order) {
+		orderDAO.addOrder(order);
+		
+	}
+
 }

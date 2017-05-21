@@ -82,7 +82,6 @@ public class User {
 	/**
 	 * 注册日期
 	 */
-	@Column(nullable = false)
 	private Date regDate;
 	/**
 	 * 信誉度

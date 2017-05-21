@@ -1,6 +1,7 @@
 package org.express.deliver.controllor;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,5 +63,13 @@ public class OrderControllor {
 //		sBuffer.append(json);
 //		sBuffer.append("}");
 		return new ModelAndView("ui/jsp/tablelist_manger/order/orderlist","result",map);
+	}
+	@RequestMapping("/addOrder")
+	@ResponseBody
+	public String addOrder(Order order) {
+		order.setPreOrderDate(new Date());
+		order.setState("未接单");
+		orderManager.addOrder(order);
+		return "true";
 	}
 }
