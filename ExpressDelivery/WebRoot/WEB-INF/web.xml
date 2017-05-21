@@ -55,6 +55,6 @@
   </filter-mapping>
   <error-page>
   	<error-code>404</error-code>
-  	<location>/ui/jsp/commont/error.jsp</location>
+  	<location>/user/error404</location>
   </error-page>
 </web-app>

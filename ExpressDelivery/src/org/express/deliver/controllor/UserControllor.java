@@ -10,7 +10,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
-import javax.mail.search.FlagTerm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -436,5 +435,15 @@ public class UserControllor {
 		}
 		return flag;
 		 
+	}
+	@RequestMapping("/error404")
+	public ModelAndView error404(){
+		Map<String, Object> model = new HashMap<String, Object>();
+		// 视图解析器将model中的每个元素都通过model.put(name, value);
+		// 这样就可以在JSP页面中通过EL表达式来获取对应的值
+		model.put("url", "index.jsp");
+		model.put("message", "哦豁，你访问的页面不存在！");
+		ModelAndView	modelAndView = new ModelAndView("ui/jsp/commont/error", model);
+		return modelAndView;
 	}
 }
