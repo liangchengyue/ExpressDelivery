@@ -59,7 +59,7 @@
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>用户列表
+								<i class="fa fa-globe"></i>商家活动列表
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -91,18 +91,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (BusinessActivities item : bs) {
-									%>
+									<c:forEach var="BusinessActivitiesList" items="${result.businessActivities }">
 									<tr>
-										<td><%=item.getBusinessName()%></td>
-										<td><%=item.getActiveStartDate()%></td>
-										<td><%=item.getActiveEndDate()%></td>
-										<td><%=item.getBusinessAddress()%></td>
+										<td>${BusinessActivitiesList.businessName}</td>
+										<td>${BusinessActivitiesList.activeStartDate}</td>
+										<td>${BusinessActivitiesList.activeEndDate}</td>
+										<td>${BusinessActivitiesList.businessAddress}</td>
 									</tr>
-									<%
-										}
-									%>
+									</c:forEach>
+									
+									
 								</tbody>
 							</table>
 							<div class="pager row">

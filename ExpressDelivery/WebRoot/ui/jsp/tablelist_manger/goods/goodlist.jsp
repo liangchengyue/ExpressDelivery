@@ -44,8 +44,9 @@
 								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
 							<li class="start active"><a
 								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
-								<li class="start"><a
-								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
+							<li class="start"><a
+								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
+									商家活动 </a></li>
 						</ul>
 
 				</a></li>
@@ -58,7 +59,7 @@
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>用户列表
+								<i class="fa fa-globe"></i>货物列表
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -90,18 +91,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (Goods item : goods) {
-									%>
-									<tr>
-										<td><%=item.getOrderNumber()%></td>
-										<td><%=item.getTakeNo()%></td>
-										<td><%=item.getReservedNumber()%></td>
-										<td><%=item.getPickupAddress()%></td>
-									</tr>
-									<%
-										}
-									%>
+									<c:forEach var="goods" items="${ result.goodss}">
+										<tr>
+											<td>${goods.orderNumber }</td>
+											<td>${goods.takeNo }</td>
+											<td>${goods.reservedNumber }</td>
+											<td>${goods.pickupAddress }</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							<div class="pager row">

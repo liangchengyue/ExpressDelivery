@@ -44,23 +44,15 @@ public class OrderControllor {
 	@RequestMapping(value = "/OrderList", produces = "text/html;charset=UTF-8")
 	public ModelAndView getOrderList(String keyword, int pageNo, int pageSize)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		if (keyword==null) {
-			keyword="";
+		if (keyword == null) {
+			keyword = "";
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = orderManager.queryOrderByPaging(pageNo, pageSize, keyword);
 		map.put("keyword", keyword);
 		map.put("pageSize", pageSize);
 		map.put("pageNo", pageNo);
-//		int total = orderManager.queryAllOrderAcount();
-//		String json = Order.getOrderListJson(list);
-//		StringBuffer sBuffer = new StringBuffer();
-//		sBuffer.append("{");
-//		sBuffer.append("\"status\":\"success\",");
-//		sBuffer.append("\"totals\":" + total + ",");
-//		sBuffer.append("\"data\":");
-//		sBuffer.append(json);
-//		sBuffer.append("}");
-		return new ModelAndView("ui/jsp/tablelist_manger/order/orderlist","result",map);
+		return new ModelAndView("ui/jsp/tablelist_manger/order/orderlist",
+				"result", map);
 	}
 }

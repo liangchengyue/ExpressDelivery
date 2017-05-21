@@ -43,8 +43,9 @@
 								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
 							<li class="start"><a
 								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
-								<li class="start"><a
-								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
+							<li class="start"><a
+								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
+									商家活动 </a></li>
 						</ul>
 				</a></li>
 			</ul>
@@ -56,7 +57,7 @@
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>用户列表
+								<i class="fa fa-globe"></i>订单列表
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -87,17 +88,13 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for (Order order : orders) {
-									%>
-									<tr>
-										<td><%=order.getPreOrderuUser().getNickName()%></td>
-										<td><%=order.getState()%></td>
-										<td><%=order.getTakeOrderUser().getNickName()%></td>
-									</tr>
-									<%
-										}
-									%>
+									<c:forEach var="order" items="${result.oredrs }">
+										<tr>
+											<td>${order.preOrderuUser.userName}</td>
+											<td>${order.state }</td>
+											<td>${order.takeOrderUser.nickName }</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							<div class="pager row">
