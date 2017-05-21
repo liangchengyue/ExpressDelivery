@@ -1,6 +1,7 @@
 package org.express.deliver.manager.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IGoodsDAO;
 import org.express.deliver.manager.IGoodsManager;
@@ -18,16 +19,15 @@ public class GoodsManagerImpl implements IGoodsManager {
 	}
 
 	@Override
-	public List<Goods> queryGoodsByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryGoodsByPaging(int pageNo, int pageSize,
 			String keyword) {
-		 List<Goods>  list =null;
 		try {
-			list= goodsDAO.queryGoodsByPaging(pageNo, pageSize, keyword);
+			return goodsDAO.queryGoodsByPaging(pageNo, pageSize, keyword);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return null;
 	}
 
 	@Override

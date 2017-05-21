@@ -1,6 +1,7 @@
 package org.express.deliver.manager;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.User;
 
@@ -21,6 +22,12 @@ public interface IUserManager {
 	 * @return 用户信息
 	 */
 	public User login(User user);
+	/**
+	 * 安卓用户登录
+	 * @param user 用户信息
+	 * @return 用户信息
+	 */
+	public User loginAndroid(User user);
 
 	/**
 	 * 添加用户
@@ -51,9 +58,9 @@ public interface IUserManager {
 	 *            用户类型
 	 * @param expressType
 	 *            快递类型
-	 * @return List 用户信息的集合
+	 * @return Map 用户信息的集合
 	 */
-	public List<User> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
 			String keyword, String userType, String expressType);
 
 	/**

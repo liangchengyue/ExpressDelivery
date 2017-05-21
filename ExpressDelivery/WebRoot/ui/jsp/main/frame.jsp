@@ -32,41 +32,22 @@
  	if (user.getUserType().equals("商家")) {
  %>
 						<ul class="sub-menu">
-							<li class="start active">
-							<a href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
-									用户
-							</a>
-									</li>
-							<li class="start">
-							<a href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
-									订单
-							</a>
-									</li>
-						</ul> <%
- 	} else if (user.getUserType().equals("管理员")) {
- %>
-						<ul class="sub-menu">
-							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title "
-									lang="ui/jsp/tablelist_manger/order/order_listplugs.jsp">订单</span>
-									<b class="selected"></b>
-							</a></li>
-							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title "
-									lang="ui/jsp/tablelist_manger/businessactivities/businessactivities_listplugs.jsp">商家活动</span>
-									<b class="selected"></b>
-							</a></li>
-							<li class="start active "><a> <i class="fa fa-home"></i>
-									<span class="title "
-									lang="ui/jsp/tablelist_manger/goods/goods_listplugs.jsp">货物</span>
-									<b class="selected"></b>
-							</a></li>
-
-
-						</ul> <%
- 	}
- %>
-				</a></li>
+							<li class="start active"><a
+								href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
+									用户 </a></li>
+							<%
+								}
+							%>
+							<li class="start"><a
+								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
+							<li class="start"><a
+								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
+								<li class="start"><a
+								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
+						</ul>
+			</ul>
+			</a>
+			</li>
 			</ul>
 		</div>
 		<div class="page-content"></div>

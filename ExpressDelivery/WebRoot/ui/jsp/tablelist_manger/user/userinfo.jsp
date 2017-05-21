@@ -53,6 +53,7 @@
 							<li class=""><a href="#tab_1_3" data-toggle="tab">身份审核</a></li>
 						</ul>
 						<div class="tab-content">
+							<!-- ----------------------------------  基本信息   --------------------------------- -->
 							<div class="tab-pane active" id="tab_1_1">
 								<div class="portlet box green ">
 									<div class="portlet-title">
@@ -127,6 +128,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- ----------------------------------  修改信息    --------------------------------- -->
 							<div class="tab-pane" id="tab_1_2">
 								<div class="portlet box green ">
 									<div class="portlet-title">
@@ -216,14 +218,63 @@
 									</div>
 								</div>
 							</div>
+							<!-- ---------------------------------- 身份认证     --------------------------------- -->
 							<div class="tab-pane" id="tab_1_3">
-								<label for="exampleInputFile" class="fa fa-thumbs-up">恭喜您已经通关管理员审核！</label>
+								<div class="portlet box green ">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-edit"></i>实名认证
+										</div>
+									</div>
+									<div class="portlet-body form">
+										<form class="form-horizontal" role="form"
+											action="user/updateUserInfo" method="post"
+											enctype="multipart/form-data">
+											<div class="form-body">
+
+												<div class="form-group" style="height: 50px;">
+													
+												</div>
+
+												<div class="form-group">
+													<label class="col-md-4 control-label">真实姓名:</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" placeholder="联系地址"
+															value="${user.trueName}" name="address">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-md-4 control-label">身份证号:</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" placeholder="身份证号"
+															value="${user.idCard}" name="idCard">
+													</div>
+												</div>
+												<div class="form-actions fluid">
+													<div class="col-md-offset-5 col-md-6">
+														<button type="submit" class="btn green">提交修改</button>
+														<button type="reset" class="btn default"
+															style="margin-left: 30px;">重置</button>
+													</div>
+												</div>
+											</div>
+									</div>
+								</div>
+
+
 							</div>
+
+
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
+	</div>
+
 	</div>
 	<div class="footer">
 		<div class="footer-inner">2017 &copy; 老司机</div>

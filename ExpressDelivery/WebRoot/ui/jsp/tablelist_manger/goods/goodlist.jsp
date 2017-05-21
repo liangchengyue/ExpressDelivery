@@ -1,3 +1,5 @@
+<%@page import="org.express.deliver.pojo.Goods"%>
+<%@page import="org.express.deliver.pojo.Order"%>
 <%@page import="org.express.deliver.pojo.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
@@ -32,19 +34,20 @@
  	if (user.getUserType().equals("商家")) {
  %>
 						<ul class="sub-menu">
-							<li class="start active"><a
+							<li class="start "><a
 								href="user/UserList?pageSize=10&pageNo=1&userType=${user.userType }&expressType=${user.expressType}">
 									用户 </a></li>
 							<%
 								}
 							%>
-							<li class="start"><a
+							<li class="start "><a
 								href="order/OrderList?pageSize=10&pageNo=1"> 订单 </a></li>
-							<li class="start"><a
+							<li class="start active"><a
 								href="goods/goodsList?pageSize=10&pageNo=1"> 货物 </a></li>
 								<li class="start"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1"> 商家活动 </a></li>
 						</ul>
+
 				</a></li>
 			</ul>
 		</div>
@@ -61,22 +64,18 @@
 						<div class="portlet-body">
 							<%
 								Map<String, Object> map = (Map) request.getAttribute("result");
-								List<User> users = (List<User>) map.get("users");
+								List<Goods> goods = (List<Goods>) map.get("goodss");
 								int pageNo = (Integer) map.get("pageNo");
 								int pageSize = (Integer) map.get("pageSize");
 								int count = (Integer) map.get("count");
 								int pageCount = (count - 1) / pageSize + 1;
 							%>
-							<form action="user/UserList" method="post">
+							<form action="order/OrderList" method="post">
 								<input type="text" class="input-medium search-query"
 									name="keyword"
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
-								<input type="hidden" name="userType"
-									value="<%=map.get("userType")%>">
-								<input type="hidden" name="expressType"
-									value="<%=map.get("expressType")%>">
 								<button type="submit" class="btn">搜索</button>
 							</form>
 							<table
@@ -84,21 +83,21 @@
 								id="sample_2">
 								<thead>
 									<tr>
-										<th>用户名</th>
-										<th>昵称</th>
-										<th class="hidden-xs">联系电话</th>
-										<th class="hidden-xs">地址</th>
+										<th>订单号</th>
+										<th>取货号</th>
+										<th class="hidden-xs">预留号码</th>
+										<th class="hidden-xs">取货地址</th>
 									</tr>
 								</thead>
 								<tbody>
 									<%
-										for (User user2 : users) {
+										for (Goods item : goods) {
 									%>
 									<tr>
-										<td><%=user2.getUserName()%></td>
-										<td><%=user2.getNickName()%></td>
-										<td><%=user2.getTelephone()%></td>
-										<td><%=user2.getAddress()%></td>
+										<td><%=item.getOrderNumber()%></td>
+										<td><%=item.getTakeNo()%></td>
+										<td><%=item.getReservedNumber()%></td>
+										<td><%=item.getPickupAddress()%></td>
 									</tr>
 									<%
 										}
@@ -109,26 +108,26 @@
 								<div class="col-md-8">
 									<ul>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=1&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="order/OrderList?pageSize=<%=pageSize%>&pageNo=1&keyword=<%=map.get("keyword")%>"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>首页</a></li>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="order/OrderList?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>&keyword=<%=map.get("keyword")%>"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>上一页</a></li>
 										<%
 											for (int i = 1; i <= pageCount; i++) {
 										%>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=i%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="goods/goodsList?pageSize=<%=pageSize%>&pageNo=<%=i%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
 											<%=pageNo == i ? "onclick=\"return false;\"" : ""%>><%=i%></a></li>
 										<%
 											}
 										%>
 
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="order/OrderList?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>&keyword=<%=map.get("keyword")%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>下一页</a></li>
 										<li><a
-											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>&userType=<%=map.get("userType")%>&expressType=<%=map.get("expressType")%>"
+											href="order/OrderList?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>&keyword=<%=map.get("keyword")%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>尾页</a></li>
 									</ul>
 								</div>

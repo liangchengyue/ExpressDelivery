@@ -1,18 +1,16 @@
 package org.express.deliver.controllor;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IBusinessActivitiesManager;
-import org.express.deliver.pojo.BusinessActivities;
-import org.express.deliver.pojo.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 订单Controllor类
@@ -37,19 +35,24 @@ public class BusinessActivitiesControllor {
 	 * @throws IOException
 	 */
 		@RequestMapping(value = "/BusinessActivitiesList", produces = "text/html;charset=UTF-8")
-		@ResponseBody
-		public String getBusinessActivitiesList() throws JsonGenerationException,
-				JsonMappingException, IOException {
-			List<BusinessActivities> list = businessactivitiesManager.queryBusinessActivitiesByPaging(1, 10, "");
-			int total=businessactivitiesManager.queryAllBusinessActivitiesAcount();
-			String json=BusinessActivities.getBusinessActivitiesListJson(list);
-			StringBuffer sBuffer=new StringBuffer();
-			sBuffer.append("{");
-			sBuffer.append("\"status\":\"success\",");
-			sBuffer.append("\"totals\":"+total+",");
-			sBuffer.append("\"data\":");
-			sBuffer.append(json);
-			sBuffer.append("}");
-			return sBuffer.toString();
+	
+		public ModelAndView getBusinessActivitiesList(String keyword,int pageSize,int pageNo){
+			if (keyword==null) {
+				keyword="";
+			}
+			Map<String, Object> map = businessactivitiesManager.queryBusinessActivitiesByPaging(pageNo, pageSize, keyword);
+			map.put("keyword", keyword);
+			map.put("pageSize", pageSize);
+			map.put("pageNo", pageNo);
+//			int total=businessactivitiesManager.queryAllBusinessActivitiesAcount();
+//			String json=BusinessActivities.getBusinessActivitiesListJson(list);
+//			StringBuffer sBuffer=new StringBuffer();
+//			sBuffer.append("{");
+//			sBuffer.append("\"status\":\"success\",");
+//			sBuffer.append("\"totals\":"+total+",");
+//			sBuffer.append("\"data\":");
+//			sBuffer.append(json);
+//			sBuffer.append("}");
+			return new ModelAndView("ui/jsp/tablelist_manger/businessactivities/businessactivitielist","result",map);
 		}
 }

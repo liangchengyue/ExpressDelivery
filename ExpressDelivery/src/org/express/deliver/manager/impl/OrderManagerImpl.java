@@ -1,6 +1,7 @@
 package org.express.deliver.manager.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IOrderDAO;
 import org.express.deliver.manager.IOrderManager;
@@ -18,7 +19,7 @@ public class OrderManagerImpl implements IOrderManager {
 	private IOrderDAO orderDAO;
 
 	@Override
-	public List<Order> queryOrderByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryOrderByPaging(int pageNo, int pageSize,
 			String keyword) {
 		return orderDAO.queryOrderByPaging(pageNo, pageSize, keyword);
 	}

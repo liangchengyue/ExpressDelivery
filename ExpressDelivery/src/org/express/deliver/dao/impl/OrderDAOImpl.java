@@ -1,6 +1,8 @@
 package org.express.deliver.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IOrderDAO;
 import org.express.deliver.pojo.Order;
@@ -31,14 +33,17 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 	}
 
 	@Override
-	public List<Order> queryOrderByPaging(int pageNo, int pageSize,
+	public Map<String, Object>	 queryOrderByPaging(int pageNo, int pageSize,
 			String keyword) {
 		String hql="FROM Order AS o WHERE o.state LIKE ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, "%"+keyword+"%");
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("count", query.list().size());
 		query.setFirstResult((pageNo-1)*pageSize);
 		query.setMaxResults(pageSize);
-		return query.list();
+		map.put("oredrs", query.list());
+		return map;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package org.express.deliver.manager;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.Goods;
 
@@ -14,9 +15,9 @@ public interface IGoodsManager {
 	 *            页面大小
 	 * @param keyword
 	 *            关键字
-	 * @return List 货物列表的集合
+	 * @return Map 货物列表的集合
 	 */
-	public List<Goods> queryGoodsByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryGoodsByPaging(int pageNo, int pageSize,
 			String keyword);
 
 	/**

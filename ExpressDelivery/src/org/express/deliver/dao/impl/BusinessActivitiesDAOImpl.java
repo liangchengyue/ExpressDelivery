@@ -1,6 +1,8 @@
 package org.express.deliver.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.dao.IBusinessActivitiesDAO;
 import org.express.deliver.pojo.BusinessActivities;
@@ -88,7 +90,7 @@ public class BusinessActivitiesDAOImpl extends BaseDAO implements
 	 * @return 商家活动分页列表
 	 */
 	@Override
-	public List<BusinessActivities> queryBusinessActivitiesByPaging(int pageNo,
+	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception {
 		String hql = "FROM BusinessActivities AS b WHERE b.businessName LIKE ? OR "
 				+ "b.businessAddress LIKE ? OR b.activeContent LIKE ?";
@@ -96,9 +98,12 @@ public class BusinessActivitiesDAOImpl extends BaseDAO implements
 		query.setString(0, "%" + keyword + "%");
 		query.setString(1, "%" + keyword + "%");
 		query.setString(2, "%" + keyword + "%");
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("count",query.list().size());
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);
-		return query.list();
+		map.put("businessActivities", query.list());
+		return map;
 	}
 
 	@Override

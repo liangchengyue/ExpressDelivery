@@ -1,6 +1,7 @@
 package org.express.deliver.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.express.deliver.pojo.BusinessActivities;
 
@@ -65,7 +66,7 @@ public interface IBusinessActivitiesDAO {
 	 * @param Keyword关键字
 	 * @return 商家活动分页列表
 	 */
-	public List<BusinessActivities> queryBusinessActivitiesByPaging(int pageNo,
+	public Map<String, Object> queryBusinessActivitiesByPaging(int pageNo,
 			int pageSize, String keyword) throws Exception;
 	/**
 	 * 查询商家活动总数
