@@ -67,8 +67,7 @@
 
 		</form>
 
-		<form class="register-form" action="user/regster" method="post"
-			onsubmit="return Registersubmit();">
+		<form class="register-form" action="user/regster" method="post">
 			<h3 class="center-block">注册</h3>
 
 			<div class="form-group">
@@ -111,25 +110,30 @@
 					<i class="fa fa-check-circle"></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
+
 					<span class="userTelephoneIsEmptyPrompt"></span>
 				</div>
-			</div>
-			<div class="input-icon col-md-7">
-				<i class="fa fa-check-square"></i>
-				<input class="form-control placeholder-no-fix" type="text"
-					autocomplete="off" placeholder="验证码" name="erificationCode"
-					id="useVerificationCodeinput" />
-				<span class="useVerificationCodeIsCorrectPrompt"></span><br>
 
 			</div>
-			<button type="button" class="btn green pull-right"
-				onclick="getvalicode()" id="getvalicodeBtn">
-				获取验证码<i class="m-icon-swapright m-icon-white"></i>
-			</button>
+			<div class="form-group">
+				<button type="button" class="btn green " onclick="getvalicode()"
+					id="getvalicodeBtn">
+					获取验证码<i class="m-icon-swapright m-icon-white"></i>
+				</button>
+			</div>
+			<div class="form-group">
+				<div class="input-icon ">
+					<i class="fa fa-check-square"></i>
+					<input class="form-control placeholder-no-fix required" type="text"
+						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
+					<span class="useVerificationCodeIsCorrectPrompt"></span>
+				</div>
+			</div>
 
-			<div class="form-group row">
-				<label class="col-md-4 control-label">性别</label>
-				<div class="col-md-8 row">
+
+			<div class="form-group">
+				<label class="col-md-4 control-label left">性别</label>
+				<div class="col-md-6 row">
 					<label> <input class="col-md-6" type="radio" name="gender"
 							id="optionsRadios1" value="男" checked>男
 					</label> <label> <input class="col-md-6" type="radio" name="gender"
@@ -157,15 +161,6 @@
 			App.init();
 			Login.init();
 		});
-		function Registersubmit() {
-			var getuseVerificationCodeinput = $("#useVerificationCodeinput")
-					.val();
-			if (getuseVerificationCodeinput != returnedValicode) {
-				$(".useVerificationCodeIsCorrectPrompt").html("请输入正确的验证码");
-				return false;
-			}
-
-		}
 		//定义一个全局变量存放获取验证码是后台返回来的验证码
 		var returnedValicode = "xxxxx";
 		/* 登录页点击注册时，查询数据库的所有用户名 
@@ -174,16 +169,19 @@
 		function queryAllUser() {
 			$.ajax({
 				url : "user/preRegister"
-			})
+			});
 		}
 		/* 注册时点击获得验证码，调用ajax发送验证码，并返回验证码 */
 		function getvalicode() {
 			//取得注册时用户输入的手机号码
 			var phone = $("#userTelephoneinput").val();
+			var regex = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 			if (phone == "") {
-				$(".userTelephoneIsEmptyPrompt").html("请先填写完整的电话号码");
-
-			} else {
+				alert("请先填写完整的电话号码");
+			} else if (!regex.test(phone)) {
+				alert("请先填写完整的电话号码");
+			}	
+			else {
 				//短信过期时间 （小时）
 				var time = 5;
 				$.ajax({
@@ -227,7 +225,9 @@
 						//取得输入的验证码
 						var getuseVerificationCodeinput = $(
 								"#useVerificationCodeinput").val();
-
+						if (getuseVerificationCodeinput =="") {
+							$(".useVerificationCodeIsCorrectPrompt").html("");
+						}else
 						if (getuseVerificationCodeinput == returnedValicode) {
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入正确√");
@@ -255,8 +255,8 @@
 												"请输入规范的电话号码");
 									}
 								} else {
-									$(".userTelephoneIsEmptyPrompt").html(
-											"手机号不能为空");
+								 $(".userTelephoneIsEmptyPrompt").html(
+											"手机号不能为空"); 
 								}
 							});
 
