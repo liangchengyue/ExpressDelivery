@@ -159,7 +159,6 @@
 			var ISinput_activeContent = $("#input_input_activeContent").val();
 			var ISChoiceBusinessActivitiesImg = $(
 					"#ChoiceBusinessActivitiesImg").val();
-			alert(ISactiveStartDate);
 			if (ISinput_businessName == "" || ISinput_businessAddress == ""
 					|| ISinput_telephone == "" || ISactiveStartDate == ""
 					|| ISactiveEndDate == "" || ISinput_activeContent == ""

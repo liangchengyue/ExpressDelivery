@@ -20,6 +20,12 @@
 </head>
 
 <body class="page-header-fixed">
+<%
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			response.setHeader("refresh", "0;" + basePath + "index.jsp");
+		}
+	%>
 	<jsp:include page="/ui/jsp/main/head.jsp" />
 	<div class="page-container">
 		<div class="page-sidebar navbar-collapse collapse">
