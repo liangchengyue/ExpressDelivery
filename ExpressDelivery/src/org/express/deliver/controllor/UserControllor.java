@@ -3,6 +3,7 @@ package org.express.deliver.controllor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +68,7 @@ public class UserControllor {
 
 	@RequestMapping("/loginAndroid")
 	@ResponseBody
-	public String loginAndroid(User user) {
+	public String loginAndroid(User user) throws UnsupportedEncodingException {
 		User user2 = userManager.loginAndroid(user);
 		return "{\"id\":" + user2.getId() + "}";
 

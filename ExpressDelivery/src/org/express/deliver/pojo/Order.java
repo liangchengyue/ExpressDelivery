@@ -408,6 +408,9 @@ public class Order {
 			sBuffer.append("\"orderEndDate\":");
 			sBuffer.append("\""+order.getOrderEndDate()+"\"");
 			sBuffer.append(",");
+			sBuffer.append("\"takeDate\":");
+			sBuffer.append("\""+order.getTakeDate()+"\"");
+			sBuffer.append(",");
 			sBuffer.append("\"preOrderDate\":");
 			sBuffer.append("\""+order.getPreOrderDate()+"\"");
 			sBuffer.append(",");
@@ -436,7 +439,7 @@ public class Order {
 			sBuffer.append("\""+order.getGrade()+"\"");
 			sBuffer.append(",");
 			sBuffer.append("\"takeOrderUserName\":");
-			sBuffer.append("\""+order.getTakeOrderUser().getUserName()+"\"");
+			sBuffer.append("\""+"\"");
 			sBuffer.append("}");
 			sBuffer.append(",");
 		}

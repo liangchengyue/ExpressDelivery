@@ -63,6 +63,7 @@ public class OrderControllor {
 	@RequestMapping("/addOrder")
 	@ResponseBody
 	public String addOrder(Order order) {
+		System.out.println(order.getName());
 		User user=userManager.queryUserById(order.getPreOrderuUser().getId());
 		order.setPreOrderuUser(user);
 		order.setPreOrderDate(new Date());
@@ -70,10 +71,11 @@ public class OrderControllor {
 		orderManager.addOrder(order);
 		return "true";
 	}
-	@RequestMapping("/queryOrderList")
+	@RequestMapping(value = "/queryOrderList",produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public  String queryOrderList(){
 		List<Order> orders=orderManager.queryOrderLists();
-		return "ds";
+		String json=Order.getOrderListJson(orders);
+		return json;
 	}
 }
