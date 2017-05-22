@@ -37,10 +37,10 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9">密码</label>
+				<label class="control-label visible-ie8 visible-ie9" >密码</label>
 				<div class="input-icon">
 					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix" type="password"
+					<input class="form-control placeholder-no-fix required" type="password"
 						autocomplete="off" placeholder="密码" name="password" />
 				</div>
 			</div>
@@ -81,7 +81,7 @@
 				</div>
 
 			</div>
-			<span class="userNameIsEmptyPrompt"></span>
+			<span class="userNameIsEmptyPrompt" style="color: #B94A48"></span>
 			<div class="form-group">
 				<label class="control-label visible-ie8 visible-ie9">密码</label>
 				<div class="input-icon">
@@ -96,7 +96,7 @@
 				<div class="controls">
 					<div class="input-icon">
 						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix" type="password"
+						<input class="form-control placeholder-no-fix required" type="password"
 							autocomplete="off" placeholder="确认密码" name="rpassword"
 							id="input_rpassword" />
 					</div>
@@ -110,28 +110,11 @@
 					<i class="fa fa-check-circle"></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
-
-					<span class="userTelephoneIsEmptyPrompt"></span>
+					<span class="userTelephoneIsEmptyPrompt" style="color: #B94A48"></span>
 				</div>
 
 			</div>
-			<div class="form-group">
-				<button type="button" class="btn green " onclick="getvalicode()"
-					id="getvalicodeBtn">
-					获取验证码<i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-			<div class="form-group">
-				<div class="input-icon ">
-					<i class="fa fa-check-square"></i>
-					<input class="form-control placeholder-no-fix required" type="text"
-						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
-					<span class="useVerificationCodeIsCorrectPrompt"></span>
-				</div>
-			</div>
-
-
-			<div class="form-group">
+				<div class="form-group">
 				<label class="col-md-4 control-label left">性别</label>
 				<div class="col-md-6 row">
 					<label> <input class="col-md-6" type="radio" name="gender"
@@ -141,6 +124,20 @@
 					</label>
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="input-icon ">
+					<i class="fa fa-check-square" style="margin-top:35 "></i>
+					<input class="form-control placeholder-no-fix required" type="text"
+						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
+					
+					<button type="button" class="btn green " onclick="getvalicode()"
+					id="getvalicodeBtn" style="margin-top: -33px;margin-left: 200px">
+					获取验证码<i class="m-icon-swapright m-icon-white"></i>
+				</button>
+				<span class="useVerificationCodeIsCorrectPrompt" style="color: #B94A48"></span>
+				</div>
+			</div>
+		
 			<div class="form-actions">
 				<button id="register-back-btn" type="button" class="btn">
 					<i class="m-icon-swapleft"></i>返回
@@ -213,6 +210,7 @@
 		}
 
 		$(function() {
+			$("#useVerificationCodeinput").readOnly=true;
 			//清空填写电话号码提示
 			$("userTelephoneIsEmptyPrompt").html("");
 			$(".useVerificationCodeIsCorrectPrompt").html("");
@@ -229,9 +227,12 @@
 							$(".useVerificationCodeIsCorrectPrompt").html("");
 						}else
 						if (getuseVerificationCodeinput == returnedValicode) {
+							$("#register-submit-btn").attr("disabled", false);
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入正确√");
 						} else {
+							//注册时输入验证码错误，则注册按钮不能点亮
+							$("#register-submit-btn").attr("disabled", true);
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入错误");
 						}
@@ -254,9 +255,6 @@
 										$(".userTelephoneIsEmptyPrompt").html(
 												"请输入规范的电话号码");
 									}
-								} else {
-								 $(".userTelephoneIsEmptyPrompt").html(
-											"手机号不能为空"); 
 								}
 							});
 
