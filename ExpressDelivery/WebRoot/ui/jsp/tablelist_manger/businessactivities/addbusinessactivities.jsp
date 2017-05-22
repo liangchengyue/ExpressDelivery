@@ -20,7 +20,7 @@
 
 <body class="page-header-fixed page-full-width">
 	<div class="header navbar navbar-inverse navbar-fixed-top">
-		<a class="navbar-brand" href="index.jsp"> <img
+		<a class="navbar-brand" href="ui/jsp/main/frame.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
@@ -31,6 +31,8 @@
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
+				<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
+							class="fa fa-user"></i> 我的资料</a></li>
 					<li><a href="ui/jsp/main/frame.jsp"> <i class="fa fa-user"></i>
 							返回首页
 					</a></li>
@@ -52,7 +54,7 @@
 
 							<!-- ----------------------------------  添加商家活动    --------------------------------- -->
 
-							<div class="portlet box green ">
+							<div class="portlet box red ">
 								<div class="portlet-title">
 									<div class="caption">
 										<i class="fa fa-edit"></i>添加商家活动
@@ -121,7 +123,7 @@
 
 										<div class="form-actions fluid">
 											<div>
-												<button type="submit" class="btn green">添加</button>
+												<button type="submit" class="btn red">添加</button>
 												<button type="reset" class="btn default"
 													style="margin-left: 90px;">重置</button>
 											</div>

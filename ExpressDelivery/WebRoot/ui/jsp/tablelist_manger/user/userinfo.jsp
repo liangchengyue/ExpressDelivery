@@ -25,7 +25,7 @@
 		} else {
 	%>
 	<div class="header navbar navbar-inverse navbar-fixed-top">
-		<a class="navbar-brand" href="index.jsp"> <img
+		<a class="navbar-brand" href="ui/jsp/main/frame.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
@@ -60,7 +60,7 @@
 						<div class="tab-content">
 							<!-- ----------------------------------  基本信息   --------------------------------- -->
 							<div class="tab-pane active" id="tab_1_1">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-reorder"></i>基本信息
@@ -124,7 +124,7 @@
 							</div>
 							<!-- ----------------------------------  修改信息    --------------------------------- -->
 							<div class="tab-pane" id="tab_1_2">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-edit"></i>修改资料
@@ -186,7 +186,7 @@
 											</div>
 											<div class="form-actions fluid">
 												<div class="col-md-offset-5 col-md-6">
-													<button type="submit" class="btn green">提交修改</button>
+													<button type="submit" class="btn red">提交修改</button>
 													<button type="reset" class="btn default"
 														style="margin-left: 30px;">重置</button>
 												</div>
@@ -223,7 +223,7 @@
 								</div>
 							</div> --%>
 							<div class="tab-pane" id="tab_1_4">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-reorder"></i>修改头像
@@ -233,12 +233,12 @@
 										<form class="form-horizontal" role="form"
 											action="user/updateUserImg" method="post"
 											enctype="multipart/form-data" onsubmit="return ISChioceImg()">
-											<div class="form-body" style="width: 100%;height:300px;">
+											<div class="form-body" style="width: 100%;height:240px;">
 												
-													<label class="col-md-6 control-label" style="margin-top: 40px;"
+													<label class="col-md-6 control-label" style="margin-top: 20px;"
 														><img alt=""
 														src="${user.imagePath }" width="180px;" height="180px;"></label><br>
-													<input class="col-md-3" type="file" name="userImg" style="margin-top: 200px;"
+													<input class="col-md-3" type="file" name="userImg" style="margin-top: 170px;"
 														id="input_ChioceImg">
 												
 												
@@ -247,7 +247,7 @@
 										
 											<div class="form-actions fluid" style=" height:80px; ">
 											<div class="col-md-offset-5">
-													<button type="submit" class="btn green">提交修改</button>
+													<button type="submit" class="btn red">提交修改</button>
 													<button type="reset" class="btn default"
 														style="margin-left: 30px;">重置</button>
 												</div>
@@ -259,7 +259,7 @@
 							<!-- ---------------------------------- 身份认证     --------------------------------- -->
 
 							<div class="tab-pane" id="tab_1_3">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-edit"></i>实名认证
@@ -296,7 +296,7 @@
 											</div>
 											<div class="form-actions fluid" style=" height:80px; ">
 											<div class="col-md-offset-5">
-													<button type="submit" class="btn green">提交修改</button>
+													<button type="submit" class="btn red">提交修改</button>
 													<button type="reset" class="btn default"
 														style="margin-left: 30px;">重置</button>
 												</div>

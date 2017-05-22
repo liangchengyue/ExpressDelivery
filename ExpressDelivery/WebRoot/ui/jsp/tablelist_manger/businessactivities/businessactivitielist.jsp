@@ -55,7 +55,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box green">
+					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-globe"></i>商家活动列表
@@ -78,9 +78,9 @@
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
-								<button type="submit" class="btn">搜索</button>
-								<span ><a
-									href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+								<button type="submit" class="btn" style="width:60px;height:25px;margin-top: -2px;line-height: 10px;margin-left: -3px;">搜索</button>
+								<span><a
+									href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp" >
 									添加商家活动 </a></span>
 							</form>
 							<table

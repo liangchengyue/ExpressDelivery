@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-	<div class="header navbar navbar-inverse navbar-fixed-top"
-		style="background-color: blue;">
-		<a class="navbar-brand" href="index.jsp"> <img
+	<div class="header navbar navbar-inverse navbar-fixed-top" >
+		<a class="navbar-brand" > <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
