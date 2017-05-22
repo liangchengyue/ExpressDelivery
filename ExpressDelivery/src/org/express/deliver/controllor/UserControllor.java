@@ -180,6 +180,7 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		user.setUserType("管理员");
 		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		HttpSession session = request.getSession();

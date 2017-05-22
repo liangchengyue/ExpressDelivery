@@ -67,7 +67,8 @@
 
 		</form>
 
-		<form class="register-form" action="user/regster" method="post">
+		<form class="register-form" action="user/regster" method="post"
+			onsubmit="return Registersubmit();">
 			<h3 class="center-block">注册</h3>
 
 			<div class="form-group">
@@ -97,7 +98,8 @@
 					<div class="input-icon">
 						<i class="fa fa-check"></i>
 						<input class="form-control placeholder-no-fix" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword" />
+							autocomplete="off" placeholder="确认密码" name="rpassword"
+							id="input_rpassword" />
 					</div>
 				</div>
 			</div>
@@ -106,9 +108,7 @@
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
 				<div class="input-icon">
-
 					<i class="fa fa-check-circle"></i>
-
 					<input class="form-control placeholder-no-fix required" type="text"
 						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
 					<span class="userTelephoneIsEmptyPrompt"></span>
@@ -120,11 +120,13 @@
 					autocomplete="off" placeholder="验证码" name="erificationCode"
 					id="useVerificationCodeinput" />
 				<span class="useVerificationCodeIsCorrectPrompt"></span><br>
+
 			</div>
 			<button type="button" class="btn green pull-right"
 				onclick="getvalicode()" id="getvalicodeBtn">
 				获取验证码<i class="m-icon-swapright m-icon-white"></i>
 			</button>
+
 			<div class="form-group row">
 				<label class="col-md-4 control-label">性别</label>
 				<div class="col-md-8 row">
@@ -132,16 +134,6 @@
 							id="optionsRadios1" value="男" checked>男
 					</label> <label> <input class="col-md-6" type="radio" name="gender"
 							id="optionsRadios2" value="女"> 女
-					</label>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-md-4 control-label">用户类型</label>
-				<div class="col-md-8 row">
-					<label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios1" value="管理员" checked>管理员
-					</label> <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios2" value="普通用户"> 普通用户
 					</label>
 				</div>
 			</div>
@@ -165,8 +157,17 @@
 			App.init();
 			Login.init();
 		});
+		function Registersubmit() {
+			var getuseVerificationCodeinput = $("#useVerificationCodeinput")
+					.val();
+			if (getuseVerificationCodeinput != returnedValicode) {
+				$(".useVerificationCodeIsCorrectPrompt").html("请输入正确的验证码");
+				return false;
+			}
+
+		}
 		//定义一个全局变量存放获取验证码是后台返回来的验证码
-		var returnedValicode = "";
+		var returnedValicode = "xxxxx";
 		/* 登录页点击注册时，查询数据库的所有用户名 
 		        使用ajax异步加载 调用controllor里面的方法
 		 */
@@ -179,21 +180,26 @@
 		function getvalicode() {
 			//取得注册时用户输入的手机号码
 			var phone = $("#userTelephoneinput").val();
-			//短信过期时间 （小时）
-			var time = 5;
-			$.ajax({
-				url : "user/getIndustrySMS",
-				type : "post",
-				data : {
-					"phone" : phone,
-					"time" : time
-				},
-				success : function(data) {
-					//把返回來验证码复制给全局变量，用来判断用户输入的验证码是否正确
-					returnedValicode = data;
+			if (phone == "") {
+				$(".userTelephoneIsEmptyPrompt").html("请先填写完整的电话号码");
 
-				}
-			});
+			} else {
+				//短信过期时间 （小时）
+				var time = 5;
+				$.ajax({
+					url : "user/getIndustrySMS",
+					type : "post",
+					data : {
+						"phone" : phone,
+						"time" : time
+					},
+					success : function(data) {
+						//把返回來验证码复制给全局变量，用来判断用户输入的验证码是否正确
+						returnedValicode = data;
+
+					}
+				});
+			}
 		}
 		/* 登录页点击找回密码时，查询数据库的所有用户电话号码  
 		使用ajax异步加载 调用controllor里面的方法
@@ -209,6 +215,8 @@
 		}
 
 		$(function() {
+			//清空填写电话号码提示
+			$("userTelephoneIsEmptyPrompt").html("");
 			$(".useVerificationCodeIsCorrectPrompt").html("");
 			//绑定注册时验证码输入框的input和chang事件
 			$("#useVerificationCodeinput").bind(
@@ -223,21 +231,11 @@
 						if (getuseVerificationCodeinput == returnedValicode) {
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入正确√");
-							//注册时输入验证码正确，则注册按钮点亮
-							$("#register-submit-btn").attr("disabled", false);
 						} else {
 							$(".useVerificationCodeIsCorrectPrompt").html(
 									"验证码输入错误");
-							//注册时输入验证码错误，则注册按钮不能点亮
-							$("#register-submit-btn").attr("disabled", true);
 						}
 					});
-			//获取验证码按钮的可点击状态
-			var flag_getvalicodeBtn = false;
-			//注册时输入号码为空或错误，获取验证码不能点亮 
-			$("#getvalicodeBtn").attr("disabled", true);
-			//注册时输入号码为空或错误，获取验证码不能点亮，则注册按钮不能点亮
-			$("#register-submit-btn").attr("disabled", true);
 			//电话号码输入错误提示清空
 			$("#userTelephoneinput")
 					.bind(
@@ -250,15 +248,11 @@
 								if (userTelephoneinput != "") {
 
 									if (regex.test(userTelephoneinput)) {
-										//注册时输入号码符合规范，获取验证码能点亮 
-										$("#getvalicodeBtn").attr("disabled",
-												false);
-
 										$(".userTelephoneIsEmptyPrompt").html(
-												"√");
+												"");
 									} else {
 										$(".userTelephoneIsEmptyPrompt").html(
-												"电话号码不符合规范");
+												"请输入规范的电话号码");
 									}
 								} else {
 									$(".userTelephoneIsEmptyPrompt").html(

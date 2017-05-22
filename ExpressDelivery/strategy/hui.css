@@ -1,0 +1,308 @@
+
+
+body{background: #F3F3F4;margin: 0px;padding: 0px;}
+
+
+
+div,i,a,ul,li{font-family: Courier New,courier, monospace;font-size: 14px; color: #424F63;}
+
+
+/*---------------------------panel-------start-----------------*/
+
+.hui-panel{
+    background: white;
+    width: 100%;
+    overflow: hidden;
+    width: 100%;
+    /*
+    box-shadow: 1px 1px 10px #C6C6C6;
+    */
+    margin: 0px auto;
+}
+
+.hui-panel-header{
+    width: 100%;
+    border-bottom: #C2C2C2 1px solid;
+    line-height: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.hui-panel-header span{font-style: normal;}
+
+.hui-panel-header-icon{float: right; color: #424F63; height: 45px; margin: 0px; text-align: center;margin-right: 5px;}
+
+.hui-panel-header-icon li{
+    float: left; margin-left: 15px;
+    list-style: none; line-height: 45px;
+    height: 45px;
+}
+
+
+.hui-panel-header-icon li a{text-decoration: none;color: #424F63;}
+.hui-panel-header-icon>li i{font-size: 20px;}
+
+
+.hui-panel-body{background: white; padding: 10px;}
+
+.hui-panel-footer{border-top:#C2C2C2 1px solid;}
+
+.code-text{
+    width: 100%;border: none; color: #1AA094;font-size: 15px;
+}
+
+/*---------------------------panel-------end-----------------*/
+
+/*---------------------------slide-menu-------start-----------------*/
+.hui-slide-menu{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+
+.hui-slide-menu li{
+    list-style: none;
+    position: relative;
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+.hui-slide-menu>li{border-bottom: #3BAFDA 1px solid;}
+
+.hui-slide-menu li a{
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    color: white;
+    padding: 14px;
+    white-space: nowrap;
+    float: left;
+    overflow: hidden;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.hui-slide-menu li a i{font-size: 18px;text-align: left;color: white;}
+
+.hui-slide-menu li a span{right:22px;text-align: right;position: absolute;}
+
+.hui-slide-menu-item,.hui-slide-menu-item ul{width: 100%;margin: 0px;padding: 0px;display: none;}
+
+.hui-slide-menu-item>li>a{padding-left: 30px;}
+
+
+
+.hui-slide-menu-item ul>li>a{padding-left: 45px;}
+
+.hui-menu-open{}
+.hui-menu-open>li{background: #3BAFDA;}
+
+.hui-slide-menu a:hover{color: #E6E9ED}
+
+
+/*---------------------------slide-menu-------end-----------------*/
+
+
+/*----------------------------frame-------start--------------------*/
+
+.hui-radius{border-radius:5px;}
+
+.hui-top-nav{
+    background: #E6E9ED;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50px;
+    border-bottom:#3BAFDA solid 2px;
+    z-index: 1;
+}
+
+.hui-left-slide-container{
+    position: fixed;
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+    width: 250px;
+    background: #4FC1E9;
+    padding-bottom:5px;
+}
+
+.hui-right-container{
+    position: fixed;
+    top:50px;
+    left: 250px;
+    bottom: 0px;
+    right: 0px;
+    padding: 2px;
+}
+
+.hui-frame-footer{
+    position: fixed;
+    right: 0px;
+    left: 250px;
+    height: 40px;
+    text-align: center;
+    background:#E6E9ED;
+    line-height: 40px;
+    bottom: 0px;
+}
+
+.hui-top-nav-logo{
+    position: fixed;
+    font-size: 18px;
+    line-height: 49px;
+    width: 250px;
+    top: 0px;
+    left: 0px;
+    background: #4FC1E9;
+    text-align: center;
+    color: white;
+    border-bottom:2px solid #3BAFDA;
+}
+
+.hui-top-nav-right-usr{
+    position: fixed;
+    right: 80px;
+    top: 0px;
+    height: 50px;
+    color: #4FC1E9;
+    list-style: none;
+}
+
+.hui-top-nav-right-usr>li{
+    float: left;
+    line-height: 50px;
+    font-size: 13px;
+    position: relative;
+}
+
+.hui-top-nav-right-usr a{
+    text-decoration: none;
+    color: #4FC1E9;
+}
+.hui-top-nav-right-usr li i{
+    color: #4FC1E9;
+}
+
+#hui-top-menu i{color: white;}
+
+
+.hui-login-panel{
+
+    background: white;
+    width: 500px;
+    margin: 100px auto;
+    padding: 10px;
+    min-width: 500px;
+}
+
+
+/*----------------------------frame------------end---------------*/
+
+/*-------------------inputs buttons----start---------------*/
+
+.hui-input-group{
+    width: 100%;
+    height: 40px;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+.hui-input-group>input{
+    padding-left:20px;
+}
+
+.hui-input-group>i{
+    position: absolute;
+    left:2px;
+    line-height: 40px;
+    color: #4FC1E9;
+}
+
+.hui-input-primary{
+    border: 1px solid #E6E9ED;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    height: 40px;
+    color: #4FC1E9;
+}
+
+.hui-input-primary:focus{
+    border: 1px solid #3BAFDA;
+}
+
+.hui-btn{
+    cursor: pointer;
+    border: none;
+}
+
+.hui-btn-primary{
+    background: #4FC1E9;
+    color: white;
+    height: 40px;
+    min-width: 100px;
+}
+
+.hui-btn-primary:hover{
+    background: #3BAFDA;
+}
+
+
+/*------------table-------*/
+
+.hui-table{
+    width: 100%;
+}
+
+.hui-table>thead{background: #F5F7FA;height: 35px;}
+
+.hui-table>tbody tr:nth-child(odd){
+    background: #E6E9ED;
+}
+.hui-table>tbody tr:nth-child(even){
+    background: #F5F7FA;
+}
+
+.hui-table th,tr{
+    text-align: center;
+}
+
+.hui-table th{
+    height: 35px;
+}
+
+.hui-table td{
+    font-size: 18px;
+    height: 30px;
+    height: 40px;
+}
+
+
+/*--------------select---------------*/
+
+.hui-select{
+    width: 180px;
+    height: 35px;
+    border: 1px solid #E6E9ED;
+
+}
+
+.hui-textarea{
+    width: 100%;
+    height: 100px;
+    border: 1px solid #E6E9ED;
+}
+
+.hui-textarea:focus{
+    border: 1px solid #3BAFDA;
+}
+

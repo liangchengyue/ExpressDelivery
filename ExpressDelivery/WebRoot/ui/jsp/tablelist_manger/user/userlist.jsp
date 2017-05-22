@@ -82,6 +82,7 @@
 									<tr>
 										<th>用户名</th>
 										<th>昵称</th>
+										<th>用户类型</th>
 										<th class="hidden-xs">联系电话</th>
 										<th class="hidden-xs">地址</th>
 									</tr>
@@ -91,6 +92,7 @@
 										<tr>
 											<td>${user.userName }</td>
 											<td>${user.nickName }</td>
+											<td>${user.userType }</td>
 											<td>${user.telephone }</td>
 											<td>${user.address }</td>
 										</tr>
