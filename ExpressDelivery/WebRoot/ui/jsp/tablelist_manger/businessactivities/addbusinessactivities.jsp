@@ -59,58 +59,64 @@
 									</div>
 								</div>
 								<div class="portlet-body form" align="center">
-									<form class="form-horizontal" role="form" action="businessActivities/addBusinessActivities"
-										method="post" enctype="multipart/form-data">
+									<form class="form-horizontal" role="form"
+										action="businessActivities/addBusinessActivities"
+										method="post" enctype="multipart/form-data"
+										onsubmit=" return submitBusinessActivities()">
 										<div class="form-body" style="width: 60%;">
 											<div class="form-group">
 												<label class="col-md-5 control-label">商家名:</label>
 												<div class="col-md-6">
 													<input type="text" class="form-control" placeholder="商家名"
-														name="businessName">
+														name="businessName" id="input_businessName">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-md-5 control-label">联系电话:</label>
 												<div class="col-md-6">
 													<input type="text" class="form-control" placeholder="联系电话"
-														name="telephone">
+														name="telephone" id="input_telephone">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-md-5 control-label">联系地址:</label>
 												<div class="col-md-6">
 													<input type="text" class="form-control" placeholder="联系地址"
-														name="businessAddress">
+														name="businessAddress" id="input_businessAddress">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-md-5 control-label">活动开始时间:</label>
 												<div class="col-md-6">
 													<input type="date" class="form-control"
-														placeholder="活动开始时间" name="activeStartDate">
+														placeholder="活动开始时间" name="activeStartDate"
+														id="input_activeStartDate">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-md-5 control-label">活动结束时间:</label>
 												<div class="col-md-6">
 													<input type="date" class="form-control"
-														placeholder="活动结束时间" name="activeEndDate">
+														placeholder="活动结束时间" name="activeEndDate"
+														id="input_activeEndDate">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-md-5 control-label">活动内容:</label>
 												<div class="col-md-6">
 													<textarea placeholder="活动内容" name="activeContent"
-														class="form-control" ></textarea>
+														class="form-control" id="input_activeContent"></textarea>
 
 												</div>
 											</div>
-											  <div class="form-group">
+											<div class="form-group">
 												<label class="col-md-5 control-label">添加活动图片:</label>
 												<div class="col-md-6">
-													<input type="file"  name="imagePath">
+													<input type="file" name="businessactivitiesimg"
+														id="ChoiceBusinessActivitiesImg">
 												</div>
-											</div>   
+											</div>
+
 										</div>
 
 										<div class="form-actions fluid">
@@ -143,5 +149,26 @@
 	<jsp:include page="/ui/jsp/commont/foot-script.jsp" />
 	<script src="ui/assets/scripts/index.js" type="text/javascript"></script>
 	<script src="ui/assets/scripts/tasks.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function submitBusinessActivities() {
+			var ISinput_businessName = $("#input_businessName").val();
+			var ISinput_businessAddress = $("#input_businessAddress").val();
+			var ISinput_telephone = $("#input_telephone").val();
+			var ISactiveStartDate = $("#input_activeStartDate").val();
+			var ISactiveEndDate = $("#input_activeEndDate").val();
+			var ISinput_activeContent = $("#input_input_activeContent").val();
+			var ISChoiceBusinessActivitiesImg = $(
+					"#ChoiceBusinessActivitiesImg").val();
+			if (ISinput_businessName == "" || ISinput_businessAddress == ""
+					|| ISinput_telephone == "" || ISactiveStartDate == ""
+					|| ISactiveEndDate == "" || ISinput_activeContent == ""
+					|| ISChoiceBusinessActivitiesImg == "") {
+				alert("请填写完整信息再添加！");
+				return false;
+			} else {
+				return true;
+			}
+		}
+	</script>
 </body>
 </html>

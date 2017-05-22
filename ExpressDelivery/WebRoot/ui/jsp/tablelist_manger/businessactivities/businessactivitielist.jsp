@@ -20,6 +20,12 @@
 </head>
 
 <body class="page-header-fixed">
+<%
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			response.setHeader("refresh", "0;" + basePath + "index.jsp");
+		}
+	%>
 	<jsp:include page="/ui/jsp/main/head.jsp" />
 	<div class="page-container">
 		<div class="page-sidebar navbar-collapse collapse">
@@ -100,7 +106,7 @@
 											<td>${BusinessActivitiesList.businessAddress}</td>
 											<td>${BusinessActivitiesList.telephone}</td>
 											<td>${BusinessActivitiesList.activeContent}</td>
-											<td>${BusinessActivitiesList.imagePath}</td>
+											<td><img alt="" src="${BusinessActivitiesList.imagePath}" width="100" height="50"/></td>
 											<td>${BusinessActivitiesList.addDate}</td>
 											<td>${BusinessActivitiesList.activeStartDate}</td>
 											<td>${BusinessActivitiesList.activeEndDate}</td>

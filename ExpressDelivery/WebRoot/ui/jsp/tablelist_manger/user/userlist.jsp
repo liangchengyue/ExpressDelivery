@@ -17,6 +17,12 @@
 </head>
 
 <body class="page-header-fixed">
+<%
+		User useri = (User) session.getAttribute("user");
+		if (useri == null) {
+			response.setHeader("refresh", "0;" + basePath + "index.jsp");
+		}
+	%>
 	<jsp:include page="/ui/jsp/main/head.jsp" />
 	<div class="page-container">
 		<div class="page-sidebar navbar-collapse collapse">
@@ -71,7 +77,7 @@
 							</form>
 							<table
 								class="table table-striped table-bordered table-hover table-full-width"
-								id="sample_2">
+								id="sample_2" align="center">
 								<thead>
 									<tr>
 										<th>用户名</th>

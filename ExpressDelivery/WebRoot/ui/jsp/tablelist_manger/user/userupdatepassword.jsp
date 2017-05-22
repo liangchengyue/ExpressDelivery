@@ -27,6 +27,11 @@
 </head>
 
 <body class="login">
+<% String userTelephone =(String)session.getAttribute("userTelephone");
+if(userTelephone==null){
+	response.setHeader("refresh", "0;" + basePath + "index.jsp");
+}
+%>
 	<div class="content">
 		<form action="user/modifyUserPassword" method="post">
 			<h3>重置密码 -</h3>

@@ -18,6 +18,12 @@
 </head>
 
 <body class="page-header-fixed page-full-width">
+	<%
+		User useri = (User) session.getAttribute("user");
+		if (useri == null) {
+			response.setHeader("refresh", "0;" + basePath + "index.jsp");
+		} else {
+	%>
 	<div class="header navbar navbar-inverse navbar-fixed-top">
 		<a class="navbar-brand" href="index.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
@@ -148,15 +154,9 @@
 															value="${user.address}" name="address">
 													</div>
 												</div>
-												<div class="form-group">
-													<label class="col-md-5 control-label">身份证号:</label>
-													<div class="col-md-6">
-														<input type="text" class="form-control" placeholder="身份证号"
-															value="${user.idCard}" name="idCard">
-													</div>
-												</div>
 												<%
-													String gender = ((User) session.getAttribute("user")).getGender();
+													String gender = ((User) session.getAttribute("user"))
+																.getGender();
 												%>
 												<div class="form-group">
 													<label class="col-md-5 control-label">性别:</label>
@@ -167,14 +167,14 @@
 																	type="radio" name="gender" id="optionsRadios25"
 																	value="男"
 																	<%=gender != null && gender.equals("男")
-					? "checked=\"checked\""
-					: ""%>>
+						? "checked=\"checked\""
+						: ""%>>
 																男
 															</label> <label class="radio-inline"> <input type="radio"
 																	name="gender" id="optionsRadios26" value="女"
 																	<%=gender != null && gender.equals("女")
-					? "checked=\"checked\""
-					: ""%>>
+						? "checked=\"checked\""
+						: ""%>>
 																女
 															</label>
 														</div>
@@ -204,11 +204,13 @@
 									</div>
 									<form class="form-horizontal" role="form"
 										action="user/updateUserImg" method="post"
-										enctype="multipart/form-data">
+										enctype="multipart/form-data" onsubmit="return ISChioceImg()">
 										<div class="col-md-9">
-											<label class="col-md-6 control-label" style="margin-top: 30px"><img alt=""
+											<label class="col-md-6 control-label"
+												style="margin-top: 30px"><img alt=""
 												src="${user.imagePath }" width="300px;" height="300px;"></label><br>
-											<input class="col-md-3" type="file" name="userImg">
+											<input class="col-md-3" type="file" name="userImg"
+												id="input_ChioceImg">
 										</div>
 										<div class="col-md-offset-5 col-md-6">
 											<button type="submit" class="btn green">提交修改</button>
@@ -232,7 +234,7 @@
 									<div class="portlet-body form" id="realNameValidata">
 										<%
 											User user = (User) session.getAttribute("user");
-											if (user.getIdCard() == null) {
+												if (user.getIdCard() == null) {
 										%>
 										<form class="form-horizontal" role="form"
 											action="user/updateUserInfo" method="post"
@@ -330,6 +332,20 @@
 				}
 			});
 		}
+		//判断修改头像时是否选择图片
+		function ISChioceImg() {
+			var ISChioceimg = $("#input_ChioceImg").val();
+			if (ISChioceimg == "") {
+				alert("请先选择图片！");
+				return false;
+
+			}
+			return true;
+		}
 	</script>
+	<%
+		}
+	%>
+
 </body>
 </html>

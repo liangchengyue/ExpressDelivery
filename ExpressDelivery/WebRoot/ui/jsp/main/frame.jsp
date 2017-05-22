@@ -17,6 +17,12 @@
 </head>
 
 <body class="page-header-fixed">
+	<%
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			response.setHeader("refresh", "0;" + basePath + "index.jsp");
+		}
+	%>
 	<jsp:include page="/ui/jsp/main/head.jsp" />
 	<div class="page-container">
 		<div class="page-sidebar navbar-collapse collapse">
@@ -34,7 +40,7 @@
 							<li class="start"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
 									商家活动 </a></li>
-									<li class="start"><a
+							<li class="start"><a
 								href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
 									添加商家活动 </a></li>
 						</ul>
