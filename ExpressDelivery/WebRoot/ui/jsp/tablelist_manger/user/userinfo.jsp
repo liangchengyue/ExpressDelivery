@@ -187,7 +187,7 @@
 											<div class="form-actions fluid">
 												<div class="col-md-offset-5 col-md-6">
 													<button type="submit" class="btn red">提交修改</button>
-													<button type="reset" class="btn default"
+													<button type="reset" class="btn red"
 														style="margin-left: 30px;">重置</button>
 												</div>
 											</div>
@@ -248,7 +248,7 @@
 											<div class="form-actions fluid" style=" height:80px; ">
 											<div class="col-md-offset-5">
 													<button type="submit" class="btn red">提交修改</button>
-													<button type="reset" class="btn default"
+													<button type="reset" class="btn red"
 														style="margin-left: 30px;">重置</button>
 												</div>
 												</div>
@@ -271,8 +271,7 @@
 												if (user.getIdCard() == null) {
 										%>
 										<form class="form-horizontal" role="form"
-											action="user/updateUserInfo" method="post"
-											enctype="multipart/form-data" onsubmit="return false;">
+											action="#" method="post">
 											<div class="form-body">
 
 												<div class="form-group" style="height: 50px;"></div>
@@ -291,13 +290,14 @@
 														<input type="text" class="form-control" placeholder="身份证号"
 															value="${user.idCard}" name="idCard" id="idcard">
 													</div>
+													<span id="idCardS" style="color: red;"></span>
 												</div>
-												<span id="idCardS"></span>
+												
 											</div>
 											<div class="form-actions fluid" style=" height:80px; ">
 											<div class="col-md-offset-5">
-													<button type="submit" class="btn red">提交修改</button>
-													<button type="reset" class="btn default"
+													<button type="button" class="btn red" onclick="valiIDCard()">提交修改</button>
+													<button type="reset" class="btn red"
 														style="margin-left: 30px;">重置</button>
 												</div>
 												</div>
