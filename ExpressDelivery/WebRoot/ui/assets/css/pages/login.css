@@ -42,7 +42,7 @@ Login page
 }
 
 .login .content .input-icon {
-  border-left: 2px solid #35aa47 !important;
+  border-left: 2px solid red !important;
 }
 
 .login .content .input-icon .form-control {
