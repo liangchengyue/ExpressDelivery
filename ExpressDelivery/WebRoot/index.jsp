@@ -37,11 +37,12 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label visible-ie8 visible-ie9" >密码</label>
+				<label class="control-label visible-ie8 visible-ie9">密码</label>
 				<div class="input-icon">
 					<i class="fa fa-lock"></i>
-					<input class="form-control placeholder-no-fix required" type="password"
-						autocomplete="off" placeholder="密码" name="password" />
+					<input class="form-control placeholder-no-fix required"
+						type="password" autocomplete="off" placeholder="密码"
+						name="password" />
 				</div>
 			</div>
 			<div class="form-actions">
@@ -96,9 +97,9 @@
 				<div class="controls">
 					<div class="input-icon">
 						<i class="fa fa-check"></i>
-						<input class="form-control placeholder-no-fix required" type="password"
-							autocomplete="off" placeholder="确认密码" name="rpassword"
-							id="input_rpassword" />
+						<input class="form-control placeholder-no-fix required"
+							type="password" autocomplete="off" placeholder="确认密码"
+							name="rpassword" id="input_rpassword" />
 					</div>
 				</div>
 			</div>
@@ -114,13 +115,15 @@
 				</div>
 
 			</div>
-				<div class="form-group">
-				<label class="col-md-4 control-label left" style="margin-top: -1px;margin-left: -13px;">性别:</label>
+			<div class="form-group">
+				<label class="col-md-4 control-label left"
+					style="margin-top: -1px;margin-left: -13px;">性别:</label>
 				<div class="row">
-					<label style="margin-left: 15px;"> <input class="col-md-4" type="radio" name="gender"
-							id="optionsRadios1" value="男" checked>男
-					</label> <label  style="margin-left: 20px;"> <input class="col-md-6" type="radio" name="gender"
-							id="optionsRadios2" value="女"> 女
+					<label style="margin-left: 15px;"> <input class="col-md-4"
+							type="radio" name="gender" id="optionsRadios1" value="男" checked>男
+					</label> <label style="margin-left: 20px;"> <input class="col-md-6"
+							type="radio" name="gender" id="optionsRadios2" value="女">
+						女
 					</label>
 				</div>
 			</div>
@@ -129,18 +132,20 @@
 					<i class="fa fa-check-square" style="margin-top:12px; "></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
-					
-					<button type="button" class="btn red " onclick="getvalicode()"
-					id="getvalicodeBtn" style="margin-top: -33px;margin-left: 200px">
-					获取验证码<i class="m-icon-swapright m-icon-white"></i>
-				</button>
-				<span class="useVerificationCodeIsCorrectPrompt" style="color: #B94A48"></span>
+
+					<button type="button" class="fa btn red " onclick="getvalicode()"
+						id="getvalicodeBtn" style="margin-top: -33px;margin-left: 164px">
+						<span id="show_time">免费获取验证码</span><i
+							class="m-icon-swapright m-icon-white"></i>
+					</button>
+					<span class="useVerificationCodeIsCorrectPrompt"
+						style="color: #B94A48"></span>
 				</div>
 			</div>
-		
+
 			<div class="form-actions">
-				<button id="register-back-btn" type="button" class="btn">
-					<i class="m-icon-swapleft"></i>返回
+				<button id="register-back-btn" type="button" class="btn red">
+					<i class="m-icon-swapleft m-icon-white"></i>返回
 				</button>
 				<button type="submit" id="register-submit-btn"
 					class="btn red pull-right">
@@ -177,10 +182,9 @@
 				alert("请先填写完整的电话号码");
 			} else if (!regex.test(phone)) {
 				alert("请先填写完整的电话号码");
-			}	
-			else {
+			} else {
 				//短信过期时间 （小时）
-				var time = 5;
+				var time = 2;
 				$.ajax({
 					url : "user/getIndustrySMS",
 					type : "post",
@@ -191,6 +195,21 @@
 					success : function(data) {
 						//把返回來验证码复制给全局变量，用来判断用户输入的验证码是否正确
 						returnedValicode = data;
+						/*倒计时setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+						 setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+						 由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。 */
+						var step = 120;
+						$('#show_time').html('120秒后可重新发送');
+						var _res = setInterval(function() {
+							$("#getvalicodeBtn").attr("disabled", true);//设置disabled属性
+							$('#show_time').html(step + '秒后可重新发送');
+							step -= 1;
+							if (step <= 0) {
+								$("#getvalicodeBtn").removeAttr("disabled"); //移除disabled属性
+								$('#show_time').html('免费获取验证码');
+								clearInterval(_res);//清除setInterval
+							}
+						}, 1000);
 
 					}
 				});
@@ -210,33 +229,37 @@
 		}
 
 		$(function() {
-			$("#useVerificationCodeinput").readOnly=true;
+			$("#useVerificationCodeinput").readOnly = true;
 			//清空填写电话号码提示
 			$("userTelephoneIsEmptyPrompt").html("");
 			$(".useVerificationCodeIsCorrectPrompt").html("");
 			//绑定注册时验证码输入框的input和chang事件
-			$("#useVerificationCodeinput").bind(
-					"change input",
-					function() {
-						//清空验证码输入提示
-						$(".useVerificationCodeIsCorrectPrompt").html("");
-						//取得输入的验证码
-						var getuseVerificationCodeinput = $(
-								"#useVerificationCodeinput").val();
-						if (getuseVerificationCodeinput =="") {
-							$(".useVerificationCodeIsCorrectPrompt").html("");
-						}else
-						if (getuseVerificationCodeinput == returnedValicode) {
-							$("#register-submit-btn").attr("disabled", false);
-							$(".useVerificationCodeIsCorrectPrompt").html(
-									"验证码输入正确√");
-						} else {
-							//注册时输入验证码错误，则注册按钮不能点亮
-							$("#register-submit-btn").attr("disabled", true);
-							$(".useVerificationCodeIsCorrectPrompt").html(
-									"验证码输入错误");
-						}
-					});
+			$("#useVerificationCodeinput")
+					.bind(
+							"change input",
+							function() {
+								//清空验证码输入提示
+								$(".useVerificationCodeIsCorrectPrompt").html(
+										"");
+								//取得输入的验证码
+								var getuseVerificationCodeinput = $(
+										"#useVerificationCodeinput").val();
+								if (getuseVerificationCodeinput == "") {
+									$(".useVerificationCodeIsCorrectPrompt")
+											.html("");
+								} else if (getuseVerificationCodeinput == returnedValicode) {
+									$("#register-submit-btn").attr("disabled",
+											false);
+									$(".useVerificationCodeIsCorrectPrompt")
+											.html("验证码输入正确√");
+								} else {
+									//注册时输入验证码错误，则注册按钮不能点亮
+									$("#register-submit-btn").attr("disabled",
+											true);
+									$(".useVerificationCodeIsCorrectPrompt")
+											.html("验证码输入错误");
+								}
+							});
 			//电话号码输入错误提示清空
 			$("#userTelephoneinput")
 					.bind(
