@@ -45,8 +45,8 @@
 				</div>
 			</div>
 			<div class="form-actions">
-				<button type="reset" class="btn green pull-left">重置</button>
-				<button type="submit" class="btn green pull-right">
+				<button type="reset" class="btn red pull-left">重置</button>
+				<button type="submit" class="btn red pull-right">
 					登录<i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
@@ -115,22 +115,22 @@
 
 			</div>
 				<div class="form-group">
-				<label class="col-md-4 control-label left">性别</label>
-				<div class="col-md-6 row">
-					<label> <input class="col-md-6" type="radio" name="gender"
+				<label class="col-md-4 control-label left" style="margin-top: -1px;margin-left: -13px;">性别:</label>
+				<div class="row">
+					<label style="margin-left: 15px;"> <input class="col-md-4" type="radio" name="gender"
 							id="optionsRadios1" value="男" checked>男
-					</label> <label> <input class="col-md-6" type="radio" name="gender"
+					</label> <label  style="margin-left: 20px;"> <input class="col-md-6" type="radio" name="gender"
 							id="optionsRadios2" value="女"> 女
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-icon ">
-					<i class="fa fa-check-square" style="margin-top:35 "></i>
+					<i class="fa fa-check-square" style="margin-top:12px; "></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
 					
-					<button type="button" class="btn green " onclick="getvalicode()"
+					<button type="button" class="btn red " onclick="getvalicode()"
 					id="getvalicodeBtn" style="margin-top: -33px;margin-left: 200px">
 					获取验证码<i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -143,7 +143,7 @@
 					<i class="m-icon-swapleft"></i>返回
 				</button>
 				<button type="submit" id="register-submit-btn"
-					class="btn green pull-right">
+					class="btn red pull-right">
 					注册 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
