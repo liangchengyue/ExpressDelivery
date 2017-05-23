@@ -52,7 +52,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
-					<div class="portlet box green">
+					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-globe"></i>用户列表
@@ -73,7 +73,7 @@
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
-								<button type="submit" class="btn">搜索</button>
+								<button type="submit" class="btn" style="width:60px;height:25px;margin-top: -2px;line-height: 10px;margin-left: -3px;">搜索</button>
 							</form>
 							<table
 								class="table table-striped table-bordered table-hover table-full-width"
@@ -82,6 +82,7 @@
 									<tr>
 										<th>用户名</th>
 										<th>昵称</th>
+										<th>用户类型</th>
 										<th class="hidden-xs">联系电话</th>
 										<th class="hidden-xs">地址</th>
 									</tr>
@@ -91,6 +92,7 @@
 										<tr>
 											<td>${user.userName }</td>
 											<td>${user.nickName }</td>
+											<td>${user.userType }</td>
 											<td>${user.telephone }</td>
 											<td>${user.address }</td>
 										</tr>

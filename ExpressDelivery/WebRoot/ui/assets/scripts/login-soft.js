@@ -22,7 +22,7 @@ var Login = function () {
 	                    required: "Username is required."
 	                },
 	                password: {
-	                    required: "Password is required."
+	                    required: "密码不能为空."
 	                }
 	            },
 

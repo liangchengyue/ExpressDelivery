@@ -25,7 +25,7 @@
 		} else {
 	%>
 	<div class="header navbar navbar-inverse navbar-fixed-top">
-		<a class="navbar-brand" href="index.jsp"> <img
+		<a class="navbar-brand" href="ui/jsp/main/frame.jsp"> <img
 			src="ui/assets/img/logo.png" alt="logo" class="img-responsive" />
 		</a>
 		<ul class="nav navbar-nav pull-right">
@@ -60,14 +60,14 @@
 						<div class="tab-content">
 							<!-- ----------------------------------  基本信息   --------------------------------- -->
 							<div class="tab-pane active" id="tab_1_1">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-reorder"></i>基本信息
 										</div>
 									</div>
 									<div class="portlet-body form">
-										<form class="form-horizontal" role="form" style="width: 50%;">
+										<form class="form-horizontal" role="form" style="width: 70%;">
 											<div class="form-body">
 												<div class="form-group">
 													<label class="col-md-6 control-label"
@@ -106,24 +106,25 @@
 														style="text-align: left;">${user.idCard}</label>
 												</div>
 											</div>
-
-										</form>
-										<div class="form-actions fluid"
-											style="width:50%;height:398px;float:right;margin-top: -380px;background-color: white;">
-											<div class="form-group">
-												<label for="exampleInputFile" class="col-md-3 control-label"
-													style="text-align: right;">头像:</label> <label
-													for="exampleInputFile" class="col-md-3 control-label"
-													style="text-align: left;"><img alt=""
-													src="${user.imagePath }" width="240px;" height="240px;"></label>
+											<div class="form-actions fluid"
+												style="width:30%;height:315px;float:right;margin-top: -315px;margin-right:-250px; background-color:white;">
+												<div class="form-group">
+													<label for="exampleInputFile"
+														class="col-md-3 control-label" style="text-align: right;">头像:</label>
+													<label for="exampleInputFile"
+														class="col-md-3 control-label" style="text-align: left;">
+														<img alt="" src="${user.imagePath }"
+														style="height:180px;width:180px;">
+													</label>
+												</div>
 											</div>
-										</div>
+										</form>
 									</div>
 								</div>
 							</div>
 							<!-- ----------------------------------  修改信息    --------------------------------- -->
 							<div class="tab-pane" id="tab_1_2">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-edit"></i>修改资料
@@ -185,8 +186,8 @@
 											</div>
 											<div class="form-actions fluid">
 												<div class="col-md-offset-5 col-md-6">
-													<button type="submit" class="btn green">提交修改</button>
-													<button type="reset" class="btn default"
+													<button type="submit" class="btn red">提交修改</button>
+													<button type="reset" class="btn red"
 														style="margin-left: 30px;">重置</button>
 												</div>
 											</div>
@@ -195,37 +196,70 @@
 								</div>
 							</div>
 							<!-- ---------------------------------- 修改头像     --------------------------------- -->
-							<div class="tab-pane" id="tab_1_4">
+							<%-- 		<div class="tab-pane active" id="tab_1_4">
 								<div class="portlet box green ">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-edit"></i>修改头像
+											<i class="fa fa-reorder"></i>修改头像
 										</div>
 									</div>
-									<form class="form-horizontal" role="form"
-										action="user/updateUserImg" method="post"
-										enctype="multipart/form-data" onsubmit="return ISChioceImg()">
-										<div class="col-md-9">
-											<label class="col-md-6 control-label"
-												style="margin-top: 30px"><img alt=""
-												src="${user.imagePath }" width="300px;" height="300px;"></label><br>
-											<input class="col-md-3" type="file" name="userImg"
-												id="input_ChioceImg">
-										</div>
-										<div class="col-md-offset-5 col-md-6">
-											<button type="submit" class="btn green">提交修改</button>
-											<button type="reset" class="btn default"
-												style="margin-left: 30px;">重置</button>
-										</div>
-									</form>
+									<div class="portlet-body form">
+										<form class="form-horizontal" role="form" style="width: 70%;">
+
+											<div class="form-actions fluid"
+												style="width:30%;height:315px;float:right;margin-top: -315px;margin-right:-250px; background-color:white;">
+												<div class="form-group">
+													<label for="exampleInputFile"
+														class="col-md-3 control-label" style="text-align: right;">头像:</label>
+													<label for="exampleInputFile"
+														class="col-md-3 control-label" style="text-align: left;">
+														<img alt="" src="${user.imagePath }"
+														style="height:180px;width:180px;">
+													</label>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
-
-
+							</div> --%>
+							<div class="tab-pane" id="tab_1_4">
+								<div class="portlet box red ">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-reorder"></i>修改头像
+										</div>
+									</div>
+									<div class="portlet-body form" >
+										<form class="form-horizontal" role="form"
+											action="user/updateUserImg" method="post"
+											enctype="multipart/form-data" onsubmit="return ISChioceImg()">
+											<div class="form-body" style="width: 100%;height:240px;">
+												
+													<label class="col-md-6 control-label" style="margin-top: 20px;"
+														><img alt=""
+														src="${user.imagePath }" width="180px;" height="180px;"></label><br>
+													<input class="col-md-3" type="file" name="userImg" style="margin-top: 170px;"
+														id="input_ChioceImg">
+												
+												
+												
+											</div>
+										
+											<div class="form-actions fluid" style=" height:80px; ">
+											<div class="col-md-offset-5">
+													<button type="submit" class="btn red">提交修改</button>
+													<button type="reset" class="btn red"
+														style="margin-left: 30px;">重置</button>
+												</div>
+												</div>
+										</form>
+									</div>
+								</div>
 							</div>
 							<!-- ---------------------------------- 身份认证     --------------------------------- -->
 
 							<div class="tab-pane" id="tab_1_3">
-								<div class="portlet box green ">
+								<div class="portlet box red ">
 									<div class="portlet-title">
 										<div class="caption">
 											<i class="fa fa-edit"></i>实名认证
@@ -237,8 +271,7 @@
 												if (user.getIdCard() == null) {
 										%>
 										<form class="form-horizontal" role="form"
-											action="user/updateUserInfo" method="post"
-											enctype="multipart/form-data" onsubmit="return false;">
+											action="#" method="post">
 											<div class="form-body">
 
 												<div class="form-group" style="height: 50px;"></div>
@@ -257,17 +290,17 @@
 														<input type="text" class="form-control" placeholder="身份证号"
 															value="${user.idCard}" name="idCard" id="idcard">
 													</div>
+													<span id="idCardS" style="color: red;"></span>
 												</div>
-												<span id="idCardS"></span>
-												<div class="form-actions fluid">
-													<div class="col-md-offset-5 col-md-6">
-														<button type="button" class="btn green"
-															onclick="valiIDCard()">提交修改</button>
-														<button type="reset" class="btn default"
-															style="margin-left: 30px;">重置</button>
-													</div>
-												</div>
+												
 											</div>
+											<div class="form-actions fluid" style=" height:80px; ">
+											<div class="col-md-offset-5">
+													<button type="button" class="btn red" onclick="valiIDCard()">提交修改</button>
+													<button type="reset" class="btn red"
+														style="margin-left: 30px;">重置</button>
+												</div>
+												</div>
 										</form>
 										<%
 											} else {
