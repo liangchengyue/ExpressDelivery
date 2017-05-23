@@ -196,10 +196,68 @@ public class UserControllor {
 	public String regsterAndroid(User user) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		return "succss";
 	}
-
+	/**
+	 * 安卓修改个人头像
+	 * 
+	 * @param user
+	 * @param request
+	 * @param
+	 * @return
+	 */
+	@RequestMapping("/updateUserImgAndroid")
+	public String updateUserImgAndroid(User user, HttpServletRequest request,
+			MultipartFile userImg) {
+		// 设置图片路径
+		HttpSession session = request.getSession();
+		User user2 = (User) session.getAttribute("user");
+		user2.setImagePath(uploadUserImgAndroid(userImg, request));
+		session.setAttribute("user", user2);
+		userManager.modifyUserInfo(user2);
+		return "";
+	}
+	/**
+	 * 安卓上传图片
+	 * 
+	 * @param userImg
+	 * @param request
+	 * @return 保存的图片路径
+	 */
+	public String uploadUserImgAndroid(MultipartFile userImg,
+			HttpServletRequest request) {
+		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
+		// 图片保存路径
+		String filePath = request.getSession().getServletContext()
+				.getRealPath("/ui/userimg/1");
+		// 获取图片原始名称
+		String originalFilename = userImg.getOriginalFilename();
+		// 以用户id加图片扩展名给图片命名
+		String newFileName = ((new Date()).getTime())
+				+ originalFilename.substring(originalFilename.lastIndexOf("."));
+		String path = filePath + newFileName;
+		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+			file = new File(path);
+		}
+		try {
+			userImg.transferTo(file);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 截取图片路径
+		path = path.substring(path.indexOf("ui"), path.length());
+		// 替换路径中斜杠
+		path = path.replace("\\", "/");
+		return path;
+	}
 	/**
 	 * 退出登录，返回登录页
 	 * 
