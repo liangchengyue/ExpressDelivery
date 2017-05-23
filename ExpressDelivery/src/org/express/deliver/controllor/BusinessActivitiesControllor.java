@@ -4,6 +4,7 @@ package org.express.deliver.controllor;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import org.express.deliver.manager.IBusinessActivitiesManager;
 import org.express.deliver.pojo.BusinessActivities;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -125,5 +127,13 @@ public class BusinessActivitiesControllor {
 		// 替换路径中斜杠
 		path = path.replace("\\", "/");
 		return path;
+	}
+	@RequestMapping(value = "/queryBusinessActivities",produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String queryBusinessActivities() {
+		List<BusinessActivities> businessActivities=businessactivitiesManager.queryBusinessActivities();
+		String json=BusinessActivities.getBusinessActivitiesListJson(businessActivities);
+		return json;
+		
 	}
 }

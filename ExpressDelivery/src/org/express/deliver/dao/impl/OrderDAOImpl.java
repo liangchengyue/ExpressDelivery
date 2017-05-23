@@ -68,4 +68,20 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 		return (Order) query.list().get(0);
 	}
 
+	@Override
+	public List<Order> queryOrdersByTakeUser(String id) {
+		String hql="FROM Order AS o WHERE o.takeOrderUser.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, id);
+		return query.list();
+	}
+
+	@Override
+	public List<Order> queryOrdersByProUser(String id) {
+		String hql="FROM Order AS o WHERE o.preOrderuUser.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, id);
+		return query.list();
+	}
+
 }

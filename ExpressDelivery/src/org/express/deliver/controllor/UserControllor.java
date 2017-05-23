@@ -209,9 +209,10 @@ public class UserControllor {
 	 * @return
 	 */
 	@RequestMapping("/updateUserImgAndroid")
-	public String updateUserImgAndroid(User user, HttpServletRequest request,
+	public String updateUserImgAndroid(HttpServletRequest request,
 			MultipartFile userImg) {
 		// 设置图片路径
+		System.out.println("________________________");
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
 		user2.setImagePath(uploadUserImgAndroid(userImg, request));

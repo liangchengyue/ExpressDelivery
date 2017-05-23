@@ -53,4 +53,16 @@ public class OrderManagerImpl implements IOrderManager {
 		
 	}
 
+	@Override
+	public List<Order> queryOrdersByTakeUser(String id) {
+		// TODO Auto-generated method stub
+		return orderDAO.queryOrdersByTakeUser(id);
+	}
+
+	@Override
+	public List<Order> queryOrdersByProUser(String id) {
+		// TODO Auto-generated method stub
+		return orderDAO.queryOrdersByProUser(id);
+	}
+
 }

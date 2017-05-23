@@ -60,4 +60,16 @@ public interface IOrderDAO {
 	 * @return 订单信息
 	 */
 	public Order queryById(String id);
+	/**
+	 * 根据用户ID查询已接订单
+	 * @param id 用户ID
+	 * @return 该用户已接订单
+	 */
+	public List<Order> queryOrdersByTakeUser(String id);
+	/**
+	 * 根据用户ID查询已发订单
+	 * @param id 用户ID
+	 * @return 用户已发订单
+	 */
+	public List<Order> queryOrdersByProUser(String id);
 }

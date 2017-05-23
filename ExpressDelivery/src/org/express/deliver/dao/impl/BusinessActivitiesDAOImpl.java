@@ -113,4 +113,13 @@ public class BusinessActivitiesDAOImpl extends BaseDAO implements
 		return ((Long)query.uniqueResult()).intValue();
 	}
 
+	@Override
+	public List<BusinessActivities> queryBusinessActivities() {
+		String hql="FROM BusinessActivities AS b ORDER BY b.activeEndDate DESC";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(0);
+		query.setMaxResults(3);
+		return query.list();
+	}
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.express.deliver.pojo.Order;
+import org.express.deliver.pojo.User;
 /**
  * 操作订单业务接口
  * 
@@ -51,4 +52,16 @@ public interface IOrderManager {
 	 * @param order 订单信息
 	 */
 	public void modifyOrderInfo(Order order);
+	/**
+	 * 根据用户ID查询已接订单
+	 * @param id 用户ID
+	 * @return 该用户已接订单
+	 */
+	public List<Order> queryOrdersByTakeUser(String id);
+	/**
+	 * 根据用户ID查询已发订单
+	 * @param id 用户ID
+	 * @return 用户已发订单
+	 */
+	public List<Order> queryOrdersByProUser(String id);
 }

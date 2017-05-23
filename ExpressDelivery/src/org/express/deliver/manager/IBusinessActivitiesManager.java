@@ -40,4 +40,9 @@ public interface IBusinessActivitiesManager {
 	 * @return 商家列表总数
 	 */
 	public int queryAllBusinessActivitiesAcount();
+	/**
+	 * 查询商家活动信息在安卓端显示
+	 * @return 商家活动
+	 */
+	public List<BusinessActivities> queryBusinessActivities();
 }

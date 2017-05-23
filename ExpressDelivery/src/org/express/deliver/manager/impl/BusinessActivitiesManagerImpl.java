@@ -51,4 +51,10 @@ public class BusinessActivitiesManagerImpl implements
 		
 	}
 
+	@Override
+	public List<BusinessActivities> queryBusinessActivities() {
+		// TODO Auto-generated method stub
+		return businessactivitiesDAO.queryBusinessActivities();
+	}
+
 }

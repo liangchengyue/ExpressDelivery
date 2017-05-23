@@ -89,4 +89,20 @@ public class OrderControllor {
 		String json=Order.getOrderListJson(orders);
 		return json;
 	}
+	@RequestMapping(value = "/queryOrdersByTakeUser",produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String queryOrdersByTakeUser(String id) {
+		List<Order> orders=orderManager.queryOrdersByTakeUser(id);
+		String json=Order.getOrderListJson(orders);
+		System.out.println(json);
+		return json;
+	}
+	@RequestMapping(value = "/queryOrdersByProUser",produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String queryOrdersByProUser(String id) {
+		List<Order> orders=orderManager.queryOrdersByProUser(id);
+		String json=Order.getOrderListJson(orders);
+		System.out.println(json);
+		return json;
+	}
 }
