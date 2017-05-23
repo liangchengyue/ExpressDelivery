@@ -103,11 +103,11 @@
 														id="input_activeEndDate">
 												</div>
 											</div>
-											<div class="form-group">
+											<div class="form-group ">
 												<label class="col-md-5 control-label">活动内容:</label>
 												<div class="col-md-6">
 													<textarea placeholder="活动内容" name="activeContent"
-														class="form-control" id="input_activeContent"></textarea>
+														class="form-control " id="input_activeContent"></textarea>
 
 												</div>
 											</div>
@@ -124,7 +124,7 @@
 										<div class="form-actions fluid">
 											<div>
 												<button type="submit" class="btn red">添加</button>
-												<button type="reset" class="btn default"
+												<button type="reset" class="btn red default"
 													style="margin-left: 90px;">重置</button>
 											</div>
 										</div>
