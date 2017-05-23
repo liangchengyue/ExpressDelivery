@@ -133,7 +133,7 @@
 					<input class="form-control placeholder-no-fix required" type="text"
 						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
 
-					<button type="button" class="fa btn red " onclick="getvalicode()"
+					<button type="button" class="btn red " onclick="getvalicode()"
 						id="getvalicodeBtn" style="margin-top: -33px;margin-left: 164px">
 						<span id="show_time">免费获取验证码</span><i
 							class="m-icon-swapright m-icon-white"></i>
