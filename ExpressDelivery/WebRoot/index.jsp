@@ -108,7 +108,7 @@
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
 				<div class="input-icon">
-					<i class="fa fa-check-circle"></i>
+					<i class="fa fa-phone"></i>
 					<input class="form-control placeholder-no-fix required" type="text"
 						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
 					<span class="userTelephoneIsEmptyPrompt" style="color: #B94A48"></span>
@@ -127,15 +127,15 @@
 					</label>
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="input-icon ">
-					<i class="fa fa-check-square" style="margin-top:12px; "></i>
-					<input class="form-control placeholder-no-fix required" type="text"
+			<div class="form-group ">
+				<div class="input-icon row" style="margin-left: 1px;height: 32px;">
+					<i class="fa fa-check-square col-md-4" style="margin-top:10px;margin-left: -5px; z-index: 1"></i>
+					<input class="form-control placeholder-no-fix required  col-md-4" type="text" style="width:150px;height: 32px;"
 						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
 
-					<button type="button" class="btn red " onclick="getvalicode()"
-						id="getvalicodeBtn" style="margin-top: -33px;margin-left: 164px">
-						<span id="show_time">免费获取验证码</span><i
+					<button type="button" class="btn red col-md-4" onclick="getvalicode()"
+						id="getvalicodeBtn" style="border:1px solid blue;margin-top: -33px;margin-left: 195px">
+						<span id="show_time" style="margin-left: -10px;">免费获取验证码</span><i
 							class="m-icon-swapright m-icon-white"></i>
 					</button>
 					<span class="useVerificationCodeIsCorrectPrompt"
