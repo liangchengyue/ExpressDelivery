@@ -54,4 +54,10 @@ public interface IOrderDAO {
 	 * @return 订单列表
 	 */
 	public List<Order> queryOrderLists();
+	/**
+	 * 根据id查询订单信息
+	 * @param id 订单ID
+	 * @return 订单信息
+	 */
+	public Order queryById(String id);
 }

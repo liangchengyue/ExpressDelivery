@@ -40,4 +40,15 @@ public interface IOrderManager {
 	 * @return 订单列表
 	 */
 	public List<Order> queryOrderLists();
+	/**
+	 * 根据ID查询订单
+	 * @param id ID
+	 * @return 订单信息
+	 */
+	public Order queryOrderById(String id);
+	/**
+	 * 修改订单信息
+	 * @param order 订单信息
+	 */
+	public void modifyOrderInfo(Order order);
 }

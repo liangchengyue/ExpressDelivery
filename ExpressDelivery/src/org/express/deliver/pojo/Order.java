@@ -400,7 +400,7 @@ public class Order {
 		for (Order order : oList) {
 			sBuffer.append("{");
 			sBuffer.append("\"preOrderUserName\":");
-			sBuffer.append("\""+order.getPreOrderuUser().getUserName()+"\"");
+			sBuffer.append("\""+order.getPreOrderuUser().getUserName()+ "\"");
 			sBuffer.append(",");
 			sBuffer.append("\"id\":");
 			sBuffer.append("\""+order.getId()+"\"");

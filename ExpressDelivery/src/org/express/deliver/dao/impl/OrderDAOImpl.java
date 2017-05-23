@@ -60,4 +60,12 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 		return query.list();
 	}
 
+	@Override
+	public Order queryById(String id) {
+		String hql="FROM Order AS o WHERE o.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, id);
+		return (Order) query.list().get(0);
+	}
+
 }

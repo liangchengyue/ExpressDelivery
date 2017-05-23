@@ -71,6 +71,17 @@ public class OrderControllor {
 		orderManager.addOrder(order);
 		return "true";
 	}
+	@RequestMapping("/takeOrder")
+	@ResponseBody
+	public String takeOrder(Order order){
+		Order order2=orderManager.queryOrderById(order.getId());
+		User user=userManager.queryUserById(order.getTakeOrderUser().getId());
+		order2.setTakeOrderUser(user);
+		order2.setState("已接单");
+		order2.setTakeOrderDate(new Date());
+		orderManager.modifyOrderInfo(order2);
+		return  "success";
+	}
 	@RequestMapping(value = "/queryOrderList",produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public  String queryOrderList(){

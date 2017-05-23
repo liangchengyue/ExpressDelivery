@@ -131,7 +131,6 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, id);
 		User user=(User)query.list().get(0);
-		System.out.println(user.getUserName());
 		return user;
 	}
 

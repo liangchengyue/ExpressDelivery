@@ -86,36 +86,33 @@ public class UserControllor {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
-	
 	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		if (keyword==null) {
-			keyword="";
+		if (keyword == null) {
+			keyword = "";
 		}
-		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword);
+		Map<String, Object> map = userManager.queryUserByPaging(pageNo,
+				pageSize, keyword);
 		int total = userManager.queryAllUserAcount();
 		map.put("pageSize", pageSize);
 		map.put("pageNo", pageNo);
 		map.put("keyword", keyword);
-		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
+		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist",
+				"result", map);
 	}
-	/*这里注释的是通过类型查找用户的方法
-	 * public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
-			String userType, String expressType)
-			throws JsonGenerationException, JsonMappingException, IOException {
-		System.out.println(keyword);
-		if (keyword==null) {
-			keyword="";
-		}
-		Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize, keyword,
-				userType, expressType);
-		int total = userManager.queryAllUserAcount();
-		map.put("pageSize", pageSize);
-		map.put("pageNo", pageNo);
-		map.put("keyword", keyword);
-		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map);
-	}*/
+
+	/*
+	 * 这里注释的是通过类型查找用户的方法 public ModelAndView getUserList(String keyword, int
+	 * pageNo, int pageSize, String userType, String expressType) throws
+	 * JsonGenerationException, JsonMappingException, IOException {
+	 * System.out.println(keyword); if (keyword==null) { keyword=""; }
+	 * Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize,
+	 * keyword, userType, expressType); int total =
+	 * userManager.queryAllUserAcount(); map.put("pageSize", pageSize);
+	 * map.put("pageNo", pageNo); map.put("keyword", keyword); return new
+	 * ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map); }
+	 */
 
 	/**
 	 * 注册账户之前查询所有用户名，以便判断注册时输入的用户名是否已存在
@@ -187,6 +184,7 @@ public class UserControllor {
 
 		return "redirect:/ui/jsp/main/frame.jsp";
 	}
+
 	/**
 	 * 安卓注册账户
 	 * 
@@ -200,6 +198,7 @@ public class UserControllor {
 		userManager.addUser(user);
 		return "succss";
 	}
+
 	/**
 	 * 退出登录，返回登录页
 	 * 
@@ -213,34 +212,37 @@ public class UserControllor {
 		session.removeAttribute("user");
 		return "redirect:/index.jsp";
 	}
+
 	/**
 	 * 修改个人头像
+	 * 
 	 * @param user
 	 * @param request
-	 * @param 
+	 * @param
 	 * @return
 	 */
-		@RequestMapping("/updateUserImg")
-		public String updateUserImg(User user, HttpServletRequest request,
-				MultipartFile userImg) {
-			// 设置图片路径
-			HttpSession session = request.getSession();
-			User user2 = (User) session.getAttribute("user");
-			user2.setImagePath(uploadUserImg(userImg, request));
-			session.setAttribute("user", user2);
-			userManager.modifyUserInfo(user2);
-			return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
-		}
+	@RequestMapping("/updateUserImg")
+	public String updateUserImg(User user, HttpServletRequest request,
+			MultipartFile userImg) {
+		// 设置图片路径
+		HttpSession session = request.getSession();
+		User user2 = (User) session.getAttribute("user");
+		user2.setImagePath(uploadUserImg(userImg, request));
+		session.setAttribute("user", user2);
+		userManager.modifyUserInfo(user2);
+		return "redirect:/ui/jsp/tablelist_manger/user/userinfo.jsp";
+	}
 
-/**
- * 修改个人信息
- * @param user
- * @param request
- * @param 
- * @return
- */
+	/**
+	 * 修改个人信息
+	 * 
+	 * @param user
+	 * @param request
+	 * @param
+	 * @return
+	 */
 	@RequestMapping("/updateUserInfo")
-	public String updateUserInfo(User user, HttpServletRequest request) {		
+	public String updateUserInfo(User user, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User user2 = (User) session.getAttribute("user");
 		user.setId(user2.getId());
@@ -334,11 +336,12 @@ public class UserControllor {
 		final HttpSession session = request.getSession();
 		session.setAttribute("valiCode", valiCode);
 		// 发送验证码
-		IndustrySMS.execute(phone, valiCode, time);	
+		IndustrySMS.execute(phone, valiCode, time);
 		return valiCode;
 	}
+
 	/**
-	 *安卓端 通过短信发送验证码
+	 * 安卓端 通过短信发送验证码
 	 * 
 	 * @param phone
 	 *            手机号
@@ -354,27 +357,29 @@ public class UserControllor {
 
 		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
 		// 发送验证码
-		//IndustrySMS.execute(phone, valiCode, 5);
+		// IndustrySMS.execute(phone, valiCode, 5);
 		System.out.println(valiCode);
 		return valiCode;
 	}
-/**
- * 判断输入的验证码是否正确
- * @param userinputvaliCode
- * @param request
- * @return
- */
+
+	/**
+	 * 判断输入的验证码是否正确
+	 * 
+	 * @param userinputvaliCode
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/useVerificationCodeIsCorrect")
 	@ResponseBody
 	public String useVerificationCodeIsCorrect(String userinputvaliCode,
 			HttpServletRequest request) {
-		boolean flag=false;
+		boolean flag = false;
 		String valicode = (String) request.getSession()
 				.getAttribute("valiCode");
 		if (valicode.equals(userinputvaliCode)) {
-			flag=true;
+			flag = true;
 		}
-		return flag+"";
+		return flag + "";
 	}
 
 	/**
@@ -425,7 +430,8 @@ public class UserControllor {
 			session.setAttribute("userTelephone", userTelephone);
 			flag = true;
 		}
-		String json="{\"flag\":\""+flag+"\",\"phone\":\""+userTelephone+"\"}";
+		String json = "{\"flag\":\"" + flag + "\",\"phone\":\"" + userTelephone
+				+ "\"}";
 		return json;
 
 	}
@@ -437,11 +443,13 @@ public class UserControllor {
 	 * @return 登录页
 	 */
 	@RequestMapping("/modifyUserPassword")
-	public String modifyUserPassword(HttpServletRequest request,User user) {
-		user.setTelephone((String)(request.getSession().getAttribute("userTelephone")));
+	public String modifyUserPassword(HttpServletRequest request, User user) {
+		user.setTelephone((String) (request.getSession()
+				.getAttribute("userTelephone")));
 		userManager.modifyUserPassword(user);
 		return "redirect:/index.jsp";
 	}
+
 	/**
 	 * 安卓端根据电话号码修改密码
 	 * 
@@ -454,43 +462,113 @@ public class UserControllor {
 		userManager.modifyUserPassword(user);
 		return "success";
 	}
+
 	/**
 	 * 身份证实名认证
-	 * @param idCard 身份证号
-	 * @param realName 真实姓名
+	 * 
+	 * @param idCard
+	 *            身份证号
+	 * @param realName
+	 *            真实姓名
 	 * @return 验证结果
 	 */
 	@RequestMapping("/IdCard")
 	@ResponseBody
-	public boolean getIdCard(User user,HttpServletRequest request) {
-		boolean flag=false;
-		String result=IDCardValidate.getIdCard(user.getIdCard().trim(),user.getTrueName().trim());
-		String tString=result.substring(result.indexOf("msg"),result.indexOf("result"));
-		tString=tString.substring(tString.indexOf(":")+2, tString.indexOf(",")-1);
-		User user2=(User)request.getSession().getAttribute("user");
+	public boolean getIdCard(User user, HttpServletRequest request) {
+		boolean flag = false;
+		String result = IDCardValidate.getIdCard(user.getIdCard().trim(), user
+				.getTrueName().trim());
+		String tString = result.substring(result.indexOf("msg"),
+				result.indexOf("result"));
+		tString = tString.substring(tString.indexOf(":") + 2,
+				tString.indexOf(",") - 1);
+		User user2 = (User) request.getSession().getAttribute("user");
 		if (tString.equals("ok")) {
 			user2.setTrueName(user.getTrueName());
 			user2.setIdCard(user.getIdCard());
 			userManager.modifyUserInfo(user2);
-			HttpSession session =request.getSession();
+			HttpSession session = request.getSession();
 			session.setAttribute("user", user2);
 			flag = true;
 		}
 		return flag;
-		 
+
 	}
+
+	/**
+	 * 进行安卓端的实名认证 认证通过后将信息插入数据库
+	 * 
+	 * @param user
+	 *            用户信息
+	 * @return 是否认证通过
+	 */
+	@RequestMapping("/androidByIdcard")
+	@ResponseBody
+	public String androidByIdcard(User user) {
+		String msg = "no";
+		String result = IDCardValidate.getIdCard(user.getIdCard().trim(), user
+				.getTrueName().trim());
+		String tString = result.substring(result.indexOf("msg"),
+				result.indexOf("result"));
+		msg = tString.substring(tString.indexOf(":") + 2,
+				tString.indexOf(",") - 1);
+		System.err.println(msg);
+		if (msg.equals("ok")) {
+			User user2 = userManager.queryUserById(user.getId());
+			user2.setTrueName(user.getTrueName());
+			user2.setIdCard(user.getIdCard());
+			user2.setGender(user.getGender());
+			user2.setSchool(user.getSchool());
+			userManager.modifyUserInfo(user2);
+		}
+		return msg;
+	}
+
+	@RequestMapping(value = "/getUserbyIdForAndroid", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String getUserbyIdForAndroid(String id) {
+		User user = userManager.queryUserById(id);
+		StringBuffer json = new StringBuffer();
+		json.append("{");
+		json.append("\"nickName\":\"" + user.getNickName() + "\",");
+		json.append("\"userName\":\"" + user.getUserName() + "\",");
+		json.append("\"integral\":\"" + user.getIntegral() + "\",");
+		json.append("\"password\":\"" + user.getPassword() + "\",");
+		json.append("\"idCard\":\"" + user.getIdCard() + "\",");
+		json.append("\"gender\":\"" + user.getGender() + "\",");
+		json.append("\"imagePath\":\"" + user.getImagePath() + "\",");
+		json.append("\"school\":\"" + user.getSchool() + "\",");
+		json.append("\"trueName\":\"" + user.getTrueName() + "\"}");
+		return json.toString();
+	}
+
 	/**
 	 * 拦截到404错误时，跳转到错误提示页
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/error404")
-	public ModelAndView error404(){
+	public ModelAndView error404() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		// 视图解析器将model中的每个元素都通过model.put(name, value);
 		// 这样就可以在JSP页面中通过EL表达式来获取对应的值
 		model.put("url", "index.jsp");
 		model.put("message", "哦豁，你访问的页面不存在！");
-		ModelAndView	modelAndView = new ModelAndView("ui/jsp/commont/error", model);
+		ModelAndView modelAndView = new ModelAndView("ui/jsp/commont/error",
+				model);
 		return modelAndView;
+	}
+	/**
+	 * 安卓端修改密码
+	 * @param u
+	 * @return
+	 */
+	@RequestMapping("/updatePassword")
+	@ResponseBody
+	public String updatePassword(User u) {
+		User user=userManager.queryUserById(u.getId());
+		user.setPassword(u.getPassword());
+		userManager.modifyUserInfo(user);
+		return "success";
 	}
 }

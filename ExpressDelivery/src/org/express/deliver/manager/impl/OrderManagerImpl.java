@@ -41,4 +41,16 @@ public class OrderManagerImpl implements IOrderManager {
 		return orderDAO.queryOrderLists();
 	}
 
+	@Override
+	public Order queryOrderById(String id) {
+		// TODO Auto-generated method stub
+		return orderDAO.queryById(id);
+	}
+
+	@Override
+	public void modifyOrderInfo(Order order) {
+		orderDAO.modifyOrder(order);
+		
+	}
+
 }
