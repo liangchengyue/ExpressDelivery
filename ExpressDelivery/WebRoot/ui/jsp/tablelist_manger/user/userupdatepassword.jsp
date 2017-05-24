@@ -62,7 +62,7 @@ if(userTelephone==null){
 				<button type="reset" id="back-btn" class="btn">
 					<i class="m-icon-swapleft"></i> 重置
 				</button>
-				<button type="submit" class="btn green pull-right" id="btn">
+				<button type="submit" class="btn red pull-right" id="btn">
 					确定 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>

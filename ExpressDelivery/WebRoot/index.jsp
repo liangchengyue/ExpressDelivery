@@ -23,7 +23,7 @@
 	</div>
 	<div class="content">
 		<form class="login-form" action="user/login" method="post">
-			<h3 class="form-title">管理员登录</h3>
+			<h3 class="form-title">登录</h3>
 			<div class="alert alert-danger display-hide">
 				<button class="close" data-close="alert"></button>
 				<span>请输入用户名或密码</span>
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 				
-			<div class="form-group row">
+			<div class="form-group row " id="login_IShideExressType">
 				<label class="control-label col-md-5">快递站类别：</label>
 				<div class="col-md-8">
 					<select id="form_2_select2" class="form-control select2me" 
@@ -64,16 +64,16 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group" >
 			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
 				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
 					<label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios1" value="商家" checked>商家
+							name="userType" id="login_optionsRadios1" value="商家" checked>商家
 					</label> <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios2" value="快递员"> 快递员
+							name="userType" id="login_optionsRadios2" value="快递员"> 快递员
 					</label>
 					 <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios3" value="管理员"> 管理员
+							name="userType" id="login_optionsRadios3" value="管理员"> 管理员
 					</label>
 				</div>
 			</div>
@@ -136,18 +136,8 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
-				<div class="input-icon">
-					<i class="fa fa-phone"></i>
-					<input class="form-control placeholder-no-fix required" type="text"
-						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
-					<span class="userTelephoneIsEmptyPrompt" style="color: #B94A48"></span>
-				</div>
-
-			</div>
-			<div class="form-group row">
+		
+			<div class="form-group row " id="RegisterIShideExressType">
 				<label class="control-label col-md-5">快递站类别：</label>
 				<div class="col-md-8">
 					<select id="form_2_select2" class="form-control select2me" 
@@ -168,12 +158,12 @@
 			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
 				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
 					<label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios1" value="商家" checked>商家
+							name="userType" id="Register_optionsRadios1" value="商家" checked>商家
 					</label> <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios2" value="快递员"> 快递员
+							name="userType" id="Register_optionsRadios2" value="快递员"> 快递员
 					</label>
 					 <label> <input class="col-md-6" type="radio"
-							name="userType" id="optionsRadios3" value="管理员"> 管理员
+							name="userType" id="Register_optionsRadios3" value="管理员"> 管理员
 					</label>
 				</div>
 			</div>
@@ -189,15 +179,24 @@
 					</label>
 				</div>
 			</div>
-			
+				<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">联系电话</label>
+				<div class="input-icon">
+					<i class="fa fa-phone"></i>
+					<input class="form-control placeholder-no-fix required" type="text"
+						placeholder="联系电话" name="telephone" id="userTelephoneinput" />
+					<span class="userTelephoneIsEmptyPrompt" style="color: #B94A48"></span>
+				</div>
+			</div>
 			<div class="form-group ">
 				<div class="input-icon row" style="margin-left: 1px;height: 32px;">
-					<i class="fa fa-check-square col-md-4" style="margin-top:10px;margin-left: -5px; z-index: 1"></i>
-					<input class="form-control placeholder-no-fix required  col-md-4" type="text" style="width:150px;height: 32px;"
+					<i class="fa fa-check-square col-md-1" style="margin-top:10px;margin-left: -5px; z-index: 1"></i>
+					<input class="form-control placeholder-no-fix required  col-md-3" type="text" style="width:150px;height: 32px;"
 						autocomplete="off" placeholder="验证码" id="useVerificationCodeinput" />
 
-					<button type="button" class="btn red col-md-4" onclick="getvalicode()"
-						id="getvalicodeBtn" style="border:1px solid blue;margin-top: -33px;margin-left: 195px">
+					<button type="button" class="btn red col-md-5" onclick="getvalicode()"
+						id="getvalicodeBtn" style="border:1px solid blue;margin-top: -33px;margin-left: 170px">
 						<span id="show_time" style="margin-left: -10px;">免费获取验证码</span><i
 							class="m-icon-swapright m-icon-white"></i>
 					</button>
@@ -292,6 +291,27 @@
 		}
 
 		$(function() {
+			//注册时点击管理员，隐藏选择快递站选择
+			$("#Register_optionsRadios1").click(function(){
+				  $("#RegisterIShideExressType").show();
+			});
+			$("#Register_optionsRadios2").click(function(){
+				  $("#RegisterIShideExressType").show();
+			});
+			$("#Register_optionsRadios3").click(function(){
+				  $("#RegisterIShideExressType").hide();
+			});
+			//登录时点击管理员，隐藏选择快递站选择
+			$("#login_optionsRadios1").click(function(){
+				  $("#login_IShideExressType").show();
+			});
+			$("#login_optionsRadios2").click(function(){
+				  $("#login_IShideExressType").show();
+			});
+			$("#login_optionsRadios3").click(function(){
+				  $("#login_IShideExressType").hide();
+			});
+			
 			$("#useVerificationCodeinput").readOnly = true;
 			//清空填写电话号码提示
 			$("userTelephoneIsEmptyPrompt").html("");

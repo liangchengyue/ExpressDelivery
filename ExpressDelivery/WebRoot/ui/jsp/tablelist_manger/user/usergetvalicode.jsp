@@ -31,30 +31,30 @@
 			<h3>忘记密码 ?</h3>
 			<p>请填写手机号进行身份确认</p>
 			<div class="form-group row">
-				<div class="input-icon col-md-7"
+				<div class="input-icon col-md-6"
 					style="padding: 0;margin-left: 15px">
 					<i class="fa fa-phone-square"></i>
 					<input class="form-control placeholder-no-fix" type="text"
 						autocomplete="off" placeholder="手机号码" name="phoneNumber"
 						id="useTelephoneinput" />
-					<span class="userTelephoneIsRegisterPrompt"></span>
+					<span class="userTelephoneIsRegisterPrompt"  style="color: #B94A48"></span>
 				</div>
-				<button type="submit" class="btn green pull-right"
+				<button type="submit" class="btn red pull-right"
 					onclick="GetValidationCode()" id="getvalicodeBtn">
-					获取验证码<i class="m-icon-swapright m-icon-white"></i>
+					<span id="show_time" style="margin-left: -10px;">免费获取验证码</span>
 				</button>
 
 			</div>
 			<div class="form-group row">
-				<div class="input-icon col-md-7"
+				<div class="input-icon col-md-6"
 					style="padding: 0;margin-left: 15px">
 					<i class="fa fa-check-square"></i>
 					<input class="form-control placeholder-no-fix" type="text"
 						autocomplete="off" placeholder="验证码" name="erificationCode"
 						id="useVerificationCodeinput" />
-					<span class="useVerificationCodeIsCorrectPrompt"></span>
+					<span class="useVerificationCodeIsCorrectPrompt" style="color: #B94A48"></span>
 				</div>
-				<button type="submit" class="btn green pull-right"
+				<button type="submit" class="btn red pull-right"
 					onclick="sumbitinputvalicode()" id="sumbitinputvalicodeBtn">
 					提交验证码<i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -109,7 +109,7 @@
 						alert("验证码发送成功");
 						$(".userTelephoneIsRegisterPrompt").html("");
 						//短信过期时间 （小时）
-						var time = 5;
+						var time = 2;
 						//电话号码输入正确以后，发送验证码到该电话号码
 						$.ajax({
 							url : "user/getIndustrySMS",
@@ -119,6 +119,22 @@
 								"time" : time
 							},
 							success : function(data) {
+								/*倒计时setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+								 setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+								 由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。 */
+								var step = 120;
+								$('#show_time').html('120秒后可重新发送');
+								var _res = setInterval(function() {
+									$("#getvalicodeBtn").attr("disabled", true);//设置disabled属性
+									$('#show_time').html(step + '秒后可重新发送');
+									step -= 1;
+									if (step <= 0) {
+										$("#getvalicodeBtn").removeAttr("disabled"); //移除disabled属性
+										$('#show_time').html('免费获取验证码');
+										clearInterval(_res);//清除setInterval
+									}
+								}, 1000);
+
 							}
 						});
 
