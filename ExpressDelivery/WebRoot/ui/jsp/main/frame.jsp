@@ -67,6 +67,7 @@
 							</a>
 								<ul class="sub-menu">
 									<li><a href=""> 我的快递</a></li>
+									<li><a href="ui/jsp/tablelist_manger/goods/addgoods.jsp"> 添加快递信息</a></li>
 									<li><a href=""> 发送短信</a></li>
 
 								</ul></li>

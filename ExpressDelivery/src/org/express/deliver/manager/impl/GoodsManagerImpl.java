@@ -36,4 +36,15 @@ public class GoodsManagerImpl implements IGoodsManager {
 		return goodsDAO.queryAllGoodsAcount();
 	}
 
+	@Override
+	public void addGoods(Goods goods) {
+		try {
+			goodsDAO.addGoods(goods);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 }

@@ -26,4 +26,9 @@ public interface IGoodsManager {
 	 * @return 货物总数
 	 */
 	public int queryAllGoodsAcount();
+	/**
+	 * 添加货物信息
+	 * @param goods
+	 */
+	public void addGoods(Goods goods);
 }

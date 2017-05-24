@@ -40,6 +40,19 @@ public class Goods {
 	@Column(length = 50)
 	private String senderName;
 	/**
+	 * 快递名称
+	 */
+	@Column(length = 50)
+	private String expressName;
+	public String getExpressName() {
+		return expressName;
+	}
+
+	public void setExpressName(String expressName) {
+		this.expressName = expressName;
+	}
+
+	/**
 	 * 寄件人预留号码
 	 */
 	@Column(length = 50)

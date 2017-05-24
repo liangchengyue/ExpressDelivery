@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IGoodsManager;
+import org.express.deliver.pojo.Goods;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class GoodsControllor {
 	@Resource(name = "goodsManager")
 	private IGoodsManager goodsManager;
+	/**
+	 * 添加货物信息
+	 * @param goods
+	 * @return
+	 */
+	@RequestMapping("/addGoods")
+	public String addGoods(Goods goods){
+		goodsManager.addGoods(goods);
+		return"redirect:/ui/jsp/tablelist_manger/goods/addgoods.jsp";
+	}
 
 	/**
 	 * 分页查询所有商家信息，显示在后台管理页面中
@@ -48,7 +59,7 @@ public class GoodsControllor {
 //		String json = Goods.getGoodsListJson(list);
 //		StringBuffer sBuffer = new StringBuffer();
 //		sBuffer.append("{");
-//		sBuffer.append("\"status\":\"success\",");
+//		sBuffer.append("\"sta]'tus\":\"success\",");
 //		sBuffer.append("\"totals\":" + total + ",");
 //		sBuffer.append("\"data\":");
 //		sBuffer.append(json);
