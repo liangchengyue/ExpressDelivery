@@ -17,7 +17,7 @@
 </head>
 
 <body class="page-header-fixed">
-<%
+	<%
 		User useri = (User) session.getAttribute("user");
 		if (useri == null) {
 			response.setHeader("refresh", "0;" + basePath + "index.jsp");
@@ -35,15 +35,54 @@
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
 						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
+							<%
+								if (useri.getUserType().equals("商家")) {
+							%>
 
-							<li class="start active"><a
-								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
-							<li class="start"><a
-								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
-									商家活动 </a></li>
-									<li class="start"><a
-								href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
-									添加商家活动 </a></li>
+							<li class="start active"><a href="javascript:;"> <span
+									class="title">商家</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a
+										href="user/UserListBybussiness?pageNo=1&pageSize=10&userType=${user.userType} }&expressType=${user.expressType } ">
+											我的快递员</a></li>
+									<li><a href="layout_idle_timeout.html"> 我的活动</a></li>
+									<li><a href="javascript:;"> <span class="title">我的快递</span>
+											<span class="arrow "></span></a>
+										<ul class="sub-menu">
+											<li><a href="">已发出</a>
+											<li><a href="">已寄送</a>
+										</ul></li>
+
+								</ul></li>
+							<%
+								}
+							%>
+							<%
+								if (useri.getUserType().equals("快递员")) {
+							%>
+							<li class="start"><a href="javascript:;"> <span
+									class="title">快递员</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a href="layout_session_timeout.html"> 我的快递</a></li>
+									<li><a href="layout_idle_timeout.html"> 发送短信</a></li>
+
+								</ul></li>
+							<%
+								}
+							%>
+							<li class=""><a href="javascript:;"> <span
+									class="title">管理员</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a
+										href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+											添加商品活动</a></li>
+											<li><a href="businessActivities/BusinessActivitiesList?pageNo=1&pageSize=10">商品活动</</a></li>
+									<li class="start active"><a href="user/UserListByAdmin?pageNo=1&pageSize=10">
+											用户列表</a></li>
+								</ul></li>
 						</ul>
 				</a></li>
 			</ul>
@@ -67,13 +106,14 @@
 								int count = (Integer) map.get("count");
 								int pageCount = (count - 1) / pageSize + 1;
 							%>
-							<form action="user/UserList" method="post">
+							<form action="user/UserListByAdmin" method="post">
 								<input type="text" class="input-medium search-query"
 									name="keyword"
 									value="<%=map.get("keyword") == null ? "" : map.get("keyword")%>">
 								<input type="hidden" name="pageSize" value="<%=pageSize%>">
 								<input type="hidden" name="pageNo" value="<%=pageNo%>">
-								<button type="submit" class="btn" style="width:60px;height:25px;margin-top: -2px;line-height: 10px;margin-left: -3px;">搜索</button>
+								<button type="submit" class="btn"
+									style="width:60px;height:25px;margin-top: -2px;line-height: 10px;margin-left: -3px;">搜索</button>
 							</form>
 							<table
 								class="table table-striped table-bordered table-hover table-full-width"

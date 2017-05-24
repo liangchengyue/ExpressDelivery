@@ -23,18 +23,18 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.login(user);
 	}
 	@Override
-	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryUserByPagingByAdmin(int pageNo, int pageSize,
 			String keyword) {
 		// TODO Auto-generated method stub
-		return userDAO.queryUserByPaging(pageNo, pageSize, keyword);
+		return userDAO.queryUserByPagingByAdmin(pageNo, pageSize, keyword);
 	}
-	/*@Override
-	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
+	@Override
+	public Map<String, Object> queryUserByPagingBybussiness(int pageNo, int pageSize,
 			String keyword, String userType, String expressType) {
 		// TODO Auto-generated method stub
 		return userDAO.queryUserByPaging(pageNo, pageSize, keyword, userType,
 				expressType);
-	}*/
+	}
 
 	@Override
 	public void addUser(User user) {

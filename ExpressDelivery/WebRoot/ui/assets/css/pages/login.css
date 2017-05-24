@@ -115,7 +115,7 @@ Login page
 
 /* select2 dropdowns */
 .login .content .select2-container {
-  border-left: 2px solid #35aa47 !important;
+  border-left: 2px solid red !important;
 }
 
 .login .content .select2-container .select2-choice {

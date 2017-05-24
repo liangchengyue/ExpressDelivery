@@ -35,14 +35,62 @@
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
 						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
-							<li class="start "><a
-								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
-							<li class="start"><a
-								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
-									商家活动 </a></li>
-							<li class="start"><a
-								href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
-									添加商家活动 </a></li>
+							<!-- <li class="start"><a
+								href="user/UserList?pageSize=10&pageNo=1"><span
+									class="title">用户 </span> </a></li> -->
+							<%
+								if (user.getUserType().equals("商家")) {
+							%>
+							<li class="start active"><a href="javascript:;"> <span
+									class="title">商家</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a
+										href="user/UserListBybussiness?pageNo=1&pageSize=10&userType=${user.userType}&expressType=${user.expressType } ">
+											我的快递员</a></li>
+									<li><a href="layout_idle_timeout.html"> 我的活动</a></li>
+									<li><a href="javascript:;"> <span class="title">我的快递</span>
+											<span class="arrow "></span></a>
+										<ul class="sub-menu">
+											<li><a href="">已发出</a>
+											<li><a href="">已寄送</a>
+										</ul></li>
+
+								</ul></li>
+							<%
+								}
+							%>
+							<%
+								if (user.getUserType().equals("快递员")) {
+							%>
+							<li class="start active"><a href="javascript:;"> <span
+									class="title">快递员</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a href=""> 我的快递</a></li>
+									<li><a href=""> 发送短信</a></li>
+
+								</ul></li>
+							<%
+								}
+							%>
+							<%
+								if (user.getUserType().equals("管理员")) {
+							%>
+							<li class="start active"><a href="javascript:;"> <span
+									class="title">管理员</span> <span class="arrow "></span>
+							</a>
+								<ul class="sub-menu">
+									<li><a
+										href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
+											添加商品活动</a></li>
+									<li><a href="businessActivities/BusinessActivitiesList?pageNo=1&pageSize=10">商品活动</</a></li>
+									<li><a href="user/UserListByAdmin?pageNo=1&pageSize=10">
+											用户列表</a></li>
+								</ul></li>
+							<%
+								}
+							%>
 						</ul>
 				</a></li>
 			</ul>

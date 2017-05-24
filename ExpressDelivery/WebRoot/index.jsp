@@ -15,6 +15,7 @@
 <link href="ui/assets/css/pages/login.css" rel="stylesheet"
 	type="text/css" />
 
+
 </head>
 <body class="login">
 	<div class="logo">
@@ -43,6 +44,37 @@
 					<input class="form-control placeholder-no-fix required"
 						type="password" autocomplete="off" placeholder="密码"
 						name="password" />
+				</div>
+			</div>
+				
+			<div class="form-group row">
+				<label class="control-label col-md-5">快递站类别：</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me" 
+						name="expressType" style="margin-left: 110px;margin-top: -30px;">
+						<option value="无">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
+				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios1" value="商家" checked>商家
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios2" value="快递员"> 快递员
+					</label>
+					 <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios3" value="管理员"> 管理员
+					</label>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -115,6 +147,36 @@
 				</div>
 
 			</div>
+			<div class="form-group row">
+				<label class="control-label col-md-5">快递站类别：</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me" 
+						name="expressType" style="margin-left: 110px;margin-top: -30px;">
+						<option value="无">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
+				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios1" value="商家" checked>商家
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios2" value="快递员"> 快递员
+					</label>
+					 <label> <input class="col-md-6" type="radio"
+							name="userType" id="optionsRadios3" value="管理员"> 管理员
+					</label>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="col-md-4 control-label left"
 					style="margin-top: -1px;margin-left: -13px;">性别:</label>
@@ -127,6 +189,7 @@
 					</label>
 				</div>
 			</div>
+			
 			<div class="form-group ">
 				<div class="input-icon row" style="margin-left: 1px;height: 32px;">
 					<i class="fa fa-check-square col-md-4" style="margin-top:10px;margin-left: -5px; z-index: 1"></i>

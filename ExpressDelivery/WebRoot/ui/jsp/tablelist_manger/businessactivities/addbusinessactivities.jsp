@@ -31,7 +31,7 @@
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
-				<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
+					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
 							class="fa fa-user"></i> 我的资料</a></li>
 					<li><a href="ui/jsp/main/frame.jsp"> <i class="fa fa-user"></i>
 							返回首页
@@ -71,6 +71,24 @@
 												<div class="col-md-6">
 													<input type="text" class="form-control" placeholder="商家名"
 														name="businessName" id="input_businessName">
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="control-label col-md-5">快递站类别:</label>
+												<div class="col-md-6" style="margin-left: -110px;margin-top:30px;">
+													<select id="form_2_select2" class="form-control select2me"
+														name="expres sType"
+														style="margin-left: 110px;margin-top: -30px;">
+														<option value="其他">请选择</option>
+														<option value="申通快递">申通快递</option>
+														<option value="圆通快递">圆通快递</option>
+														<option value="中通快递">中通快递</option>
+														<option value="韵达快递">韵达快递</option>
+														<option value="天天快递">天天快递</option>
+														<option value="百世汇通">百世汇通</option>
+														<option value="邮政">邮政</option>
+														<option value="天猫商城">天猫商城</option>
+													</select>
 												</div>
 											</div>
 											<div class="form-group">
