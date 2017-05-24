@@ -31,7 +31,7 @@
 					<i class="fa fa-angle-down"></i>
 			</a>
 				<ul class="dropdown-menu">
-				<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
+					<li><a href="ui/jsp/tablelist_manger/user/userinfo.jsp"><i
 							class="fa fa-user"></i> 我的资料</a></li>
 					<li><a href="ui/jsp/main/frame.jsp"> <i class="fa fa-user"></i>
 							返回首页

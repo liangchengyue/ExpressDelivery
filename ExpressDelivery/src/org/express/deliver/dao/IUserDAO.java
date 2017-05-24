@@ -63,7 +63,7 @@ public interface IUserDAO {
 	 *      
 	 * @return Map 用户信息的集合
 	 */
-	public Map<String,Object> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String,Object> queryUserByPagingByAdmin(int pageNo, int pageSize,
 			String keyword);
 	/**
 	 * 分页查询用户信息
@@ -80,8 +80,8 @@ public interface IUserDAO {
 	 *            快递类型
 	 * @return Map 用户信息的集合
 	 */
-/*	public Map<String,Object> queryUserByPaging(int pageNo, int pageSize,
-			String keyword, String userType, String expressType);*/
+	public Map<String,Object> queryUserByPaging(int pageNo, int pageSize,
+			String keyword, String userType, String expressType);
 
 	/**
 	 * 查询所有用户名

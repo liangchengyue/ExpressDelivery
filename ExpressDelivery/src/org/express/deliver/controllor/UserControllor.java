@@ -45,6 +45,7 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user, HttpServletRequest request) {
+		System.out.println(user.getExpressType()+"llll");
 		User user2 = userManager.login(user);
 		ModelAndView modelAndView = null;
 		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
@@ -85,34 +86,52 @@ public class UserControllor {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/UserList", produces = "text/html;charset=UTF-8")
-	public ModelAndView getUserList(String keyword, int pageNo, int pageSize,
+
+	@RequestMapping(value = "/UserListBybussiness", produces = "text/html;charset=UTF-8")
+	public ModelAndView getUserListBybussiness(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
+	
 			throws JsonGenerationException, JsonMappingException, IOException {
+		userType="快递员";
 		if (keyword == null) {
 			keyword = "";
 		}
-		Map<String, Object> map = userManager.queryUserByPaging(pageNo,
-				pageSize, keyword);
+		Map<String, Object> map = userManager.queryUserByPagingBybussiness(pageNo, pageSize, keyword, userType, expressType);
 		int total = userManager.queryAllUserAcount();
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		map.put("keyword", keyword);
+		return new ModelAndView("ui/jsp/tablelist_manger/user/courierlist",
+				"result", map);
+	}
+
+	/**
+	 * 
+	 * @param keyword
+	 * @param pageNo
+	 * @param pageSize
+	 * @param userType
+	 * @param expressType
+	 * @return
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/UserListByAdmin", produces = "text/html;charset=UTF-8")
+	public ModelAndView getUserListByAdmin(String keyword, int pageNo, int pageSize,
+			String userType, String expressType)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		System.out.println(keyword);
+		if (keyword == null) {
+			keyword = "";
+		}
+		Map<String, Object> map = userManager.queryUserByPagingByAdmin(pageNo, pageSize, keyword);
 		map.put("pageSize", pageSize);
 		map.put("pageNo", pageNo);
 		map.put("keyword", keyword);
 		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist",
 				"result", map);
 	}
-
-	/*
-	 * 这里注释的是通过类型查找用户的方法 public ModelAndView getUserList(String keyword, int
-	 * pageNo, int pageSize, String userType, String expressType) throws
-	 * JsonGenerationException, JsonMappingException, IOException {
-	 * System.out.println(keyword); if (keyword==null) { keyword=""; }
-	 * Map<String, Object> map = userManager.queryUserByPaging(pageNo, pageSize,
-	 * keyword, userType, expressType); int total =
-	 * userManager.queryAllUserAcount(); map.put("pageSize", pageSize);
-	 * map.put("pageNo", pageNo); map.put("keyword", keyword); return new
-	 * ModelAndView("ui/jsp/tablelist_manger/user/userlist","result",map); }
-	 */
 
 	/**
 	 * 注册账户之前查询所有用户名，以便判断注册时输入的用户名是否已存在
@@ -177,7 +196,6 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
-		user.setUserType("管理员");
 		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		HttpSession session = request.getSession();
@@ -200,6 +218,7 @@ public class UserControllor {
 		userManager.addUser(user);
 		return "succss";
 	}
+
 	/**
 	 * 安卓修改个人头像
 	 * 
@@ -220,6 +239,7 @@ public class UserControllor {
 		userManager.modifyUserInfo(user2);
 		return "";
 	}
+
 	/**
 	 * 安卓上传图片
 	 * 
@@ -259,6 +279,7 @@ public class UserControllor {
 		path = path.replace("\\", "/");
 		return path;
 	}
+
 	/**
 	 * 退出登录，返回登录页
 	 * 
@@ -618,15 +639,17 @@ public class UserControllor {
 				model);
 		return modelAndView;
 	}
+
 	/**
 	 * 安卓端修改密码
+	 * 
 	 * @param u
 	 * @return
 	 */
 	@RequestMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(User u) {
-		User user=userManager.queryUserById(u.getId());
+		User user = userManager.queryUserById(u.getId());
 		user.setPassword(u.getPassword());
 		userManager.modifyUserInfo(user);
 		return "success";

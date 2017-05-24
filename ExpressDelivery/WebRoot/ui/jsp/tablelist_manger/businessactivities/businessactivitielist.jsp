@@ -38,8 +38,8 @@
 						class="fa fa-user"></i> <span class="title">表单列表</span> <span
 						class="arrow "></span> <span class="selected"></span>
 						<ul class="sub-menu">
-							<li class="start "><a
-								href="user/UserList?pageSize=10&pageNo=1"> 用户 </a></li>
+							<li class="start "><a href="user/UserListByAdmin?pageNo=1&pageSize=10">
+											用户列表</a></li>
 							<li class="start active"><a
 								href="businessActivities/BusinessActivitiesList?pageSize=10&pageNo=1">
 									商家活动 </a></li>

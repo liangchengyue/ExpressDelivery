@@ -59,8 +59,8 @@ public interface IUserManager {
 	 *            快递类型
 	 * @return Map 用户信息的集合
 	 */
-	/*public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
-			String keyword, String userType, String expressType);*/
+	public Map<String, Object> queryUserByPagingBybussiness(int pageNo, int pageSize,
+			String keyword, String userType, String expressType);
 
 	/**
 	 * 分页查询用户信息
@@ -73,7 +73,7 @@ public interface IUserManager {
 	 *            关键字
 	 * @return Map 用户信息的集合
 	 */
-	public Map<String, Object> queryUserByPaging(int pageNo, int pageSize,
+	public Map<String, Object> queryUserByPagingByAdmin(int pageNo, int pageSize,
 			String keyword);
 
 	/**

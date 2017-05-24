@@ -107,9 +107,9 @@ public class Order {
 	/**
 	 * 货物列表
 	 */
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	/*@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@OrderBy("id ASC")
-	private Set<Goods> goods = new HashSet<Goods>();
+	private Set<Goods> goods = new HashSet<Goods>();*/
 
 	/**
 	 * 获取ID
@@ -289,10 +289,10 @@ public class Order {
 	 * 
 	 * @return 货物列表
 	 */
-	@JsonIgnore
+	/*@JsonIgnore
 	public Set<Goods> getGoods() {
 		return goods;
-	}
+	}*/
 
 	/**
 	 * 设置货物列表
@@ -300,9 +300,9 @@ public class Order {
 	 * @param goods
 	 *            货物列表
 	 */
-	public void setGoods(Set<Goods> goods) {
+	/*public void setGoods(Set<Goods> goods) {
 		this.goods = goods;
-	}
+	}*/
 	/**
 	 * 获取取货时间
 	 * @return 取货时间
