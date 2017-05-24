@@ -54,9 +54,10 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 	}
 
 	@Override
-	public List<Order> queryOrderLists() {
-		String hql="FROM Order AS o WHERE o.state='未接单'";
+	public List<Order> queryOrderLists( String keyword) {
+		String hql="FROM Order AS o WHERE o.state='未接单' AND o.name LIKE ?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, "%"+keyword+"%");
 		return query.list();
 	}
 

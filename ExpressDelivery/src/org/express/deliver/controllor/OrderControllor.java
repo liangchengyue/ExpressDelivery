@@ -80,12 +80,24 @@ public class OrderControllor {
 		order2.setState("已接单");
 		order2.setTakeOrderDate(new Date());
 		orderManager.modifyOrderInfo(order2);
+		//接单成功，更新发单 用户积分
+		User user2=userManager.queryUserById(order2.getPreOrderuUser().getId());
+		user2.setIntegral(user2.getIntegral()-order2.getGrade());
+		userManager.modifyUserInfo(user2);
 		return  "success";
 	}
+	/**
+	 * 安卓端订单列表
+	 * @param keword 关键字
+	 * @return
+	 */
 	@RequestMapping(value = "/queryOrderList",produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public  String queryOrderList(){
-		List<Order> orders=orderManager.queryOrderLists();
+	public  String queryOrderList(String keword){
+		if (keword==null) {
+			keword="";
+		}
+		List<Order> orders=orderManager.queryOrderLists(keword);
 		String json=Order.getOrderListJson(orders);
 		return json;
 	}
@@ -94,7 +106,6 @@ public class OrderControllor {
 	public String queryOrdersByTakeUser(String id) {
 		List<Order> orders=orderManager.queryOrdersByTakeUser(id);
 		String json=Order.getOrderListJson(orders);
-		System.out.println(json);
 		return json;
 	}
 	@RequestMapping(value = "/queryOrdersByProUser",produces = "application/json;charset=utf-8")
@@ -102,7 +113,6 @@ public class OrderControllor {
 	public String queryOrdersByProUser(String id) {
 		List<Order> orders=orderManager.queryOrdersByProUser(id);
 		String json=Order.getOrderListJson(orders);
-		System.out.println(json);
 		return json;
 	}
 }

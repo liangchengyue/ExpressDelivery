@@ -36,9 +36,9 @@ public class OrderManagerImpl implements IOrderManager {
 	}
 
 	@Override
-	public List<Order> queryOrderLists() {
+	public List<Order> queryOrderLists(String keyword) {
 		// TODO Auto-generated method stub
-		return orderDAO.queryOrderLists();
+		return orderDAO.queryOrderLists(keyword);
 	}
 
 	@Override

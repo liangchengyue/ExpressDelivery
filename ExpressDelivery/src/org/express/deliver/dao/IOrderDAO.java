@@ -51,9 +51,10 @@ public interface IOrderDAO {
 	public int queryAllOrderAcount();
 	/**
 	 * 查询未接单的订单
+	 * @param keyword 关键字
 	 * @return 订单列表
 	 */
-	public List<Order> queryOrderLists();
+	public List<Order> queryOrderLists(String keyword);
 	/**
 	 * 根据id查询订单信息
 	 * @param id 订单ID

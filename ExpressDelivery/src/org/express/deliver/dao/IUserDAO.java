@@ -113,4 +113,5 @@ public interface IUserDAO {
 	 * @return 用户信息
 	 */
 	public User queryUserById(String id);
+	 
 }

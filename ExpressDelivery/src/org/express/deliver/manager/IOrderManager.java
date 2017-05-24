@@ -38,9 +38,10 @@ public interface IOrderManager {
 	public void addOrder(Order order);
 	/**
 	 * 查询未接单的订单
+	 * @param keyword 关键字
 	 * @return 订单列表
 	 */
-	public List<Order> queryOrderLists();
+	public List<Order> queryOrderLists(String keyword);
 	/**
 	 * 根据ID查询订单
 	 * @param id ID
