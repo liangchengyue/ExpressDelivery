@@ -69,8 +69,7 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userType);
 		 query.setString(1, expressType);
-		 query.setString(2, "%" + keyword + "%");
-		// query.setString(3, "%" + keyword + "%");
+		/* query.setString(2, "%" + keyword + "%");*/
 		int count=query.list().size();
 		query.setFirstResult((pageNo - 1) * pageSize);
 		query.setMaxResults(pageSize);

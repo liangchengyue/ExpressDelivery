@@ -43,11 +43,11 @@
 									class="title">商家</span> <span class="arrow "></span>
 							</a>
 								<ul class="sub-menu">
-									<li><a
+									<li class="start active"><a
 										href="user/UserListBybussiness?pageNo=1&pageSize=10&userType=${user.userType} }&expressType=${user.expressType } ">
 											我的快递员</a></li>
-									<li><a href="layout_idle_timeout.html"> 我的活动</a></li>
-									<li><a href="javascript:;"> <span class="title">我的快递</span>
+									<li><a href=""> 我的活动</a></li>
+									<li><a href=""> <span class="title">我的快递</span>
 											<span class="arrow "></span></a>
 										<ul class="sub-menu">
 											<li><a href="">已发出</a>
@@ -57,32 +57,7 @@
 								</ul></li>
 							<%
 								}
-							%>
-							<%
-								if (useri.getUserType().equals("快递员")) {
-							%>
-							<li class="start"><a href="javascript:;"> <span
-									class="title">快递员</span> <span class="arrow "></span>
-							</a>
-								<ul class="sub-menu">
-									<li><a href="layout_session_timeout.html"> 我的快递</a></li>
-									<li><a href="layout_idle_timeout.html"> 发送短信</a></li>
-
-								</ul></li>
-							<%
-								}
-							%>
-							<li class=""><a href="javascript:;"> <span
-									class="title">管理员</span> <span class="arrow "></span>
-							</a>
-								<ul class="sub-menu">
-									<li><a
-										href="ui/jsp/tablelist_manger/businessactivities/addbusinessactivities.jsp">
-											添加商品活动</a></li>
-											<li><a href="businessActivities/BusinessActivitiesList?pageNo=1&pageSize=10">商品活动</</a></li>
-									<li class="start active"><a href="user/UserListByAdmin?pageNo=1&pageSize=10">
-											用户列表</a></li>
-								</ul></li>
+							%>																
 						</ul>
 				</a></li>
 			</ul>
@@ -94,7 +69,7 @@
 					<div class="portlet box red">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>用户列表
+								<i class="fa fa-globe"></i>快递员列表
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -143,26 +118,26 @@
 								<div class="col-md-8">
 									<ul>
 										<li><a
-											href="user/UserListByAdmin?pageSize=<%=pageSize%>&pageNo=1"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=1"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>首页</a></li>
 										<li><a
-											href="user/UserListByAdmin?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo - 1%>"
 											<%=pageNo == 1 ? "onclick=\"return false;\"" : ""%>>上一页</a></li>
 										<%
 											for (int i = 1; i <= pageCount; i++) {
 										%>
 										<li><a
-											href="user/UserListByAdmin?pageSize=<%=pageSize%>&pageNo=<%=i%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=i%>"
 											<%=pageNo == i ? "onclick=\"return false;\"" : ""%>><%=i%></a></li>
 										<%
 											}
 										%>
 
 										<li><a
-											href="user/UserListByAdmin?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageNo + 1%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>下一页</a></li>
 										<li><a
-											href="user/UserListByAdmin?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>"
+											href="user/UserList?pageSize=<%=pageSize%>&pageNo=<%=pageCount%>"
 											<%=pageNo == pageCount ? "onclick=\"return false;\"" : ""%>>尾页</a></li>
 									</ul>
 								</div>

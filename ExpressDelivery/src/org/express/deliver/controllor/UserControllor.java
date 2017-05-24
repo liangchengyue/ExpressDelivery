@@ -90,7 +90,9 @@ public class UserControllor {
 	@RequestMapping(value = "/UserListBybussiness", produces = "text/html;charset=UTF-8")
 	public ModelAndView getUserListBybussiness(String keyword, int pageNo, int pageSize,
 			String userType, String expressType)
+	
 			throws JsonGenerationException, JsonMappingException, IOException {
+		userType="快递员";
 		if (keyword == null) {
 			keyword = "";
 		}
@@ -99,7 +101,7 @@ public class UserControllor {
 		map.put("pageSize", pageSize);
 		map.put("pageNo", pageNo);
 		map.put("keyword", keyword);
-		return new ModelAndView("ui/jsp/tablelist_manger/user/userlist",
+		return new ModelAndView("ui/jsp/tablelist_manger/user/courierlist",
 				"result", map);
 	}
 

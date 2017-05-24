@@ -46,7 +46,7 @@
 							</a>
 								<ul class="sub-menu">
 									<li><a
-										href="user/UserListBybussiness?pageNo=1&pageSize=10&userType=${user.userType}&expressType=${user.expressType } ">
+										href="user/UserListBybussiness?pageNo=1&pageSize=10&expressType=${user.expressType}">
 											我的快递员</a></li>
 									<li><a href="javascript:;"> <span class="title">我的快递</span>
 											<span class="arrow "></span></a>
