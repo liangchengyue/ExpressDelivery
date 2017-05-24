@@ -48,7 +48,6 @@
 									<li><a
 										href="user/UserListBybussiness?pageNo=1&pageSize=10&userType=${user.userType}&expressType=${user.expressType } ">
 											我的快递员</a></li>
-									<li><a href="layout_idle_timeout.html"> 我的活动</a></li>
 									<li><a href="javascript:;"> <span class="title">我的快递</span>
 											<span class="arrow "></span></a>
 										<ul class="sub-menu">
