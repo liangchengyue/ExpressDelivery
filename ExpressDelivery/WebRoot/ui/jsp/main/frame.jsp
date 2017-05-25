@@ -95,7 +95,7 @@
 				</a></li>
 			</ul>
 		</div>
-		<div class="page-content"></div>
+		<div class="page-content" style="padding: 0" ><img style="margin: 0;width: 100%;height: 100%"  alt="" src="ui/css/index.jpg"></div>
 	</div>
 	<jsp:include page="/ui/jsp/main/foot.jsp" />
 </body>

@@ -45,7 +45,6 @@ public class UserControllor {
 	 * @param user
 	 */
 	public ModelAndView login(User user, HttpServletRequest request) {
-		System.out.println(user.getExpressType()+"llll");
 		User user2 = userManager.login(user);
 		ModelAndView modelAndView = null;
 		// 视图解释器解析ModelAndVIew是，其中model本生就是一个Map的实现类的子类。
@@ -196,6 +195,7 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		user.setUserType("管理员");
 		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
 		HttpSession session = request.getSession();
@@ -438,7 +438,7 @@ public class UserControllor {
 
 		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
 		// 发送验证码
-		// IndustrySMS.execute(phone, valiCode, 5);
+		IndustrySMS.execute(phone, valiCode, 5);
 		System.out.println(valiCode);
 		return valiCode;
 	}
@@ -600,6 +600,7 @@ public class UserControllor {
 			user2.setIdCard(user.getIdCard());
 			user2.setGender(user.getGender());
 			user2.setSchool(user.getSchool());
+			user2.setIntegral(50);
 			userManager.modifyUserInfo(user2);
 		}
 		return msg;
@@ -653,5 +654,19 @@ public class UserControllor {
 		user.setPassword(u.getPassword());
 		userManager.modifyUserInfo(user);
 		return "success";
+	}
+	/**
+	 * 修改积分
+	 * @param id
+	 * @param grade
+	 * @return
+	 */
+	@RequestMapping("/updateGrade")
+	@ResponseBody
+	public String updateGrade(String id,int grade) {
+		User user=userManager.queryUserById(id);
+		user.setIntegral(grade);
+		userManager.modifyUserInfo(user);
+		return "";
 	}
 }

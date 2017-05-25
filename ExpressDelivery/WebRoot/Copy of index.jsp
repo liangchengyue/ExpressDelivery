@@ -46,7 +46,37 @@
 						name="password" />
 				</div>
 			</div>
-		
+				
+			<div class="form-group row " id="login_IShideExressType">
+				<label class="control-label col-md-5">快递站类别：</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me" 
+						name="expressType" style="margin-left: 110px;margin-top: -30px;">
+						<option value="无">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" >
+			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
+				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="login_optionsRadios1" value="商家" checked>商家
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="login_optionsRadios2" value="快递员"> 快递员
+					</label>
+					 <label> <input class="col-md-6" type="radio"
+							name="userType" id="login_optionsRadios3" value="管理员"> 管理员
+					</label>
+				</div>
+			</div>
 			<div class="form-actions">
 				<button type="reset" class="btn red pull-left">重置</button>
 				<button type="submit" class="btn red pull-right">
@@ -103,6 +133,38 @@
 							type="password" autocomplete="off" placeholder="确认密码"
 							name="rpassword" id="input_rpassword" />
 					</div>
+				</div>
+			</div>
+
+		
+			<div class="form-group row " id="RegisterIShideExressType">
+				<label class="control-label col-md-5">快递站类别：</label>
+				<div class="col-md-8">
+					<select id="form_2_select2" class="form-control select2me" 
+						name="expressType" style="margin-left: 110px;margin-top: -30px;">
+						<option value="无">请选择</option>
+						<option value="申通快递">申通快递</option>
+						<option value="圆通快递">圆通快递</option>
+						<option value="中通快递">中通快递</option>
+						<option value="韵达快递">韵达快递</option>
+						<option value="天天快递">天天快递</option>
+						<option value="百世汇通">百世汇通</option>
+						<option value="邮政">邮政</option>
+						<option value="天猫商城">天猫商城</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+			<label class="control-label col-md-4" style="float: left;margin-left: -15px;">用户类别：</label>
+				<div class="radio-inline row" style="margin-left: 60px;margin-top: -25px;">
+					<label> <input class="col-md-6" type="radio"
+							name="userType" id="Register_optionsRadios1" value="商家" checked>商家
+					</label> <label> <input class="col-md-6" type="radio"
+							name="userType" id="Register_optionsRadios2" value="快递员"> 快递员
+					</label>
+					 <label> <input class="col-md-6" type="radio"
+							name="userType" id="Register_optionsRadios3" value="管理员"> 管理员
+					</label>
 				</div>
 			</div>
 			<div class="form-group">
