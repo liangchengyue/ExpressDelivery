@@ -247,25 +247,25 @@ public class UserControllor {
 	 * @param request
 	 * @return 保存的图片路径
 	 */
-	public String uploadUserImgAndroid(MultipartFile userImg,
+	public String uploadUserImgAndroid(MultipartFile file,
 			HttpServletRequest request) {
 		// 通过request获取项目实际运行目录,就可以将上传文件存放在项目目录了,不管项目部署在任何地方都可以
 		// 图片保存路径
 		String filePath = request.getSession().getServletContext()
 				.getRealPath("/ui/userimg/1");
 		// 获取图片原始名称
-		String originalFilename = userImg.getOriginalFilename();
+		String originalFilename = file.getOriginalFilename();
 		// 以用户id加图片扩展名给图片命名
 		String newFileName = ((new Date()).getTime())
 				+ originalFilename.substring(originalFilename.lastIndexOf("."));
 		String path = filePath + newFileName;
-		File file = new File(path);
-		if (file.exists()) {
-			file.delete();
-			file = new File(path);
+		File file1 = new File(path);
+		if (file1.exists()) {
+			file1.delete();
+			file1 = new File(path);
 		}
 		try {
-			userImg.transferTo(file);
+			file.transferTo(file1);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

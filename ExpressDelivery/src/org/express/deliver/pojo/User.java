@@ -163,6 +163,8 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+
 
 	/**
 	 * 获取用户真实姓名

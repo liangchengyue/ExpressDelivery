@@ -54,6 +54,14 @@ public class Order {
 	@Column(nullable = false)
 	private Date takeOrderDate;
 	/**
+	 * 接单用户是否删除
+	 */
+	private boolean takeIsdel=false;
+	/**
+	 * 发单用户是否删除
+	 */
+	private boolean peoIsdel=false;
+	/**
 	 * 订单结束时间
 	 */
 	private Date orderEndDate;
@@ -387,6 +395,22 @@ public class Order {
 	 */
 	public void setTeltPhone(String teltPhone) {
 		this.teltPhone = teltPhone;
+	}
+
+	public boolean isTakeIsdel() {
+		return takeIsdel;
+	}
+
+	public void setTakeIsdel(boolean takeIsdel) {
+		this.takeIsdel = takeIsdel;
+	}
+
+	public boolean isPeoIsdel() {
+		return peoIsdel;
+	}
+
+	public void setPeoIsdel(boolean peoIsdel) {
+		this.peoIsdel = peoIsdel;
 	}
 
 	/**

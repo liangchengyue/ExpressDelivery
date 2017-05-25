@@ -25,4 +25,15 @@ public interface ICommentManager {
 	 * @return 评论总数
 	 */
 	public int queryAllCommentAcount();
+	/**
+	 * 添加评论
+	 * @param comment 评论信息
+	 */
+	public void addComment(Comment comment);
+	/**
+	 * 根据订单ID查询
+	 * @param orderId
+	 * @return 所有评论
+	 */
+	public List<Comment> queryComment(String orderId);
 }

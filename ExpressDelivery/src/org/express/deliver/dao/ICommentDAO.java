@@ -62,4 +62,10 @@ public interface ICommentDAO {
 	 * @return 评论总数
 	 */
 	public int queryAllCommentAcount();
+	/**
+	 * 根据订单ID查询所有评论
+	 * @param ordeId 订单ID
+	 * @return
+	 */
+	public List<Comment> queryComment(String ordeId);
 }

@@ -65,4 +65,12 @@ public class CommentDAOImpl extends BaseDAO implements ICommentDAO {
 		return ((Long)query.uniqueResult()).intValue();
 	}
 
+	@Override
+	public List<Comment> queryComment(String ordeId) {
+		String hql="FROM Comment AS c WHERE c.order.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, ordeId);
+		return query.list();
+	}
+
 }

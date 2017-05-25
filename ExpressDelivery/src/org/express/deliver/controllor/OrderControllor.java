@@ -106,6 +106,7 @@ public class OrderControllor {
 	public String queryOrdersByTakeUser(String id) {
 		List<Order> orders=orderManager.queryOrdersByTakeUser(id);
 		String json=Order.getOrderListJson(orders);
+		System.out.println(json);
 		return json;
 	}
 	@RequestMapping(value = "/queryOrdersByProUser",produces = "application/json;charset=utf-8")
@@ -114,5 +115,59 @@ public class OrderControllor {
 		List<Order> orders=orderManager.queryOrdersByProUser(id);
 		String json=Order.getOrderListJson(orders);
 		return json;
+	}
+	/**
+	 * 安卓端发单用户取消订单
+	 * @param id 订单ID
+	 * @return
+	 */
+	@RequestMapping("/delOrder")
+	@ResponseBody
+	public String delOrder(String id) {
+		Order order=orderManager.queryOrderById(id);
+		orderManager.delOrder(order);
+		return "success";
+	}
+	/**
+	 * 安卓端发单用户删除订单
+	 * @param id 订单ID
+	 * @return
+	 */
+	@RequestMapping("/predelOrder")
+	@ResponseBody
+	public String predelOrder(String id) {
+		Order order=orderManager.queryOrderById(id);
+		order.setPeoIsdel(true);
+		orderManager.modifyOrderInfo(order);
+		return "success";
+	}
+	/**
+	 * 安卓端接单用户删除订单
+	 * @param id 订单ID
+	 * @return
+	 */
+	@RequestMapping("/takedelOrder")
+	@ResponseBody
+	public String takedelOrder(String id) {
+		Order order=orderManager.queryOrderById(id);
+		order.setTakeIsdel(true);
+		orderManager.modifyOrderInfo(order);
+		return "success";
+	}
+	/**
+	 * 安卓端用户完成订单
+	 * @param id 订单ID
+	 * @return
+	 */
+	@RequestMapping("/overOrder")
+	@ResponseBody
+	public String overOrder(String id) {
+		Order order=orderManager.queryOrderById(id);
+		order.setState("已完成");
+		orderManager.modifyOrderInfo(order);
+		User user=userManager.queryUserById(order.getTakeOrderUser().getId());
+		user.setIntegral(user.getIntegral()+order.getGrade());
+		userManager.modifyUserInfo(user);
+		return "success";
 	}
 }

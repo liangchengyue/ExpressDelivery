@@ -71,7 +71,7 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 
 	@Override
 	public List<Order> queryOrdersByTakeUser(String id) {
-		String hql="FROM Order AS o WHERE o.takeOrderUser.id=?";
+		String hql="FROM Order AS o WHERE  o.takeOrderUser.id=? AND takeIsdel=0";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, id);
 		return query.list();
@@ -79,7 +79,7 @@ public class OrderDAOImpl extends BaseDAO implements IOrderDAO {
 
 	@Override
 	public List<Order> queryOrdersByProUser(String id) {
-		String hql="FROM Order AS o WHERE o.preOrderuUser.id=?";
+		String hql="FROM Order AS o WHERE o.preOrderuUser.id=? AND peoIsdel=0";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, id);
 		return query.list();

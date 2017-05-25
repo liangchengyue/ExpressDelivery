@@ -36,4 +36,16 @@ public class CommentManagerImpl implements ICommentManager {
 		return commentDAO.queryAllCommentAcount();
 	}
 
+	@Override
+	public void addComment(Comment comment) {
+		commentDAO.addComment(comment);
+		
+	}
+
+	@Override
+	public List<Comment> queryComment(String orderId) {
+		// TODO Auto-generated method stub
+		return commentDAO.queryComment(orderId);
+	}
+
 }

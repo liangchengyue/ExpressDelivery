@@ -37,7 +37,7 @@ public class Comment {
 	 * 评论等级
 	 */
 	@Column(nullable = false)
-	private Integer grade;
+	private Integer grade=0;
 	/**
 	 * 内容
 	 */
@@ -48,6 +48,7 @@ public class Comment {
 	 */
 	@Column(nullable = false)
 	private Date commentDate;
+	
 	/**
 	 * 所属订单
 	 */
@@ -79,7 +80,7 @@ public class Comment {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	
 	/**
 	 * 获取评论等级
 	 * 
@@ -162,6 +163,8 @@ public class Comment {
 	public Set<Reply> getReplies() {
 		return replies;
 	}
+
+	
 
 	/**
 	 * 设置回复列表

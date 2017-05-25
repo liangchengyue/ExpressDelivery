@@ -65,4 +65,9 @@ public class OrderManagerImpl implements IOrderManager {
 		return orderDAO.queryOrdersByProUser(id);
 	}
 
+	@Override
+	public void delOrder(Order order) {
+		orderDAO.delOrder(order);
+	}
+
 }
