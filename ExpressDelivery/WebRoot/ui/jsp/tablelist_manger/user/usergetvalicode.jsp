@@ -26,9 +26,11 @@
 </head>
 
 <body class="login">
-	<div class="content">
+	<div class="content" style="margin:100px auto;">
 		<div class="form-group">
 			<h3>忘记密码 ?</h3>
+				<a href="index.jsp" style="margin-left: 260px;margin-top: -40px;"><button class="btn red " style="margin-top: -76px;"><i class="m-icon-swapleft m-icon-white"></i>返回</button></a>
+			
 			<p>请填写手机号进行身份确认</p>
 			<div class="form-group row">
 				<div class="input-icon col-md-6"
