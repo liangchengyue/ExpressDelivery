@@ -1,3 +1,4 @@
+
 package org.express.deliver.controllor;
 
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.express.deliver.manager.IBusinessActivitiesManager;
 import org.express.deliver.pojo.BusinessActivities;
+import org.express.deliver.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,6 +49,8 @@ public class BusinessActivitiesControllor {
 		businessActivities.setImagePath(uploadBusinessActivitiesImg(businessactivitiesimg, request));
 		// 设置当前时间为添加活动时间
 		businessActivities.setAddDate(new Date());
+		User user=(User) request.getSession().getAttribute("user");
+		businessActivities.setUser(user);
 		businessactivitiesManager.addBusinessActivities(businessActivities);
 		//添加完成以后，分页查询并显示
 		int pageNo=1;

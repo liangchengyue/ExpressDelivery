@@ -113,5 +113,11 @@ public interface IUserDAO {
 	 * @return 用户信息
 	 */
 	public User queryUserById(String id);
+	/**
+	 * 根据手机ID查询用户是否注册
+	 * @param phoneId 手机ID
+	 * @return 是否注册
+	 */
+	public boolean IsAndroidForRegster(String phoneId);
 	 
 }

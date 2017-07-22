@@ -108,6 +108,10 @@ public class User {
 	 */
 	private String school;
 	/**
+	 * 手机唯一标识
+	 */
+	private String phoneId;
+	/**
 	 * 下单用户列表
 	 */
 	@OneToMany(mappedBy = "preOrderuUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -83,4 +83,10 @@ public class UserManagerImpl implements IUserManager {
 		return userDAO.queryUserById(id);
 	}
 
+	@Override
+	public boolean IsAndroidForRegster(String phoneId) {
+		// TODO Auto-generated method stub
+		return userDAO.IsAndroidForRegster(phoneId);
+	}
+
 }

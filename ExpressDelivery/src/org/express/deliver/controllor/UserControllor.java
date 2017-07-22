@@ -195,6 +195,7 @@ public class UserControllor {
 	public String regster(User user, HttpServletRequest request) {
 		// 将当前时间设置为注册时间
 		user.setRegDate(new Date());
+		System.out.println(user.getUserName());
 		user.setUserType("管理员");
 		user.setImagePath("ui/userimg/defaultuserimage.png");
 		userManager.addUser(user);
@@ -417,7 +418,8 @@ public class UserControllor {
 		final HttpSession session = request.getSession();
 		session.setAttribute("valiCode", valiCode);
 		// 发送验证码
-		IndustrySMS.execute(phone, valiCode, time);
+		//IndustrySMS.execute(phone, valiCode, time);
+		System.out.println(valiCode);
 		return valiCode;
 	}
 
@@ -438,7 +440,7 @@ public class UserControllor {
 
 		String valiCode = ((int) ((Math.random() * 9 + 1) * 100000)) + "";
 		// 发送验证码
-		IndustrySMS.execute(phone, valiCode, 5);
+		//IndustrySMS.execute(phone, valiCode, 5);
 		System.out.println(valiCode);
 		return valiCode;
 	}
@@ -668,5 +670,15 @@ public class UserControllor {
 		user.setIntegral(grade);
 		userManager.modifyUserInfo(user);
 		return "";
+	}
+	@RequestMapping("/IsAndroidForRegster")
+	@ResponseBody
+	public String IsAndroidForRegster(String phoneId) {
+		String string="success";
+		boolean flag=userManager.IsAndroidForRegster(phoneId);
+		if (!flag) {
+			string="error";
+		}
+		return string;
 	}
 }

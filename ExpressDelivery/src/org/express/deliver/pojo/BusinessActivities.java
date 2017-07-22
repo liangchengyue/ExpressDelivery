@@ -262,10 +262,10 @@ public class BusinessActivities {
 			sBuffer.append(",");
 			sBuffer.append("\"id\":");
 			sBuffer.append("\"" + businessActivities.getId() + "\"");
-//			sBuffer.append(",");
-//			sBuffer.append("\"userNamme\":");
-//			sBuffer.append("\"" + businessActivities.getUser().getUserName()
-//					+ "\"");
+			sBuffer.append(",");
+			sBuffer.append("\"imagePath\":");
+			sBuffer.append("\"" + businessActivities.getImagePath()
+					+ "\"");
 			sBuffer.append("}");
 			sBuffer.append(",");
 		}

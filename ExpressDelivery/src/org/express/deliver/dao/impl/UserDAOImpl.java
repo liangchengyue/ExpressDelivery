@@ -133,5 +133,17 @@ public class UserDAOImpl extends BaseDAO implements IUserDAO {
 		return user;
 	}
 
+	@Override
+	public boolean IsAndroidForRegster(String phoneId) {
+		String hql="FROM User AS u WHERE u.phoneId=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, phoneId);
+		boolean flag=false;
+		if (query.list().size()>0) {
+			flag=true;
+		}
+		return flag;
+	}
+
 
 }
